@@ -1,0 +1,107 @@
+.category-image {
+    width: 50px;
+    height: 50px; 
+    object-fit: cover; 
+    border-radius: 10px; 
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+  }
+.categories-box-layout {
+  margin-top: -40px;
+  position: relative;
+  z-index: 2;
+}
+
+.categories-box-layout .categories-box-layout-inner {
+  background-color: #353530;
+  padding: 40px;
+  padding-bottom: 10px;
+}
+
+.categories-box-layout .categories-box {
+  margin-bottom: 30px;
+  border: 2px solid #40403b;
+  padding: 20px;
+  display: block;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.categories-box-layout .categories-box .icon {
+  height: 80px;
+  width: 80px;
+  background: #fcd462;
+  margin-bottom: 20px;
+  display: flex;
+  /* align-items: center;
+  justify-content: center; */
+  color: #1c1b19;
+  border-radius: 10px;
+}
+
+.categories-box-layout .categories-box .icon .category-image {
+  height: 80px;
+  width: 80px;
+}
+
+.categories-box-layout .categories-box .icon > i {
+  font-size: 20px;
+}
+
+.categories-box-layout .categories-box .title {
+  margin-bottom: 15px;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.categories-box-layout .categories-box .overlay-icon {
+  visibility: hidden;
+  opacity: 0;
+  color: #fff;
+  font-size: 100px;
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  z-index: -1;
+  display: flex;
+  transition: 0.3s;
+}
+
+.categories-box-layout .categories-box p {
+  color: #a3a3a3;
+}
+
+.categories-box-layout .categories-box:hover {
+  background-color: #1c1b19;
+  border-color: #1c1b19;
+}
+
+.categories-box-layout .categories-box:hover .title,
+.categories-box-layout .categories-box:hover p {
+  color: #fff;
+}
+
+.categories-box-layout .categories-box:hover .overlay-icon {
+  visibility: visible;
+  bottom: 0;
+  right: 0;
+  opacity: 0.2;
+}
+
+.categories-box-layout.overlapped {
+  margin-bottom: -115px;
+  margin-top: -70px;
+}
+
+.categories-box-layout.dark-layout {
+  background-color: #353530;
+  margin-top: 0;
+}
+
+@media (max-width: 400px) {
+  .categories-box-layout .categories-box-layout-inner {
+    padding: 30px;
+    padding-bottom: 0;
+  }
+}
