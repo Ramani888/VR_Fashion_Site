@@ -10,17 +10,17 @@ const Shopleft = () => {
     return (
         <Fragment>
             <MetaTags>
-                <title>VR-Fashion | Shop Left</title>
+                <title>VR-Fashion | Shopping</title>
                 <meta
                     name="description"
                     content="#"
                 />
             </MetaTags>
             <Header />
-            <Breadcrumb breadcrumb={{ pagename: 'Shop Left' }} />
+            <Breadcrumb breadcrumb={{ pagename: 'Shopping' }} />
             <Content />
-            <Instafeeds />
-            <Footer />
+            {/* <Instafeeds /> */}
+            {/* <Footer /> */}
         </Fragment>
     );
 }

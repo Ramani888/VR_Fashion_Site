@@ -2,10 +2,10 @@ import React, { Fragment } from 'react';
 import Category from './Category';
 import Trending from './Trending';
 
-const Content = () => (
+const Content = ({ category }) => (
     <Fragment>
-        <Category/>
-        <Trending/>
+        <Category category={category}/>
+        {/* <Trending/> */}
     </Fragment>
 );
 

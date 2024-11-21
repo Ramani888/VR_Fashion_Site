@@ -9,19 +9,21 @@ import { useLocation } from "react-router-dom";
 
 const Shopdetail = () => {
   const location = useLocation();
-  const product = location.state?.product;
+  const product = location.state;
+
+  console.log('product', product)
 
   return (
     <Fragment>
       <MetaTags>
-        <title>VR-Fashion | Shop Detail</title>
+        <title>VR-Fashion | {product?.name}</title>
         <meta name="description" content="#" />
       </MetaTags>
       <Header />
-      <Breadcrumb breadcrumb={{ pagename: "Shop Detail" }} />
+      <Breadcrumb breadcrumb={{ pagename: product?.name }} />
       <Content product={product}/>
-      <Instafeeds />
-      <Footer />
+      {/* <Instafeeds /> */}
+      {/* <Footer /> */}
     </Fragment>
   );
 };

@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import img1 from "../../../assets/img/shop/cart-1.png";
 import img2 from "../../../assets/img/shop/cart-2.png";
 import img3 from "../../../assets/img/shop/cart-3.png";
+import useAccount from "./useAccount";
+import Preloader from "../../layouts/Preloader";
 
 const orderlists = [
   { img: img1, title: "Product1", id: "b123jhk4h", date: "12-Sep-2022" },
@@ -14,8 +16,18 @@ const orderlists = [
 ];
 
 const Content = () => {
+  const {
+    userData,
+    loading,
+    orderData,
+    handleLogout
+  } = useAccount();
+
+  console.log('userData', userData)
+  console.log('orderData', orderData)
   return (
     <section className="account-sec pt-120 pb-120">
+      {loading && <Preloader />}
       <Tab.Container defaultActiveKey="dashboard">
         <div className="container">
           <div className="row">
@@ -28,17 +40,17 @@ const Content = () => {
                   <Nav.Item>
                     <Nav.Link eventKey="orders">Orders</Nav.Link>
                   </Nav.Item>
-                  <Nav.Item>
+                  {/* <Nav.Item>
                     <Nav.Link eventKey="downloads">Downloads</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
+                  </Nav.Item> */}
+                  {/* <Nav.Item>
                     <Nav.Link eventKey="addresses">Addresses</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
                     <Nav.Link eventKey="acdetails">Account Details</Nav.Link>
-                  </Nav.Item>
+                  </Nav.Item> */}
                   <Nav.Item>
-                    <Nav.Link className="logout">
+                    <Nav.Link className="logout" onClick={() => handleLogout()}>
                       <i className="fal fa-power-off" /> Logout
                     </Nav.Link>
                   </Nav.Item>
@@ -50,7 +62,7 @@ const Content = () => {
                 <Tab.Pane eventKey="dashboard">
                   <div className="dashboard-content">
                     <p className="text-white mb-30">
-                      Hello <b>John Benjamin</b> (not <b>John Benjamin</b>?
+                      Hello <b>{userData?.name}</b> (not <b>{userData?.name}</b>?
                       <Link to="/">Log Out</Link>)
                     </p>
                     <p className="text-white">
@@ -91,7 +103,7 @@ const Content = () => {
                           </tr>
                         </thead>
                         <tbody>
-                          {orderlists.map((item, i) => (
+                          {orderData?.map((item, i) => (
                             <tr key={i}>
                               <td className="product-remove text-center cw-align">
                                 <Link to="#">

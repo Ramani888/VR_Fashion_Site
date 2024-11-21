@@ -10,6 +10,8 @@ import img1 from "../../assets/img/cart/1.jpg";
 import img2 from "../../assets/img/cart/2.jpg";
 import img3 from "../../assets/img/cart/3.jpg";
 import img4 from "../../assets/img/cart/4.jpg";
+import { serverGetCategory } from "../../services/serverApi";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 // Cart loop
 const cartposts = [
@@ -20,15 +22,36 @@ const cartposts = [
 ];
 
 const Header = () => {
+  const history = useHistory();
   const [classMethod, setClassMethod] = useState(false);
   const [toggleMethod, setToggleMethod] = useState(false);
   const [toggleCart, setToggleCart] = useState(false);
   const [isTop, setIsTop] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [categoryData, setCategoryData] = useState([]);
 
   const addClass = () => setClassMethod(true);
   const removeClass = () => setClassMethod(false);
   const toggleClass = () => setToggleMethod(!toggleMethod);
   const toggleCartm = () => setToggleCart(!toggleCart);
+
+  const getCategoryData = async () => {
+    try {
+      setLoading(true);
+      const res = await serverGetCategory();
+      setCategoryData(res?.data)
+    } catch (err) {
+      console.log(err);
+      setLoading(false);
+      setCategoryData([]);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    getCategoryData();
+  }, []);
 
   useEffect(() => {
     function megamenu() {
@@ -55,6 +78,16 @@ const Header = () => {
   }, []);
 
   const stickyheader = isTop ? "sticky-active" : "";
+
+  const handleAccountNavigate = () => {
+    const user = localStorage.getItem('user');
+    const userData = JSON.parse(user);
+    if (userData) {
+      history.push('/account')
+    } else {
+      history.push('/login')
+    }
+  }
 
   return (
     <Fragment>
@@ -138,11 +171,11 @@ const Header = () => {
                       <nav>
                         <ul className="sigma-main-menu">
                           <li className="menu-item menu-item-has-children">
-                            <Link to="#">Home</Link>
+                            <Link to="/">Home</Link>
                             <ul className="sub-menu">
-                              <li className="menu-item">
+                              {/* <li className="menu-item">
                                 <Link to="/">Home</Link>
-                              </li>
+                              </li> */}
                               {/* <li className="menu-item">
                                 <Link to="/home-two">Home 2</Link>
                               </li>
@@ -154,22 +187,26 @@ const Header = () => {
                               </li> */}
                             </ul>
                           </li>
-                          <li className="menu-item menu-item-has-children menu-item-has-megamenu">
+                          {/* <li className="menu-item menu-item-has-children menu-item-has-megamenu">
                             <Link to="#">Categories</Link>
                             <div className="sub-menu">
                               <div className="container">
                                 <div className="row">
                                   <div className="col-lg-3">
                                     <ul className="sigm-megamenu-nav nav nav-tabs">
-                                      <li className="nav-item">
-                                        <Link
-                                          to="#tab1"
-                                          className="nav-link active"
-                                          data-toggle="tab"
-                                        >
-                                          <i className="fal fa-female" /> Rings
-                                        </Link>
-                                      </li>
+                                      {categoryData?.map((item) => {
+                                        return (
+                                          <li className="nav-item">
+                                            <Link
+                                              to="#tab1"
+                                              className="nav-link active"
+                                              data-toggle="tab"
+                                            >
+                                              <i className="fal fa-female" /> {item?.name}
+                                            </Link>
+                                          </li>
+                                        )
+                                      })}
                                       <li className="nav-item">
                                         <Link
                                           to="#tab2"
@@ -218,7 +255,7 @@ const Header = () => {
                                         id="tab1"
                                       >
                                         <div className="row">
-                                          {/* <div className="col-lg-4">
+                                          <div className="col-lg-4">
                                             <div className="sigma-megamenu-navbox menu-item-has-children">
                                               <h5 className="sigma-title">
                                                 Shop Pages
@@ -251,7 +288,7 @@ const Header = () => {
                                                 </li>
                                               </ul>
                                             </div>
-                                          </div> */}
+                                          </div>
                                           <div className="col-lg-4">
                                             <div className="sigma-megamenu-navbox menu-item-has-children">
                                               <h5 className="sigma-title">
@@ -751,7 +788,7 @@ const Header = () => {
                                 </div>
                               </div>
                             </div>
-                          </li>
+                          </li> */}
                           {/* <li className="menu-item">
                             <Link to="/shop-left">Diamond</Link>
                           </li> */}
@@ -778,21 +815,21 @@ const Header = () => {
                               </li>
                             </ul>
                           </li> */}
-                          <li className="menu-item menu-item-has-children">
+                          {/* <li className="menu-item menu-item-has-children">
                             <Link to="#">Pages</Link>
                             <ul className="sub-menu">
                               <li className="menu-item">
                                 <Link to="/about">About</Link>
                               </li>
-                              {/* <li className="menu-item">
+                              <li className="menu-item">
                                 <Link to="/classification">Classification</Link>
-                              </li> */}
+                              </li>
                               <li className="menu-item">
                                 <Link to="/account">Account</Link>
                               </li>
                               <li className="menu-item menu-item-has-children">
                                 <Link to="/gallery">Gallery</Link>
-                                {/* <ul className="sub-menu">
+                                <ul className="sub-menu">
                                   <li className="menu-item">
                                     <Link to="/gallery">Gallery 2 Columns</Link>
                                   </li>
@@ -801,9 +838,9 @@ const Header = () => {
                                       Gallery 3 Columns
                                     </Link>
                                   </li>
-                                </ul> */}
+                                </ul>
                               </li>
-                              {/* <li className="menu-item">
+                              <li className="menu-item">
                                 <Link to="/team">Team</Link>
                               </li>
                               <li className="menu-item">
@@ -814,15 +851,15 @@ const Header = () => {
                               </li>
                               <li className="menu-item">
                                 <Link to="/coming-soon">Coming Soon</Link>
-                              </li> */}
-                            </ul>
-                          </li>
-                          <li className="menu-item menu-item-has-children">
-                            <Link to="/about">Shop</Link>
-                            <ul className="sub-menu">
-                              <li className="menu-item">
-                                <Link to="/shop-left">Shop</Link>
                               </li>
+                            </ul>
+                          </li> */}
+                          <li className="menu-item menu-item-has-children">
+                            <Link to="/shop-left">Shop</Link>
+                            <ul className="sub-menu">
+                              {/* <li className="menu-item">
+                                <Link to="/shop-left">Shop</Link>
+                              </li> */}
                               {/* <li className="menu-item">
                                 <Link to="/shop-left-two">
                                   Shop Left Sidebar v2
@@ -854,12 +891,12 @@ const Header = () => {
               <div className="menu-right-buttons">
                 {/* Log in icon */}
                 <div className="login-btn">
-                  <Link to="/login" id="loginBtn">
+                  <Link onClick={() => handleAccountNavigate()} id="loginBtn">
                     <i className="fal fa-user" />
                   </Link>
                 </div>
                 {/* search button */}
-                <div className="search">
+                {/* <div className="search">
                   <Link to="#" className="search-icon" id="searchBtn">
                     <i className="fal fa-search open-icon" />
                     <i className="fal fa-times close-icon" />
@@ -872,14 +909,14 @@ const Header = () => {
                       </button>
                     </form>
                   </div>
-                </div>
+                </div> */}
                 {/* Off canvas Toggle */}
-                <div className="toggle">
+                {/* <div className="toggle">
                   <Link to="#" id="offCanvasBtn" onClick={addClass}>
                     {" "}
                     <i className="fal fa-bars" />
                   </Link>
-                </div>
+                </div> */}
                 <div className="toggle dropdown-btn">
                   <span className="sigma-notification">0</span>
                   <Link to="#" onClick={toggleCartm}>
@@ -890,7 +927,7 @@ const Header = () => {
                       show: toggleCart,
                     })}
                   >
-                    <ul className="cart-items-box">
+                    {/* <ul className="cart-items-box">
                       {cartposts.map((item, i) => (
                         <li key={i} className="cart-item">
                           <div className="img">
@@ -918,7 +955,7 @@ const Header = () => {
                           View Cart
                         </button>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
                 {/* Navbar Toggler */}

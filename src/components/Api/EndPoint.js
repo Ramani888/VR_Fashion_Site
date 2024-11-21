@@ -6,6 +6,7 @@ const Api = {
   getState: `${Base_url}/state`,
   registerUser: `${Base_url}/registerUser`,
   registerLogin: `${Base_url}/register/login`,
+  userLogin: `${Base_url}/login`,
   get_banner: `${Base_url}/banner`,
   getAdPoster: `${Base_url}/ads/poster`,
   get_category: `${Base_url}/category`,

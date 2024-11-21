@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import img1 from "../../../assets/img/shop/01.jpg";
 import img2 from "../../../assets/img/shop/02.jpg";
 import img3 from "../../../assets/img/shop/03.jpg";
+import useHome from "./useHome";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 const ringsposts = [
   { img: img3, discount: 10, title: "Diamond Ring.", price: 890 },
@@ -49,6 +51,18 @@ const ankletsposts = [
 ];
 
 const Ourcategory = () => {
+  const {
+    categoryData
+  } = useHome();
+
+  const history = useHistory();
+
+  // Function to handle navigation
+  const handleNavigation = (path, category) => {
+    history.push(path, category); // Use history.push() for navigation
+  };
+
+  console.log('categoryData', categoryData)
   return (
     <section className="restaurant-tab-area pb-90">
       <div className="container">
@@ -61,13 +75,23 @@ const Ourcategory = () => {
             variant="pills"
             className="restaurant-rood-list row justify-content-center mb-30"
           >
-            <Nav.Item className="col-lg-2 col-md-3 col-sm-4 col-6">
-              <Nav.Link eventKey="rings">
-                <i className="flaticon-ring" />
-                <span className="title">Rings</span>
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item className="col-lg-2 col-md-3 col-sm-4 col-6">
+            {categoryData?.map((item) => {
+              return (
+                <Nav.Item className="col-lg-2 col-md-3 col-sm-4 col-6" onClick={() => handleNavigation("/classification", item)}>
+                  <Nav.Link eventKey={item?.name}>
+                    {/* <i className="flaticon-ring" /> */}
+                    <img
+                      src={item?.imagePath}
+                      alt="images"
+                      // className="flaticon-ring"
+                      className="category-image"
+                    />
+                    <span className="title">{item?.name}</span>
+                  </Nav.Link>
+                </Nav.Item>
+              )
+            })}
+            {/* <Nav.Item className="col-lg-2 col-md-3 col-sm-4 col-6">
               <Nav.Link eventKey="earrings">
                 <i className="flaticon-earrings" />
                 <span className="title">Earrings</span>
@@ -96,9 +120,9 @@ const Ourcategory = () => {
                 <i className="flaticon-bracelet-1" />
                 <span className="title">Anklets</span>
               </Nav.Link>
-            </Nav.Item>
+            </Nav.Item> */}
           </Nav>
-          <Tab.Content>
+          {/* <Tab.Content>
             <Tab.Pane eventKey="rings">
               <div className="row">
                 {ringsposts.map((item, i) => (
@@ -453,7 +477,7 @@ const Ourcategory = () => {
                 ))}
               </div>
             </Tab.Pane>
-          </Tab.Content>
+          </Tab.Content> */}
         </Tab.Container>
       </div>
     </section>

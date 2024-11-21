@@ -19,8 +19,8 @@ const Account = () => {
             <Header/>
             <Breadcrumb breadcrumb={{pagename:'My Account'}} />
             <Content/>
-            <Instafeeds/>
-            <Footer/>
+            {/* <Instafeeds/> */}
+            {/* <Footer/> */}
         </React.Fragment>
     );
 }

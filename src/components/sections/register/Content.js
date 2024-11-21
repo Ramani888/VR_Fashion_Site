@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import registerbg from "../../../assets/img/login.png";
+import { StateData } from "../../../helper/RegisterHelper";
 
 const Content = () => {
   return (
@@ -26,24 +27,83 @@ const Content = () => {
             <div className="col-lg-6">
               <div className="login-form">
                 <h2>Sign Up</h2>
-                <form method="post">
+                <form>
+                  {/* <div className="input-group input-group-two mb-20">
+                    <input type="text" placeholder="Username" name="username" required />
+                  </div> */}
                   <div className="input-group input-group-two mb-20">
-                    <input type="text" placeholder="Username" name="username" />
+                    <input
+                      type="text"
+                      placeholder="Enter Name"
+                      name="name"
+                      required
+                    />
+                  </div>
+                  <div className="input-group input-group-two mb-20">
+                    <input
+                      type="number"
+                      placeholder="Enter Mobile Number"
+                      name="mobileNumber"
+                      required
+                    />
+                  </div>
+                  <div className="input-group input-group-two mb-20">
+                    <input
+                      type="password"
+                      placeholder="Enter Password"
+                      name="password"
+                      required
+                    />
                   </div>
                   <div className="input-group input-group-two mb-20">
                     <input
                       type="email"
-                      placeholder="Email Address"
+                      placeholder="Enter Email (Optional)"
                       name="email"
                     />
                   </div>
-                  <div className="input-group input-group-two mb-30">
+                  <div className="input-group input-group-two mb-20">
+                    <input
+                      type="text"
+                      placeholder="Enter Country"
+                      name="country"
+                      value={'India'}
+                      required
+                    />
+                  </div>
+                  <div className="input-group input-group-two mb-20">
+                    <select name="state" className="nice-select" required>
+                      <option disabled>Select State</option>
+                      {StateData?.map((item) => {
+                        return (
+                          <option value={item?.name}>{item?.name}</option>
+                        )
+                      })}
+                    </select>
+                  </div>
+                  <div className="input-group input-group-two mb-20">
+                    <input
+                      type="text"
+                      placeholder="Enter City"
+                      name="city"
+                      required
+                    />
+                  </div>
+                  <div className="input-group input-group-two mb-20">
+                    <input
+                      type="number"
+                      placeholder="Enter Pincode"
+                      name="pinCode"
+                      required
+                    />
+                  </div>
+                  {/* <div className="input-group input-group-two mb-30">
                     <input
                       type="password"
                       placeholder="Password"
                       name="password"
                     />
-                  </div>
+                  </div> */}
                   <Link to="#">Forgot Password?</Link>
                   <button
                     type="submit"
@@ -54,7 +114,7 @@ const Content = () => {
                   <div className="form-seperator">
                     <span>OR</span>
                   </div>
-                  <div className="social-buttons">
+                  {/* <div className="social-buttons">
                     <button
                       type="button"
                       className="main-btn btn-border facebook mb-20"
@@ -66,9 +126,9 @@ const Content = () => {
                       <i className="fab fa-google" />
                       Continue with Google
                     </button>
-                  </div>
+                  </div> */}
                   <p>
-                    Already have an Account?
+                    Already have an Account?{' '}
                     <Link to="/login" className="d-inline-block">
                       Login
                     </Link>

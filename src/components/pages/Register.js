@@ -19,8 +19,8 @@ const Register = () => {
             <Header />
             <Breadcrumb breadcrumb={{ pagename: 'Register' }} />
             <Content />
-            <Instafeeds />
-            <Footer />
+            {/* <Instafeeds /> */}
+            {/* <Footer /> */}
         </Fragment>
     );
 }
