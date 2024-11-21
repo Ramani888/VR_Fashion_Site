@@ -17,7 +17,7 @@ const Home = () => {
             </MetaTags>
             <Header/>
             <Content/>
-            <Footer/>
+            {/* <Footer/> */}
         </Fragment>
     );
 }

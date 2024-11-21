@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import MetaTags from "react-meta-tags";
 import Header from '../layouts/Header';
 import Breadcrumb from '../layouts/Breadcrumbs';
@@ -27,8 +27,8 @@ const Login = () => {
             <Header/>
             <Breadcrumb breadcrumb={{pagename:'Login'}}/>
             <Content/>
-            <Instafeeds/>
-            <Footer/>
+            {/* <Instafeeds/> */}
+            {/* <Footer/> */}
         </Fragment>
     );
 };

@@ -50,7 +50,7 @@ const Bestselling = () => {
       <img src={texture} alt="texture" className="texture-1" />
       <div className="container">
         <div className="row">
-          <div className="col-lg-5">
+          {/* <div className="col-lg-5">
             <div className="block-text">
               <div className="section-title mb-20">
                 <span className="title-tag">Buy Now</span>
@@ -66,7 +66,7 @@ const Bestselling = () => {
                 Shop now
               </Link>
             </div>
-          </div>
+          </div> */}
           <div className="px-2 w-100">
             <Slider className="row wide-shop-post-slider mt-80" {...settings}>
               {shopposts.map((item, i) => (

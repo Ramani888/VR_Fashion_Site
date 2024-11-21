@@ -15,14 +15,23 @@ import Onsale from './Onsale';
 import Video from './Video';
 import Latestproducts from '../../layouts/Latestproducts';
 import Blog from './Blog';
+import useHome from './useHome';
+import Preloader from '../../layouts/Preloader';
 
 const Content = () => {
+    const {
+        loading
+    } = useHome();
     return (
         <Fragment>
+            {loading && <Preloader />}
             <Banner/>
+            <Ourcategory/>
             <Category/>
+            {/* <Latestproducts /> */}
+            <Ourproducts />
             {/* <Habout/> */}
-            <Trending/>
+            {/* <Trending/> */}
             {/* <Condos/>
             <Cta/>
             <Bestselling/>

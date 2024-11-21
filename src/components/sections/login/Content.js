@@ -1,9 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import loginbg from "../../../assets/img/login.png";
+import { apiPost } from "../../Api/ApiService";
+import Api from "../../Api/EndPoint";
+import { serverLogin } from "../../../services/serverApi";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 const Content = () => {
+  const history = useHistory();
+  const [loading, setLoading] = useState(false);
+
+  const [formData, setFormData] = useState({
+    mobileNumber: "",
+    password: "",
+  });
+
+  const handleInputChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault(); 
+
+    console.log('formData', formData);
+    try {
+      setLoading(true);
+      const res = await serverLogin(formData);
+      console.log('loginData', res);
+      if (res?.userDataAndToken) {
+        localStorage.setItem('user', JSON.stringify(res?.userDataAndToken));
+        history.push('/account');
+      }
+    } catch (error) {
+      console.error("Error fetching trending data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  console.log('formData', formData);
+
+
   return (
     <section className="login-sec pt-120 pb-120">
       <div className="container">
@@ -26,15 +64,21 @@ const Content = () => {
             <div className="col-lg-6">
               <div className="login-form">
                 <h2>Log in</h2>
-                <form method="post">
+                <form onSubmit={handleLogin}>
                   <div className="input-group input-group-two mb-20">
-                    <input type="text" placeholder="Username" name="username" />
+                    <input
+                      type="number"
+                      placeholder="Mobile Number"
+                      name="mobileNumber"
+                      onChange={handleInputChange}
+                    />
                   </div>
                   <div className="input-group input-group-two mb-30">
                     <input
                       type="password"
                       placeholder="Password"
                       name="password"
+                      onChange={handleInputChange}
                     />
                   </div>
                   <Link to="#">Forgot Password?</Link>
@@ -47,7 +91,7 @@ const Content = () => {
                   <div className="form-seperator">
                     <span>OR</span>
                   </div>
-                  <div className="social-buttons">
+                  {/* <div className="social-buttons">
                     <button
                       type="button"
                       className="main-btn btn-border facebook mb-20"
@@ -59,11 +103,11 @@ const Content = () => {
                       <i className="fab fa-google" />
                       Continue with Google
                     </button>
-                  </div>
+                  </div> */}
                   <p>
-                    Don't have an Account?
+                    Don't have an Account?{' '}
                     <Link to="/register" className="d-inline-block">
-                      Create One
+                      Sign Up
                     </Link>
                   </p>
                 </form>

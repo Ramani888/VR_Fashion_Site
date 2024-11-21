@@ -5,6 +5,8 @@ import img1 from "../../assets/img/shop/01.jpg";
 import img2 from "../../assets/img/shop/02.jpg";
 import img3 from "../../assets/img/shop/03.jpg";
 import img4 from "../../assets/img/shop/04.jpg";
+import useHome from "../sections/home/useHome";
+import Pagination from "./Pagination";
 
 const featureposts = [
   { img: img1, discount: 15, title: "Ankle Bracelet", price: 390 },
@@ -14,8 +16,21 @@ const featureposts = [
 ];
 
 const Ourproducts = () => {
+  const {
+    pramotionProductData,
+    handlePageChange,
+    currentPage,
+    totalPages,
+    currentPramotionProductData,
+    handleNavigation
+  } = useHome();
+
+
+  console.log('currentPramotionProductData', currentPramotionProductData)
+  console.log('totalPages', totalPages)
+  console.log('currentPage', currentPage)
   return (
-    <section className="restaurant-tab-area pt-115 pb-85">
+    <section className="restaurant-tab-area pb-85 mt-100">
       <div className="container">
         <div className="section-title text-center mb-50">
           <div className="section-title-icon">
@@ -55,59 +70,69 @@ const Ourproducts = () => {
           <h2>Our Products</h2>
         </div>
         <div className="row">
-          {featureposts.map((item, i) => (
-            <div key={i} className="col-lg-3 col-6">
-              <div className="food-box shop-box">
-                <div className="thumb">
-                  <img src={item.img} alt="images" />
-                  <div className="badges">
-                    {item.discount > 0 || item.discount !== "" ? (
-                      <span className="price">Sale</span>
-                    ) : (
-                      ""
+          {currentPramotionProductData?.map((item, i) => {
+            const percentageDiscount = Math.round(100 - Number(Number(item?.price * 100) / Number(item?.mrp)));
+            return (
+              <div key={i} className="col-lg-3 col-6">
+                <div className="food-box shop-box">
+                  <div className="thumb">
+                    <div style={{height: '270px', width: '100%'}}>
+                      <img src={item?.image[0]?.path} alt="images" style={{height: '100%', width: '100%', objectFit: 'cover'}} />
+                    </div>
+                    {item?.discount && (
+                      <div className="badges">
+                        {item?.discount > 0 || item?.discount !== "" ? (
+                          <span className="price">Sale</span>
+                        ) : (
+                          ""
+                        )}
+                        {item.discount > 0 || item.discount !== "" ? (
+                          <span className="price discounted">
+                            -{item?.discount}%
+                          </span>
+                        ) : (
+                          ""
+                        )}
+                      </div>
                     )}
-                    {item.discount > 0 || item.discount !== "" ? (
-                      <span className="price discounted">
-                        -{item.discount}%
-                      </span>
-                    ) : (
-                      ""
-                    )}
+                    <div className="button-group">
+                      <Link to="#">
+                        <i className="far fa-heart" />
+                      </Link>
+                      <Link to="#">
+                        <i className="far fa-shopping-cart" />
+                      </Link>
+                      <Link onClick={() => handleNavigation('/shop-detail', item)}>
+                        <i className="far fa-eye" />
+                      </Link>
+                    </div>
                   </div>
-                  <div className="button-group">
-                    <Link to="#">
-                      <i className="far fa-heart" />
-                    </Link>
-                    <Link to="#">
-                      <i className="far fa-sync-alt" />
-                    </Link>
-                    <Link to="#">
-                      <i className="far fa-eye" />
+                  <div className="desc">
+                    <h4>
+                      <Link onClick={() => handleNavigation('/shop-detail', item)}>{item?.name}</Link>
+                    </h4>
+                    <span className="price">
+                    ₹{item?.price}
+                        <span>
+                        ₹{item?.mrp}
+                        </span>
+                    </span>
+                    <span className="price">
+                      {percentageDiscount}% off
+                    </span>
+                    <Link onClick={() => handleNavigation('/shop-detail', item)} className="link">
+                      <i className="fal fa-arrow-right" />
                     </Link>
                   </div>
-                </div>
-                <div className="desc">
-                  <h4>
-                    <Link to="/shop-detail">{item.title}</Link>
-                  </h4>
-                  <span className="price">
-                    ${item.price}
-                    {item.discount > 0 || item.discount !== "" ? (
-                      <span>
-                        {" "}
-                        ${Math.ceil(item.price * (item.discount / 100))}{" "}
-                      </span>
-                    ) : (
-                      ""
-                    )}
-                  </span>
-                  <Link to="/shop-detail" className="link">
-                    <i className="fal fa-arrow-right" />
-                  </Link>
                 </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
+          {/* {pramotionProductData?.map((item, i) => (
+          ))} */}
+        </div>
+        <div className="pagination-wrap">
+          <Pagination onPageChange={handlePageChange} currentPage={currentPage} totalPages={totalPages}/>
         </div>
       </div>
     </section>

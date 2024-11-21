@@ -39,7 +39,7 @@ const Content = () => {
   };
 
   return (
-    <section className="contact-part pt-115 pb-115">
+    <section className="contact-part pt-115 pb-20">
       <div className="container">
         {/* Contact Info */}
         <div className="contact-info">
@@ -51,7 +51,7 @@ const Content = () => {
                 </div>
                 <div className="desc">
                   <h4>Office Address</h4>
-                  <p>19/A, Cirikon City hall Tower New York, NYC</p>
+                  <p>A-34, 2nd Floor Laxmidhara Complex, Baroda Pristage, Varachha Road, Surat - 395006, Gujrat, India</p>
                 </div>
               </div>
             </div>
@@ -63,7 +63,7 @@ const Content = () => {
                 <div className="desc">
                   <h4>Phone Number</h4>
                   <p>
-                    + 97656 8675 7864 7 <br /> + 876 766 8675 765 6
+                  +91 8141851456 <br /> +91 8141851456
                   </p>
                 </div>
               </div>
@@ -76,7 +76,7 @@ const Content = () => {
                 <div className="desc">
                   <h4>Email Address</h4>
                   <p>
-                    info@webmail.com <br /> jobs.webmail@mail.com
+                  vrfashionjewellery0044@gmail.com <br /> vrfashionjewellery0044@gmail.com
                   </p>
                 </div>
               </div>
@@ -84,7 +84,7 @@ const Content = () => {
           </div>
         </div>
         {/* Contact Maps */}
-        <Map
+        {/* <Map
           // eslint-disable-next-line react/style-prop-object
           style="mapbox://styles/mapbox/light-v10"
           className="contact-maps mb-30"
@@ -96,9 +96,9 @@ const Content = () => {
           >
             <Feature coordinates={[-77.04, 38.907]} zoom={11.5} />
           </Layer>
-        </Map>
+        </Map> */}
         {/* Contact Form */}
-        <div className="contact-form">
+        {/* <div className="contact-form">
           <form onSubmit={handleSubmit} method="GET">
             <div className="row">
               <div className="col-md-6">
@@ -184,7 +184,6 @@ const Content = () => {
                 <button type="submit" className="main-btn btn-filled">
                   Get Free Quote
                 </button>
-                {/* Form Messages */}
                 {serverResponse.success && (
                   <Alert variant="success" className="mt-3 mb-0">
                     <strong>Success!</strong> Contact form has been successfully
@@ -197,11 +196,10 @@ const Content = () => {
                     again later.
                   </Alert>
                 )}
-                {/* Form Messages */}
               </div>
             </div>
           </form>
-        </div>
+        </div> */}
       </div>
     </section>
   );

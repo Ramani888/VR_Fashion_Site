@@ -26,8 +26,8 @@ const Contact = () => {
             <Header/>
             <Breadcrumb breadcrumb={{pagename:'Contact Us'}}/>
             <Content/>
-            <Instafeeds/>
-            <Footer/>
+            {/* <Instafeeds/>
+            <Footer/> */}
         </Fragment>
     );
 };

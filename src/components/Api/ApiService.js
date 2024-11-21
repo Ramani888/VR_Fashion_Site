@@ -21,12 +21,14 @@ export const apiGet = async (url, userToken) => {
 };
 
 export const apiPost = async (url, userToken, body) => {
+  console.log('body', body)
   try {
     const response = await fetch(url, {
       method: 'POST',
       headers: setAuthHeader(userToken),
       body: body,
     });
+    console.log('response', response)
     const result = await response.json();
     return result;
   } catch (error) {

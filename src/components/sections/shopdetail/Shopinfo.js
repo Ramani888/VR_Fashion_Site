@@ -16,6 +16,7 @@ import comment2 from "../../../assets/img/blog-details/avatar-2.jpg";
 import comment3 from "../../../assets/img/blog-details/avatar-3.jpg";
 import { apiGet } from "../../Api/ApiService";
 import Api from "../../Api/EndPoint";
+import useShopDetail from "./useShopDetail";
 
 const bigsliderpost = [
   { img: bgimg1, tag: "Sale" },
@@ -34,11 +35,14 @@ const smallsliderpost = [
 ];
 
 const Shopinfo = ({ product }) => {
+  const {
+    productData,
+    categoryData
+  } = useShopDetail(product)
+  console.log('product', productData);
   const [nav1, setNav1] = useState(null);
   const [nav2, setNav2] = useState(null);
   const [clicks, setClicks] = useState(1);
-  const [singleProductData, setsingleProductData] = useState([]);
-  // console.log('singleProductData',singleProductData)
 
   const slider1 = useRef(null);
   const slider2 = useRef(null);
@@ -47,26 +51,6 @@ const Shopinfo = ({ product }) => {
     setNav1(slider1.current);
     setNav2(slider2.current);
   }, []);
-
-  useEffect(() => {
-    getProductDetail();
-  }, []);
-
-  // ==================================== Api ================================== //
-
-  const getProductDetail = async () => {
-    try {
-      const promotion = await apiGet(
-        `${Api.get_single_product}?productId=${product?._id}`,
-        ""
-      );
-      setsingleProductData(promotion?.data || []);
-    } catch (error) {
-      console.error("Error fetching trending data:", error);
-    }
-  };
-
-  // ==================================== End ================================== //
 
   const IncrementItem = () => {
     setClicks((prevClicks) => prevClicks + 1);
@@ -121,13 +105,13 @@ const Shopinfo = ({ product }) => {
                 asNavFor={nav2}
                 ref={slider1}
               >
-                {singleProductData[0]?.image?.map((item, i) => (
+                {productData?.image?.map((item, i) => (
                   <div key={i} className="slide-item">
-                    <div className="image-box">
-                      <Link to="#">
+                    <div className="image-box" style={{height: '500px'}}>
+                      <Link>
                         <img src={item?.path} className="img-fluid" alt="img" />
                       </Link>
-                      <span className="price">{item.tag}</span>
+                      {/* <span className="price">{item.tag}</span> */}
                     </div>
                   </div>
                 ))}
@@ -138,9 +122,9 @@ const Shopinfo = ({ product }) => {
                 asNavFor={nav1}
                 ref={slider2}
               >
-                {singleProductData[0]?.image?.map((item, i) => (
+                {productData?.image?.map((item, i) => (
                   <div key={i} className="slide-item" style={{display:'inline-block'}}>
-                    <div className="image-box">
+                    <div className="image-box" style={{height: '100px'}}>
                       <img src={item?.path} className="img-fluid" alt="img" />
                     </div>
                   </div>
@@ -151,7 +135,7 @@ const Shopinfo = ({ product }) => {
           <div className="col-lg-7">
             <div className="shop-detail-content">
               <h3 className="product-title mb-20">
-                {singleProductData[0]?.name}
+                {productData?.name}
               </h3>
               {/* <span className="rating mb-20">
                 <span className="text-yellow">
@@ -176,8 +160,8 @@ const Shopinfo = ({ product }) => {
               </span> */}
               <div className="desc mb-20 pb-20 border-bottom">
                 <span className="price">
-                  ${singleProductData[0]?.price}{" "}
-                  <span>${singleProductData[0]?.mrp}</span>
+                  ₹{productData?.price}{" "}
+                  <span>₹{productData?.mrp}</span>
                 </span>
               </div>
               <div className="mt-20 mb-20">
@@ -195,50 +179,61 @@ const Shopinfo = ({ product }) => {
                 </div> */}
               </div>
               <div className="short-descr mb-20">
-                <p>{singleProductData[0]?.description}</p>
+                <p>{productData?.description}</p>
               </div>
-              {/* <div className="color-sec mb-20">
-                <label>Color</label>
-                <div className="color-box">
-                  <label className="m-0">
-                    <input type="radio" name="color" />
-                    <span className="choose-color red" />
-                  </label>
-                  <label className="m-0">
-                    <input type="radio" name="color" />
-                    <span className="choose-color yellow" />
-                  </label>
-                  <label className="m-0">
-                    <input type="radio" name="color" />
-                    <span className="choose-color blue" />
-                  </label>
-                  <label className="m-0">
-                    <input type="radio" name="color" />
-                    <span className="choose-color green" />
-                  </label>
+              {productData?.productColorCode && (
+                <div className="color-sec mb-20">
+                  <label>Color</label>
+                  <div className="color-box">
+                    <label className="m-0">
+                      <input 
+                        type="radio" 
+                        name="color" 
+                        value={productData.productColorCode} 
+                      />
+                      <span 
+                        className={`choose-color ${productData.productColorCode}`} 
+                        style={{ backgroundColor: productData.productColorCode }} 
+                      />
+                    </label>
+                    {/* <label className="m-0">
+                      <input type="radio" name="color" value="yellow" />
+                      <span className="choose-color yellow" style={{ backgroundColor: "yellow" }} />
+                    </label>
+                    <label className="m-0">
+                      <input type="radio" name="color" value="blue" />
+                      <span className="choose-color blue" style={{ backgroundColor: "blue" }} />
+                    </label>
+                    <label className="m-0">
+                      <input type="radio" name="color" value="green" />
+                      <span className="choose-color green" style={{ backgroundColor: "green" }} />
+                    </label> */}
+                  </div>
                 </div>
-              </div> */}
-              {/* <div className="color-sec mb-20">
-                <label>Material</label>
-                <div className="color-box">
-                  <label className="m-0">
-                    <input type="radio" name="material" />
-                    <span className="choose-material">Gold</span>
-                  </label>
-                  <label className="m-0">
-                    <input type="radio" name="material" />
-                    <span className="choose-material">Diamond</span>
-                  </label>
-                  <label className="m-0">
-                    <input type="radio" name="material" />
-                    <span className="choose-material">Silver</span>
-                  </label>
-                  <label className="m-0">
-                    <input type="radio" name="material" />
-                    <span className="choose-material">Stone</span>
-                  </label>
+              )}
+              {productData?.productColorName && (
+                <div className="color-sec mb-20">
+                  <label>Material</label>
+                  <div className="color-box">
+                    <label className="m-0">
+                      <input type="radio" name="material" value={productData?.productColorName} defaultChecked />
+                      <span className="choose-material">{productData?.productColorName}</span>
+                    </label>
+                    {/* <label className="m-0">
+                      <input type="radio" name="material" />
+                      <span className="choose-material">Diamond</span>
+                    </label>
+                    <label className="m-0">
+                      <input type="radio" name="material" />
+                      <span className="choose-material">Silver</span>
+                    </label>
+                    <label className="m-0">
+                      <input type="radio" name="material" />
+                      <span className="choose-material">Stone</span>
+                    </label> */}
+                  </div>
                 </div>
-              </div> */}
+              )}
               <div className="quantity-cart d-block d-sm-flex">
                 <div className="quantity-box">
                   <button
@@ -275,10 +270,10 @@ const Shopinfo = ({ product }) => {
                 <ul>
                   <li className="list-inline-item mr-2">
                     <Link to="#" className="grey">
-                      Bracelets
+                      {categoryData?.name}
                     </Link>
                   </li>
-                  <li className="list-inline-item mr-2">
+                  {/* <li className="list-inline-item mr-2">
                     <Link to="#" className="grey">
                       Rings
                     </Link>
@@ -287,18 +282,18 @@ const Shopinfo = ({ product }) => {
                     <Link to="#" className="grey">
                       Silver Bracelet
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
               <div className="other-info flex mt-20">
-                <h6>Tags:</h6>
+                <h6>Code:</h6>
                 <ul>
                   <li className="list-inline-item mr-2">
                     <Link to="#" className="grey">
-                      rings
+                      {productData?.code}
                     </Link>
                   </li>
-                  <li className="list-inline-item mr-2">
+                  {/* <li className="list-inline-item mr-2">
                     <Link to="#" className="grey">
                       necklaces
                     </Link>
@@ -307,7 +302,7 @@ const Shopinfo = ({ product }) => {
                     <Link to="#" className="grey">
                       bracelet
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>
@@ -320,9 +315,9 @@ const Shopinfo = ({ product }) => {
                     <Nav.Item>
                       <Nav.Link eventKey="description">Description</Nav.Link>
                     </Nav.Item>
-                    <Nav.Item>
+                    {/* <Nav.Item>
                       <Nav.Link eventKey="review">Reviews (3)</Nav.Link>
-                    </Nav.Item>
+                    </Nav.Item> */}
                     <Nav.Item>
                       <Nav.Link eventKey="addinfo">Additional Info</Nav.Link>
                     </Nav.Item>
@@ -330,20 +325,10 @@ const Shopinfo = ({ product }) => {
                   <Tab.Content>
                     <Tab.Pane eventKey="description">
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Nam fringilla augue nec est tristique auctor. Ipsum
-                        metus feugiat sem, quis fermentum turpis eros eget
-                        velit. Donec ac tempus ante. Fusce ultricies massa
-                        massa. Fusce aliquam, purus eget sagittis vulputate,
-                        sapien libero hendrerit est, sed commodo augue nisi non
-                        neque.Cras neque metus, consequat et blandit et, luctus
-                        a nunc. Etiam gravida vehicula tellus, in imperdiet
-                        ligula euismod eget. Pellentesque habitant morbi
-                        tristique senectus et netus et malesuada fames ac turpis
-                        egestas. Nam erat mi, rutrum at sollicitudin rhoncusp
+                        {productData?.description}
                       </p>
                     </Tab.Pane>
-                    <Tab.Pane eventKey="review">
+                    {/* <Tab.Pane eventKey="review">
                       <div className="news-details-box">
                         <div className="comment-template">
                           <h3 className="box-title">03 Reviews</h3>
@@ -464,7 +449,7 @@ const Shopinfo = ({ product }) => {
                           </div>
                         </div>
                       </div>
-                    </Tab.Pane>
+                    </Tab.Pane> */}
                     <Tab.Pane eventKey="addinfo" className="additional-info">
                       <div>
                         <h3 className="text-white mb-20">
@@ -480,21 +465,57 @@ const Shopinfo = ({ product }) => {
                           <tbody>
                             <tr>
                               <td>
-                                <b>Color</b>
+                                <b>Base Metal</b>
                               </td>
-                              <td className="value">Red, White, Black</td>
+                              <td className="value">{productData?.productBaseMetalName}</td>
                             </tr>
                             <tr>
                               <td>
-                                <b>Material</b>
+                                <b>Brand</b>
                               </td>
-                              <td className="value">Steel, Wood, Stone</td>
+                              <td className="value">{productData?.productBrandName}</td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>Color Code</b>
+                              </td>
+                              <td className="value">{productData?.productColorCode}</td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>Color Name</b>
+                              </td>
+                              <td className="value">{productData?.productColorName}</td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>Occasion</b>
+                              </td>
+                              <td className="value">{productData?.productOccasionName}</td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>Plating</b>
+                              </td>
+                              <td className="value">{productData?.productPlatingName}</td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>Stone Type</b>
+                              </td>
+                              <td className="value">{productData?.productStoneTypeName}</td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <b>Trend</b>
+                              </td>
+                              <td className="value">{productData?.productTrendName}</td>
                             </tr>
                             <tr>
                               <td>
                                 <b>Weight</b>
                               </td>
-                              <td className="value">400 Gram</td>
+                              <td className="value">{productData?.weight}</td>
                             </tr>
                           </tbody>
                         </table>

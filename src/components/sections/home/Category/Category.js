@@ -1,76 +1,38 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { apiGet } from "../../../Api/ApiService";
-import Api from "../../../Api/EndPoint";
 import "./Category.css";
-import Preloader from "../../../layouts/Preloader";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 const Category = () => {
-  const [loading, setLoading] = useState(false);
-  const [categoryData, setCategoryData] = useState([]);
+  const history = useHistory();
+  const categoryposts = [
+    { icon: 'flaticon-bracelet', name: 'Under 200', numberofproduct: '12', tag: 2 },
+    { icon: 'flaticon-ring', name: 'Under 300', numberofproduct: '27', tag: 3 },
+    { icon: 'flaticon-necklace', name: 'Under 500', numberofproduct: '18', tag: 5 },
+    { icon: 'flaticon-earrings', name: 'Under 1000', numberofproduct: '23', tag: 10 },
+  ];
 
-  useEffect(() => {
-    getCategory();
-  }, []);
-
-  // ==================================== Api ================================== //
-
-  const getCategory = async () => {
-    try {
-      setLoading(true);
-      const category = await apiGet(Api.get_category, "");
-      setCategoryData(category?.data || []);
-    } catch (error) {
-      console.error("Error fetching category data:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // ==================================== End ================================== //
+  const handleNavigation = (path, category) => {
+    history.push(path, category);
+  }
 
   return (
     <div className="categories-box-layout">
-      {loading && <Preloader />}
       <div className="container">
         <div className="categories-box-layout-inner">
           <div className="row">
-            {categoryData.map((item, i) => (
+            {categoryposts.map((item, i) => (
               <div key={i} className="col-lg-3 col-sm-6">
-                {/* <Link to="/shop-right" className="categories-box">
-                  <span className="icon">
-                    <img
-                      src={item?.imagePath}
-                      alt={item?.name}
-                      className="category-image" 
-                    />
-                  </span>
-                  <h5 className="title">{item?.name}</h5>
-                  <p>{item.numberofproduct} Products</p>
-                  <span className="overlay-icon">
-                    <i className={item.icon} />
-                  </span>
-                </Link> */}
-                <Link
-                  to={{
-                    pathname: "/shop-right",
-                    state: { category: item },
-                  }}
-                  className="categories-box"
-                >
-                  <span className="icon">
-                    <img
-                      src={item?.imagePath}
-                      alt={item?.name}
-                      className="category-image"
-                    />
-                  </span>
-                  <h5 className="title">{item?.name}</h5>
-                  <p>{item.numberofproduct} Products</p>
-                  <span className="overlay-icon">
-                    <i className={item.icon} />
-                  </span>
-                </Link>
+                  <Link onClick={() => handleNavigation("/classification", item)} className="categories-box">
+                      <span className="icon" style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                        <i className={item.icon} />
+                      </span>
+                      <h5 className="title">{item.name}</h5>
+                      {/* <p>{item.numberofproduct} Products</p> */}
+                      <span className="overlay-icon">
+                          <i className={item.icon} />
+                      </span>
+                  </Link>
               </div>
             ))}
           </div>
