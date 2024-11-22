@@ -97,14 +97,14 @@ const Banner = () => {
               <ul>
                 <li>
                   <ReactWOW animation="fadeInUp" data-delay=".7s">
-                    <Link className="main-btn btn-filled" to="/about">
+                    <Link className="main-btn btn-filled">
                       Buy Now{" "}
                     </Link>
                   </ReactWOW>
                 </li>
                 <li>
                   <ReactWOW animation="fadeInUp" data-delay=".9s">
-                    <Link className="main-btn btn-border" to="/about">
+                    <Link className="main-btn btn-border">
                       Explore Now
                     </Link>
                   </ReactWOW>
