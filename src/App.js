@@ -37,7 +37,8 @@ import Wishlist from "./components/pages/Wishlist";
 
 const App = () => {
   return (
-    <Router basename={"/VR-Fashion"}>
+    // <Router basename={"/VR-Fashion"}>
+    <>
       <Preloader />
       <Switch>
         <Route exact path="/" component={Home} />
@@ -72,7 +73,8 @@ const App = () => {
         <Route exact path="/error" component={Error} />
         <Route exact component={Error} />
       </Switch>
-    </Router>
+    </>
+    // </Router>
   );
 };
 

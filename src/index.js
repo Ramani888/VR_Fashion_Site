@@ -17,10 +17,10 @@ import './assets/css/default.css';
 import './assets/css/style.css';
 
 ReactDOM.render(
-  <BrowserRouter basename={'/VR-Fashion'}>
+  <BrowserRouter basename="/VR-Fashion">
     <App />
   </BrowserRouter>,
-  document.getElementById('VR-Fashion')
+  document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
