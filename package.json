@@ -2,7 +2,7 @@
   "name": "VR-Fashion",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://metropolitanhost.com/VR-Fashion",
+  "homepage": "/",
   "main": "lib/index",
   "types": "lib/index",
   "dependencies": {
