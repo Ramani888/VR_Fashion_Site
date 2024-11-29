@@ -74,7 +74,7 @@ const Ourproducts = () => {
           <h2>Our Products</h2>
         </div>
         <div className="row">
-          {currentPramotionProductData?.map((item, i) => {
+          {pramotionProductData?.map((item, i) => {
             const percentageDiscount = Math.round(100 - Number(Number(item?.price * 100) / Number(item?.mrp)));
             return (
               <div key={i} className="col-lg-3 col-6">
@@ -135,9 +135,9 @@ const Ourproducts = () => {
           {/* {pramotionProductData?.map((item, i) => (
           ))} */}
         </div>
-        <div className="pagination-wrap">
+        {/* <div className="pagination-wrap">
           <Pagination onPageChange={handlePageChange} currentPage={currentPage} totalPages={totalPages}/>
-        </div>
+        </div> */}
       </div>
     </section>
   );

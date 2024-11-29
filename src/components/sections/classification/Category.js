@@ -226,24 +226,22 @@ const Category = ({category}) => {
       {loading && <Prelader />}
       <div className="container">
         <Tab.Container defaultActiveKey={category?.name}>
-          {category?._id && (
+          {/* {category?._id && (
             <Nav
               variant="pills"
               className="restaurant-rood-list row justify-content-center mb-30"
             >
               <Nav.Item className="col-lg-2 col-md-3 col-sm-4 col-6">
                 <Nav.Link eventKey={category?.name}>
-                  {/* <i className="flaticon-ring" /> */}
                   <img
                     src={category?.imagePath}
                     alt="images"
-                    // className="flaticon-ring"
                     className="category-image"
                   />
                   <span className="title">{category?.name}</span>
                 </Nav.Link>
               </Nav.Item>
-              {/* <Nav.Item className="col-lg-2 col-md-3 col-sm-4 col-6">
+              <Nav.Item className="col-lg-2 col-md-3 col-sm-4 col-6">
                 <Nav.Link eventKey="earrings">
                   <i className="flaticon-earrings" />
                   <span className="title">Earrings</span>
@@ -272,9 +270,9 @@ const Category = ({category}) => {
                   <i className="flaticon-bracelet-1" />
                   <span className="title">Anklets</span>
                 </Nav.Link>
-              </Nav.Item> */}
+              </Nav.Item>
             </Nav>
-          )}
+          )} */}
           <Tab.Content>
             <Tab.Pane eventKey={category?.name}>
               <div className="row">

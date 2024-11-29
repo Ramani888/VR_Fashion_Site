@@ -166,6 +166,11 @@ const navigationmenu = [
     link: "/shop-left",
   },
   {
+    id: 6,
+    linkText: "Wishlist",
+    link: "/wishlist",
+  },
+  {
     id: 7,
     linkText: "Contact",
     link: "/contact",
