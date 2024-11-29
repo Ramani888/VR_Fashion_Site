@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { serverGetCategory, serverGetPramotionProduct } from '../../../services/serverApi';
+import { serverAddWishlistProduct, serverGetCategory, serverGetPramotionProduct, serverRemoveWishlistProduct } from '../../../services/serverApi';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
+import { getUserData } from '../../../helper/UserHelper';
 
 const useHome = () => {
     const history = useHistory();
@@ -43,7 +44,8 @@ const useHome = () => {
     const getPramotionProductData = async () => {
         try {
             setLoading(true);
-            const res = await serverGetPramotionProduct();
+            const userData = getUserData();
+            const res = await serverGetPramotionProduct(userData?._id);
             setPramotionProductData(res?.data);
             setIsFetched(true); // Set the fetched flag to true after fetching
         } catch (err) {
@@ -53,6 +55,51 @@ const useHome = () => {
             setLoading(false);
         }
     };
+
+    const handleAddWishlist = async (productId) => {
+        try {
+            setLoading(true);
+            const userData = getUserData();
+            if (userData) {
+                await serverAddWishlistProduct({userId: userData?._id, productId: productId});
+                getPramotionProductData();
+            }
+        } catch (err) {
+            console.log(err);
+            setLoading(false);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    const handleRemoveWishlist = async (productId) => {
+        try {
+            setLoading(true);
+            const userData = getUserData();
+            if (userData) {
+                await serverRemoveWishlistProduct(userData?._id, productId);
+                getPramotionProductData();
+            }
+        } catch (err) {
+            console.log(err);
+            setLoading(false);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    const handleWishlist = (item) => {
+        const userData = getUserData();
+        if (userData) {
+            if (item?.isWishlist) {
+                handleRemoveWishlist(item?._id);
+            } else {
+                handleAddWishlist(item?._id);
+            }
+        } else {
+            history.push('/login');
+        }
+    }
 
     // Fetch data on initial render
     useEffect(() => {
@@ -77,7 +124,8 @@ const useHome = () => {
         totalPages,
         currentPramotionProductData,
         handleNavigation,
-        loading
+        loading,
+        handleWishlist
     };
 };
 

@@ -1,6 +1,7 @@
 import axios, { Method } from "axios";
 import { StatusCodes } from "http-status-codes";
-const serverUrl = 'https://vr-fashion-backend.vercel.app/api';
+// const serverUrl = 'https://vr-fashion-backend.vercel.app/api';
+const serverUrl = 'https://vr-fashion-backend-zyyi.vercel.app/api';
 
 const errorCodes = [
     StatusCodes.INTERNAL_SERVER_ERROR,
@@ -105,8 +106,11 @@ export const serverGetProductById = async (productId, userId) => {
   return res
 }
 
-export const serverGetAllProduct = async () => {
+export const serverGetAllProduct = async (userId) => {
   let url = `/product`;
+  if (userId) {
+    url += `?userId=${userId}`;
+  }
   const res = await serverRequest(url, 'GET', null, true);
   return res
 }
@@ -114,7 +118,7 @@ export const serverGetAllProduct = async () => {
 export const serverGetProductUnderTwo = async (userId) => {
   let url = `/product/under/two`;
   if (userId) {
-    url += `&userId=${userId}`;
+    url += `?userId=${userId}`;
   }
   const res = await serverRequest(url, 'GET', null, true);
   return res
@@ -123,7 +127,7 @@ export const serverGetProductUnderTwo = async (userId) => {
 export const serverGetProductUnderThree = async (userId) => {
   let url = `/product/under/three`;
   if (userId) {
-    url += `&userId=${userId}`;
+    url += `?userId=${userId}`;
   }
   const res = await serverRequest(url, 'GET', null, true);
   return res
@@ -132,7 +136,7 @@ export const serverGetProductUnderThree = async (userId) => {
 export const serverGetProductUnderFive = async (userId) => {
   let url = `/product/under/five`;
   if (userId) {
-    url += `&userId=${userId}`;
+    url += `?userId=${userId}`;
   }
   const res = await serverRequest(url, 'GET', null, true);
   return res
@@ -141,7 +145,7 @@ export const serverGetProductUnderFive = async (userId) => {
 export const serverGetProductUnderTen = async (userId) => {
   let url = `/product/under/ten`;
   if (userId) {
-    url += `&userId=${userId}`;
+    url += `?userId=${userId}`;
   }
   const res = await serverRequest(url, 'GET', null, true);
   return res
@@ -155,5 +159,34 @@ export const serverGetOrder = async (userId) => {
     url += `&userId=${userId}`;
   }
   const res = await serverRequest(url, 'GET', null, true);
+  return res
+}
+
+
+/********** Wishlist Api **********/
+export const serverGetWishlistProduct = async (userId) => {
+  let url = `/wishlist`;
+  if (userId) {
+    url += `?userId=${userId}`;
+  }
+  const res = await serverRequest(url, 'GET', null, true);
+  return res
+}
+
+export const serverAddWishlistProduct = async (data) => {
+  let url = `/wishlist`;
+  const res = await serverRequest(url, 'POST', data, true);
+  return res
+}
+
+export const serverRemoveWishlistProduct = async (userId, productId) => {
+  let url = `/wishlist`;
+  if (userId) {
+    url += `?userId=${userId}`;
+  }
+  if (productId) {
+    url += `&productId=${productId}`;
+  }
+  const res = await serverRequest(url, 'DELETE', null, true);
   return res
 }

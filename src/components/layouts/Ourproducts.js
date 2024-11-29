@@ -7,6 +7,7 @@ import img3 from "../../assets/img/shop/03.jpg";
 import img4 from "../../assets/img/shop/04.jpg";
 import useHome from "../sections/home/useHome";
 import Pagination from "./Pagination";
+import Preloader from '../layouts/Preloader';
 
 const featureposts = [
   { img: img1, discount: 15, title: "Ankle Bracelet", price: 390 },
@@ -22,7 +23,9 @@ const Ourproducts = () => {
     currentPage,
     totalPages,
     currentPramotionProductData,
-    handleNavigation
+    handleNavigation,
+    loading,
+    handleWishlist
   } = useHome();
 
 
@@ -31,6 +34,7 @@ const Ourproducts = () => {
   console.log('currentPage', currentPage)
   return (
     <section className="restaurant-tab-area pb-85 mt-100">
+      {loading && <Preloader />}
       <div className="container">
         <div className="section-title text-center mb-50">
           <div className="section-title-icon">
@@ -96,10 +100,10 @@ const Ourproducts = () => {
                       </div>
                     )}
                     <div className="button-group">
-                      <Link to="#">
-                        <i className="far fa-heart" />
+                      <Link onClick={() => handleWishlist(item)}>
+                        <i className={item?.isWishlist ? 'fas fa-heart' : 'far fa-heart'} />
                       </Link>
-                      <Link to="#">
+                      <Link>
                         <i className="far fa-shopping-cart" />
                       </Link>
                       <Link onClick={() => handleNavigation('/shop-detail', item)}>

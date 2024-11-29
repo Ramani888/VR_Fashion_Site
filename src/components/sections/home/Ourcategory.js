@@ -7,6 +7,7 @@ import img2 from "../../../assets/img/shop/02.jpg";
 import img3 from "../../../assets/img/shop/03.jpg";
 import useHome from "./useHome";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import Preloader from '../../layouts/Preloader';
 
 const ringsposts = [
   { img: img3, discount: 10, title: "Diamond Ring.", price: 890 },
@@ -52,7 +53,8 @@ const ankletsposts = [
 
 const Ourcategory = () => {
   const {
-    categoryData
+    categoryData,
+    loading
   } = useHome();
 
   const history = useHistory();
@@ -65,6 +67,7 @@ const Ourcategory = () => {
   console.log('categoryData', categoryData)
   return (
     <section className="restaurant-tab-area pb-90">
+      {loading && <Preloader />}
       <div className="container">
         <div className="section-title mb-50">
           <span className="title-tag"> Categories </span>

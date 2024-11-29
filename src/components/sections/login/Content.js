@@ -6,6 +6,7 @@ import { apiPost } from "../../Api/ApiService";
 import Api from "../../Api/EndPoint";
 import { serverLogin } from "../../../services/serverApi";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import Preloader from "../../layouts/Preloader";
 
 const Content = () => {
   const history = useHistory();
@@ -44,6 +45,7 @@ const Content = () => {
 
   return (
     <section className="login-sec pt-120 pb-120">
+      {loading && <Preloader />}
       <div className="container">
         <div className="account-wrapper">
           <div className="row no-gutters">

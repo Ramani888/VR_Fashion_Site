@@ -19,8 +19,8 @@ const Wishlist = () => {
             <Header />
             <Breadcrumb breadcrumb={{ pagename: 'Wishlist' }} />
             <Content />
-            <Instafeeds />
-            <Footer />
+            {/* <Instafeeds />
+            <Footer /> */}
         </Fragment>
     );
 }

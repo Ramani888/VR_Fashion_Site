@@ -16,15 +16,12 @@ import Video from './Video';
 import Latestproducts from '../../layouts/Latestproducts';
 import Blog from './Blog';
 import useHome from './useHome';
-import Preloader from '../../layouts/Preloader';
+import Newsletter from '../../layouts/Newsletter';
+import CustomeLoginPopup from '../../Custome/LoginPopup/CustomeLoginPopup';
 
 const Content = () => {
-    const {
-        loading
-    } = useHome();
     return (
         <Fragment>
-            {loading && <Preloader />}
             <Banner/>
             <Ourcategory/>
             <Category/>

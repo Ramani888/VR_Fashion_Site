@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { serverGetAllProduct } from '../../../services/serverApi';
+import { serverAddWishlistProduct, serverGetAllProduct, serverRemoveWishlistProduct } from '../../../services/serverApi';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom';
+import { getUserData } from '../../../helper/UserHelper';
 
 const useShopLeft = () => {
+    const history = useHistory();
     const [loading, setLoading] = useState(false);
     const [productData, setProductData] = useState([]);
 
     const getProductData = async () => {
         try {
             setLoading(true);
-            const res = await serverGetAllProduct();
+            const userData = getUserData();
+            const res = await serverGetAllProduct(userData?._id);
             setProductData(res?.data);
         } catch (err) {
             console.log(err);
@@ -19,13 +23,65 @@ const useShopLeft = () => {
         }
     }
 
+    // Function to handle navigation
+    const handleNavigation = (path, product) => {
+        history.push(path, product); // Use history.push() for navigation
+    };
+
+    const handleAddWishlist = async (productId) => {
+        try {
+            setLoading(true);
+            const userData = getUserData();
+            if (userData) {
+                await serverAddWishlistProduct({userId: userData?._id, productId: productId});
+                getProductData();
+            }
+        } catch (err) {
+            console.log(err);
+            setLoading(false);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    const handleRemoveWishlist = async (productId) => {
+        try {
+            setLoading(true);
+            const userData = getUserData();
+            if (userData) {
+                await serverRemoveWishlistProduct(userData?._id, productId);
+                getProductData();
+            }
+        } catch (err) {
+            console.log(err);
+            setLoading(false);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    const handleWishlist = (item) => {
+        const userData = getUserData();
+        if (userData) {
+            if (item?.isWishlist) {
+                handleRemoveWishlist(item?._id);
+            } else {
+                handleAddWishlist(item?._id);
+            }
+        } else {
+            history.push('/login');
+        }
+    }
+
     useEffect(() => {
         getProductData();
     }, [])
 
     return {
         productData,
-        loading
+        loading,
+        handleNavigation,
+        handleWishlist
     }
 }
 

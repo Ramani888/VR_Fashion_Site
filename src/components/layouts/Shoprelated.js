@@ -113,13 +113,13 @@ const Shoprelated = ({ product }) => {
                       </div>
                     )}
                     <div className="button-group">
-                      <Link to="#">
-                        <i className="far fa-heart" />
+                      <Link>
+                        <i className={item?.isWishlist ? 'fas fa-heart' : 'far fa-heart'} />
                       </Link>
                       {/* <Link to="#">
                         <i className="far fa-sync-alt" />
                       </Link> */}
-                      <Link to="#">
+                      <Link>
                         <i className="far fa-shopping-cart" />
                       </Link>
                       <Link onClick={() => handleNavigation('/shop-detail', item)}>

@@ -12,6 +12,9 @@ import img3 from "../../assets/img/cart/3.jpg";
 import img4 from "../../assets/img/cart/4.jpg";
 import { serverGetCategory } from "../../services/serverApi";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { getUserData } from "../../helper/UserHelper";
+import CustomeLoginPopup from "../Custome/LoginPopup/CustomeLoginPopup";
+import Newsletter from "./Newsletter";
 
 // Cart loop
 const cartposts = [
@@ -29,6 +32,7 @@ const Header = () => {
   const [isTop, setIsTop] = useState(false);
   const [loading, setLoading] = useState(false);
   const [categoryData, setCategoryData] = useState([]);
+  const [showLoginPopup, setShowLoginPopup] = useState(false);
 
   const addClass = () => setClassMethod(true);
   const removeClass = () => setClassMethod(false);
@@ -85,9 +89,21 @@ const Header = () => {
     if (userData) {
       history.push('/account')
     } else {
-      history.push('/login')
+      return (<CustomeLoginPopup isOpen={true} onClose={() => {}} />)
     }
   }
+
+  const handleWishlistNavigate = () => {
+    const userData = getUserData();
+    if (userData) {
+      history.push('/wishlist')
+    } else {
+      history.push('/login')
+      // window.location.reload();
+      // setShowLoginPopup(true);
+    }
+  }
+
 
   return (
     <Fragment>
@@ -879,6 +895,9 @@ const Header = () => {
                             </ul>
                           </li>
                           <li className="menu-item">
+                            <Link onClick={() => handleWishlistNavigate()}>Wishlist</Link>
+                          </li>
+                          <li className="menu-item">
                             <Link to="/contact">Contact</Link>
                           </li>
                         </ul>
@@ -1035,6 +1054,11 @@ const Header = () => {
         </aside>
         {/* Mobile Menu End */}
       </header>
+
+      {showLoginPopup && (
+        <Newsletter />
+      )}
+
       <div
         className={classNames("offcanvas-wrapper", {
           "show-offcanvas": classMethod,

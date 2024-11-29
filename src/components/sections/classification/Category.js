@@ -216,7 +216,8 @@ const Category = ({category}) => {
   const {
     productData,
     handleNavigation,
-    loading
+    loading,
+    handleWishlist
   } = useClassification(category)
 
   console.log('productData', productData)
@@ -303,8 +304,8 @@ const Category = ({category}) => {
                             </div>
                           )}
                           <div className="button-group">
-                            <Link>
-                              <i className="far fa-heart" />
+                            <Link onClick={() => handleWishlist(item)}>
+                              <i className={item?.isWishlist ? 'fas fa-heart' : 'far fa-heart'} />
                             </Link>
                             {/* <Link to="#">
                               <i className="far fa-sync-alt" />

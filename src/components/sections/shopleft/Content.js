@@ -30,7 +30,9 @@ const shopgridpost = [
 const Content = () => {
   const {
     productData,
-    loading
+    loading,
+    handleNavigation,
+    handleWishlist
   } = useShopLeft();
 
   console.log('productData', productData)
@@ -102,20 +104,20 @@ const Content = () => {
                       </div>
                     )}
                     <div className="button-group">
-                      <Link to="#">
-                        <i className="far fa-heart" />
+                      <Link onClick={() => handleWishlist(item)}>
+                        <i className={item?.isWishlist ? 'fas fa-heart' : 'far fa-heart'} />
                       </Link>
-                      <Link to="#">
+                      <Link>
                         <i className="far fa-shopping-cart" />
                       </Link>
-                      <Link onClick={() => {}}>
+                      <Link onClick={() => handleNavigation("/shop-detail", item)}>
                         <i className="far fa-eye" />
                       </Link>
                     </div>
                   </div>
                   <div className="desc">
                     <h4>
-                      <Link onClick={() => {}}>{item?.name}</Link>
+                      <Link onClick={() => handleNavigation("/shop-detail", item)}>{item?.name}</Link>
                     </h4>
                     <span className="price">
                     ₹{item?.price}
@@ -126,7 +128,7 @@ const Content = () => {
                     <span className="price">
                       {percentageDiscount}% off
                     </span>
-                    <Link onClick={() => {}} className="link">
+                    <Link onClick={() => handleNavigation("/shop-detail", item)} className="link">
                       <i className="fal fa-arrow-right" />
                     </Link>
                   </div>

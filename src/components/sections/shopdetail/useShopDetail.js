@@ -66,7 +66,8 @@ const useShopDetail = (product) => {
         productData,
         categoryData,
         categoryProductData,
-        handleNavigation
+        handleNavigation,
+        loading
     }
 }
 

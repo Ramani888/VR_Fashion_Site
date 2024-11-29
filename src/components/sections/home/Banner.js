@@ -47,7 +47,7 @@ const Banner = () => {
   return (
     <section className="banner-area banner-style-one position-relative">
       {loading && <Preloader />}
-      <Cursor />
+      {/* <Cursor /> */}
       <ReactWOW animation="fadeIn" data-delay=".3s">
         <div className="d-none d-md-block vertical-text">
           <ul>
