@@ -52,7 +52,8 @@ const Content = () => {
     wishListData,
     handleNavigation,
     loading,
-    handleRemoveWishlist
+    handleRemoveWishlist,
+    handleCart
   } = useWishlist();
   return (
     <section className="restaurant-tab-area pb-85 mt-100">
@@ -186,8 +187,8 @@ const Content = () => {
                       <Link onClick={() => handleRemoveWishlist(item?.product?._id)}>
                         <i className={item?.product?.isWishlist ? 'fas fa-heart' : 'far fa-heart'} />
                       </Link>
-                      <Link>
-                        <i className="far fa-shopping-cart" />
+                      <Link onClick={() => handleCart(item?.product)}>
+                        <i className={item?.product?.isCart ? 'fas fa-shopping-cart' : "far fa-shopping-cart"} />
                       </Link>
                       <Link onClick={() => handleNavigation("/shop-detail", item?.product)}>
                         <i className="far fa-eye" />

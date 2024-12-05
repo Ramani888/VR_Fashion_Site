@@ -32,10 +32,10 @@ const Content = () => {
     productData,
     loading,
     handleNavigation,
-    handleWishlist
+    handleWishlist,
+    handleCart
   } = useShopLeft();
 
-  console.log('productData', productData)
   return (
     <section className="restaurant-tab-area pb-85 mt-100">
       {loading && <Preloader />}
@@ -107,8 +107,8 @@ const Content = () => {
                       <Link onClick={() => handleWishlist(item)}>
                         <i className={item?.isWishlist ? 'fas fa-heart' : 'far fa-heart'} />
                       </Link>
-                      <Link>
-                        <i className="far fa-shopping-cart" />
+                      <Link onClick={() => handleCart(item)}>
+                        <i className={item?.isCart ? 'fas fa-shopping-cart' : "far fa-shopping-cart"} />
                       </Link>
                       <Link onClick={() => handleNavigation("/shop-detail", item)}>
                         <i className="far fa-eye" />

@@ -104,6 +104,15 @@ const Header = () => {
     }
   }
 
+  const handleCartNavigate = () => {
+    const userData = getUserData();
+    if (userData) {
+      history.push('/cart')
+    } else {
+      history.push('/login')
+    }
+  }
+
 
   return (
     <Fragment>
@@ -938,15 +947,15 @@ const Header = () => {
                 </div> */}
                 <div className="toggle dropdown-btn">
                   <span className="sigma-notification">0</span>
-                  <Link to="#" onClick={toggleCartm}>
+                  <Link onClick={() => handleCartNavigate()}>
                     <i className="fal fa-shopping-bag" />
                   </Link>
-                  <div
+                  {/* <div
                     className={classNames("dropdown-menu cart-dropdown-menu", {
                       show: toggleCart,
                     })}
                   >
-                    {/* <ul className="cart-items-box">
+                    <ul className="cart-items-box">
                       {cartposts.map((item, i) => (
                         <li key={i} className="cart-item">
                           <div className="img">
@@ -974,8 +983,8 @@ const Header = () => {
                           View Cart
                         </button>
                       </div>
-                    </div> */}
-                  </div>
+                    </div>
+                  </div> */}
                 </div>
                 {/* Navbar Toggler */}
                 <div className="navbar-toggler">

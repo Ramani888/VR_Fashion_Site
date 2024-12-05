@@ -190,3 +190,31 @@ export const serverRemoveWishlistProduct = async (userId, productId) => {
   const res = await serverRequest(url, 'DELETE', null, true);
   return res
 }
+
+/********** Cart Api **********/
+export const serverGetCartData = async (userId) => {
+  let url = `/cart`;
+  if (userId) {
+    url += `?userId=${userId}`;
+  }
+  const res = await serverRequest(url, 'GET', null, true);
+  return res
+}
+
+export const serverAddToCart = async (data) => {
+  let url = `/cart`;
+  const res = await serverRequest(url, 'POST', data, true);
+  return res
+}
+
+export const serverRemoveToCart = async (userId, productId) => {
+  let url = `/cart`;
+  if (userId) {
+    url += `?userId=${userId}`;
+  }
+  if (productId) {
+    url += `&productId=${productId}`;
+  }
+  const res = await serverRequest(url, 'DELETE', null, true);
+  return res
+}

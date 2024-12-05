@@ -25,13 +25,12 @@ const Ourproducts = () => {
     currentPramotionProductData,
     handleNavigation,
     loading,
-    handleWishlist
+    handleWishlist,
+    handleCart
   } = useHome();
 
 
-  console.log('currentPramotionProductData', currentPramotionProductData)
-  console.log('totalPages', totalPages)
-  console.log('currentPage', currentPage)
+
   return (
     <section className="restaurant-tab-area pb-85 mt-100">
       {loading && <Preloader />}
@@ -103,8 +102,8 @@ const Ourproducts = () => {
                       <Link onClick={() => handleWishlist(item)}>
                         <i className={item?.isWishlist ? 'fas fa-heart' : 'far fa-heart'} />
                       </Link>
-                      <Link>
-                        <i className="far fa-shopping-cart" />
+                      <Link onClick={() => handleCart(item)}>
+                        <i className={item?.isCart ? 'fas fa-shopping-cart' : "far fa-shopping-cart"} />
                       </Link>
                       <Link onClick={() => handleNavigation('/shop-detail', item)}>
                         <i className="far fa-eye" />

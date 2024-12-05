@@ -18,7 +18,8 @@ const relatedshopposts = [
 const Shoprelated = ({ product }) => {
   const {
     categoryProductData,
-    handleNavigation
+    handleNavigation,
+    handleCartRelated
   } = useShopDetail(product)
   const sliderRef = useRef(null);
 
@@ -119,8 +120,8 @@ const Shoprelated = ({ product }) => {
                       {/* <Link to="#">
                         <i className="far fa-sync-alt" />
                       </Link> */}
-                      <Link>
-                        <i className="far fa-shopping-cart" />
+                      <Link onClick={() => handleCartRelated(item)}>
+                        <i className={item?.isCart ? 'fas fa-shopping-cart' : "far fa-shopping-cart"} />
                       </Link>
                       <Link onClick={() => handleNavigation('/shop-detail', item)}>
                         <i className="far fa-eye" />

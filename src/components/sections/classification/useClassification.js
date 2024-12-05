@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { serverAddWishlistProduct, serverGetProductByCategoryId, serverGetProductUnderFive, serverGetProductUnderTen, serverGetProductUnderThree, serverGetProductUnderTwo, serverRemoveWishlistProduct } from '../../../services/serverApi';
+import { serverAddToCart, serverAddWishlistProduct, serverGetProductByCategoryId, serverGetProductUnderFive, serverGetProductUnderTen, serverGetProductUnderThree, serverGetProductUnderTwo, serverRemoveToCart, serverRemoveWishlistProduct } from '../../../services/serverApi';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { getUserData } from '../../../helper/UserHelper';
 
@@ -87,6 +87,56 @@ const useClassification = (category) => {
         }
     }
 
+    const handleAddToCart = async (item) => {
+        try {
+            setLoading(true);
+            const userData = getUserData();
+            if (userData) {
+                const bodyData = {
+                    userId: userData?._id,
+                    productId: item?._id,
+                    qty: 1
+                }
+                await serverAddToCart(bodyData);
+                getProductData();
+            }
+        } catch (err) {
+            console.log(err);
+            setLoading(false);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    const handleRemoveToCart = async (item) => {
+        try {
+            setLoading(false);
+            const userData = getUserData();
+            if (userData) {
+                await serverRemoveToCart(userData?._id, item?._id);
+                getProductData();
+            }
+        } catch (err) {
+            console.log(err);
+            setLoading(false);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    const handleCart = (item) => {
+        const userData = getUserData();
+        if (userData) {
+            if (item?.isCart) {
+                handleRemoveToCart(item)
+            } else {
+                handleAddToCart(item)
+            }
+        } else {
+            history.push('/login');
+        }
+    }
+
     useEffect(() => {
         getProductData();
     }, [category])
@@ -95,7 +145,8 @@ const useClassification = (category) => {
         productData,
         handleNavigation,
         loading,
-        handleWishlist
+        handleWishlist,
+        handleCart
     }
 }
 

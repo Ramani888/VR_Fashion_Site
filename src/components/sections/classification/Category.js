@@ -212,15 +212,14 @@ const ankletsposts = [
 ];
 
 const Category = ({category}) => {
-  console.log('category', category)
   const {
     productData,
     handleNavigation,
     loading,
-    handleWishlist
+    handleWishlist,
+    handleCart
   } = useClassification(category)
 
-  console.log('productData', productData)
   return (
     <section className="restaurant-tab-area pt-120">
       {loading && <Prelader />}
@@ -308,8 +307,8 @@ const Category = ({category}) => {
                             {/* <Link to="#">
                               <i className="far fa-sync-alt" />
                             </Link> */}
-                            <Link>
-                              <i className="far fa-shopping-cart" />
+                            <Link onClick={() => handleCart(item)}>
+                              <i className={item?.isCart ? 'fas fa-shopping-cart' : "far fa-shopping-cart"} />
                             </Link>
                             <Link onClick={() => handleNavigation("/shop-detail", item)}>
                               <i className="far fa-eye" />

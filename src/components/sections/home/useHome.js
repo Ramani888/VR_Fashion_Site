@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { serverAddWishlistProduct, serverGetCategory, serverGetPramotionProduct, serverRemoveWishlistProduct } from '../../../services/serverApi';
+import { serverAddToCart, serverAddWishlistProduct, serverGetCategory, serverGetPramotionProduct, serverRemoveToCart, serverRemoveWishlistProduct } from '../../../services/serverApi';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 import { getUserData } from '../../../helper/UserHelper';
 
@@ -101,6 +101,56 @@ const useHome = () => {
         }
     }
 
+    const handleAddToCart = async (item) => {
+        try {
+            setLoading(true);
+            const userData = getUserData();
+            if (userData) {
+                const bodyData = {
+                    userId: userData?._id,
+                    productId: item?._id,
+                    qty: 1
+                }
+                await serverAddToCart(bodyData);
+                getPramotionProductData();
+            }
+        } catch (err) {
+            console.log(err);
+            setLoading(false);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    const handleRemoveToCart = async (item) => {
+        try {
+            setLoading(false);
+            const userData = getUserData();
+            if (userData) {
+                await serverRemoveToCart(userData?._id, item?._id);
+                getPramotionProductData();
+            }
+        } catch (err) {
+            console.log(err);
+            setLoading(false);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    const handleCart = (item) => {
+        const userData = getUserData();
+        if (userData) {
+            if (item?.isCart) {
+                handleRemoveToCart(item)
+            } else {
+                handleAddToCart(item)
+            }
+        } else {
+            history.push('/login');
+        }
+    }
+
     // Fetch data on initial render
     useEffect(() => {
         getCategoryData();
@@ -125,7 +175,8 @@ const useHome = () => {
         currentPramotionProductData,
         handleNavigation,
         loading,
-        handleWishlist
+        handleWishlist,
+        handleCart
     };
 };
 

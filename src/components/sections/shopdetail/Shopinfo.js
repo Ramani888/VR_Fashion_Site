@@ -37,12 +37,16 @@ const smallsliderpost = [
 const Shopinfo = ({ product }) => {
   const {
     productData,
-    categoryData
+    categoryData,
+    handleCart,
+    handleChange,
+    IncrementItem,
+    DecreaseItem,
+    clicks
   } = useShopDetail(product)
-  console.log('product', productData);
   const [nav1, setNav1] = useState(null);
   const [nav2, setNav2] = useState(null);
-  const [clicks, setClicks] = useState(1);
+  // const [clicks, setClicks] = useState(1);
 
   const slider1 = useRef(null);
   const slider2 = useRef(null);
@@ -51,18 +55,6 @@ const Shopinfo = ({ product }) => {
     setNav1(slider1.current);
     setNav2(slider2.current);
   }, []);
-
-  const IncrementItem = () => {
-    setClicks((prevClicks) => prevClicks + 1);
-  };
-
-  const DecreaseItem = () => {
-    setClicks((prevClicks) => (prevClicks > 0 ? prevClicks - 1 : 0));
-  };
-
-  const handleChange = (event) => {
-    setClicks(event.target.value);
-  };
 
   const settings = {
     slidesToShow: 1,
@@ -260,8 +252,8 @@ const Shopinfo = ({ product }) => {
                   </button>
                 </div>
                 <div className="cart-btn pl-40">
-                  <Link to="#" className="main-btn btn-border">
-                    Add to Cart
+                  <Link onClick={() => handleCart(productData)} className="main-btn btn-border">
+                    {productData?.isCart ? 'View in Cart' : 'Add to Cart'}
                   </Link>
                 </div>
               </div>

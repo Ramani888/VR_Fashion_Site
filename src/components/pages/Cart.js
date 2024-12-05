@@ -19,8 +19,8 @@ const Cart = () => {
             <Header/>
             <Breadcrumb breadcrumb={{pagename:'Cart'}}/>
             <Content/>
-            <Instafeeds/>
-            <Footer/>
+            {/* <Instafeeds/>
+            <Footer/> */}
         </Fragment>
     );
 }
