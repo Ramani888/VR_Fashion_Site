@@ -5,15 +5,20 @@ import Breadcrumb from '../layouts/Breadcrumbs';
 import Instafeeds from '../layouts/Instafeeds';
 import Footer from '../layouts/Footerthree';
 import Content from '../sections/login/Content';
+import { getUserData } from '../../helper/UserHelper';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 
 const Login = () => {
+    const history = useHistory();
     useEffect(() => {
         document.title = "VR-Fashion | Login";
-        // You can add more side effects here if needed
-        return () => {
-            // Clean up any side effects if necessary
-        };
-    }, []);
+
+        const userData = getUserData();
+
+        if (userData) {
+            history.push('/');
+        }
+    }, [history]);
 
     return (
         <Fragment>

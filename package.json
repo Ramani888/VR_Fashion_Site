@@ -19,6 +19,7 @@
     "mapbox-gl": "^1.13.1",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",
+    "razorpay": "^2.9.5",
     "react": "^16.14.0",
     "react-bootstrap": "^1.6.1",
     "react-countdown": "^2.3.2",

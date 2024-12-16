@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { serverGetCartData, serverRemoveToCart } from '../../../services/serverApi';
+import { serverGetCartData, serverRemoveToCart, serverUpdateCartData } from '../../../services/serverApi';
 import { getUserData } from '../../../helper/UserHelper';
 
 const useCart = () => {
@@ -12,6 +12,26 @@ const useCart = () => {
             const userData = getUserData();
             const res = await serverGetCartData(userData?._id);
             setCartData(res?.data);
+        } catch (err) {
+            console.log(err);
+            setLoading(false);
+            setCartData([]);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    const updateCartData = async (item, isIncreaseItem) => {
+        try {
+            setLoading(true);
+            let qty;
+            if (isIncreaseItem) {
+                qty = item?.qty + 1;
+            } else {
+                qty = item?.qty > 1 ? item?.qty - 1 : 1;
+            }
+            await serverUpdateCartData(item?.productId, {qty: qty});
+            getCartData();
         } catch (err) {
             console.log(err);
             setLoading(false);
@@ -44,7 +64,8 @@ const useCart = () => {
     return {
         cartData,
         loading,
-        handleRemoveToCart
+        handleRemoveToCart,
+        updateCartData
     }
 }
 

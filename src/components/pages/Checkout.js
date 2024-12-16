@@ -19,8 +19,8 @@ const Checkout = () => {
             <Header/>
             <Breadcrumb breadcrumb={{ pagename: 'Checkout' }}/>
             <Content/>
-            <Instafeeds/>
-            <Footer/>
+            {/* <Instafeeds/>
+            <Footer/> */}
         </React.Fragment>
     );
 };

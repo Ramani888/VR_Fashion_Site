@@ -15,10 +15,13 @@ import './assets/css/flaticon.css';
 import './assets/fonts/flaticon/flaticon-2.css';
 import './assets/css/default.css';
 import './assets/css/style.css';
+import { CartProvider } from './hooks/CartContext';
 
 ReactDOM.render(
   <BrowserRouter basename="/VR-Fashion">
-    <App />
+    <CartProvider>
+      <App />
+    </CartProvider>
   </BrowserRouter>,
   document.getElementById('root')
 );

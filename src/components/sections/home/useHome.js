@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { serverAddToCart, serverAddWishlistProduct, serverGetCategory, serverGetPramotionProduct, serverRemoveToCart, serverRemoveWishlistProduct } from '../../../services/serverApi';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 import { getUserData } from '../../../helper/UserHelper';
+import { useCartContext } from '../../../hooks/CartContext';
 
 const useHome = () => {
+    const { updateCartCount } = useCartContext();
     const history = useHistory();
     const [loading, setLoading] = useState(false);
     const [categoryData, setCategoryData] = useState([]);
@@ -146,6 +148,7 @@ const useHome = () => {
             } else {
                 handleAddToCart(item)
             }
+            updateCartCount();
         } else {
             history.push('/login');
         }

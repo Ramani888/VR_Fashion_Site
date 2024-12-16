@@ -16,23 +16,10 @@ const Content = () => {
     const {
         cartData,
         loading,
-        handleRemoveToCart
+        handleRemoveToCart,
+        updateCartData
     } = useCart();
     const history = useHistory();
-    const [clicks, setClicks] = useState(1);
-    const [show, setShow] = useState(true);
-
-    const IncrementItem = () => {
-        setClicks(clicks + 1);
-    };
-
-    const DecreaseItem = () => {
-        setClicks(clicks > 0 ? clicks - 1 : 0);
-    };
-
-    const handleChange = (event) => {
-        setClicks(event.target.value);
-    };
 
     const totalPrice = cartData?.data?.reduce((accumulator, item) => {
         return accumulator + item?.product?.mrp * item?.qty;
@@ -145,11 +132,11 @@ const Content = () => {
                                             </td>
                                             <td className="quantity shop-detail-content cw-qty-sec cw-align has-title" data-title="Quantity">
                                                 <div className="quantity-box">
-                                                    <button type="button" className="minus-btn" onClick={DecreaseItem}>
+                                                    <button type="button" className="minus-btn" onClick={() => updateCartData(item, false)}>
                                                         <i className="fal fa-minus" />
                                                     </button>
-                                                    <input type="text" className="input-qty" name="name" value={clicks} onChange={handleChange} readOnly />
-                                                    <button type="button" className="plus-btn" onClick={IncrementItem}>
+                                                    <input type="text" className="input-qty" name="name" value={item?.qty} disabled readOnly />
+                                                    <button type="button" className="plus-btn" onClick={() => updateCartData(item, true)}>
                                                         <i className="fal fa-plus" />
                                                     </button>
                                                 </div>
@@ -227,7 +214,15 @@ const Content = () => {
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <Link className="main-btn btn-filled w-100">Proceed to Checkout</Link>
+                                    {cartData?.data?.length <= 0 ? (
+                                        <button className="main-btn btn-filled w-100" disabled>
+                                            Proceed to Checkout
+                                        </button>
+                                        ) : (
+                                        <Link to="/checkout" className="main-btn btn-filled w-100">
+                                            Proceed to Checkout
+                                        </Link>
+                                    )}
                                 </div>
                             </div>
                         </div>

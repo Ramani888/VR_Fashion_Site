@@ -15,6 +15,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { getUserData } from "../../helper/UserHelper";
 import CustomeLoginPopup from "../Custome/LoginPopup/CustomeLoginPopup";
 import Newsletter from "./Newsletter";
+import { useCartContext } from "../../hooks/CartContext";
 
 // Cart loop
 const cartposts = [
@@ -25,6 +26,7 @@ const cartposts = [
 ];
 
 const Header = () => {
+  const { cartCount } = useCartContext();
   const history = useHistory();
   const [classMethod, setClassMethod] = useState(false);
   const [toggleMethod, setToggleMethod] = useState(false);
@@ -946,7 +948,7 @@ const Header = () => {
                   </Link>
                 </div> */}
                 <div className="toggle dropdown-btn">
-                  <span className="sigma-notification">0</span>
+                  <span className="sigma-notification">{cartCount}</span>
                   <Link onClick={() => handleCartNavigate()}>
                     <i className="fal fa-shopping-bag" />
                   </Link>

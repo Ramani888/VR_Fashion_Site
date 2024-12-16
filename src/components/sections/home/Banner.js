@@ -72,12 +72,12 @@ const Banner = () => {
           </ul>
         </div>
       </ReactWOW>
-      <ReactWOW animation="fadeIn" data-delay=".3s">
+      {/* <ReactWOW animation="fadeIn" data-delay=".3s">
         <div className="d-none d-md-block vertical-text right">
           <span>Call us on: </span>
           <span>8141851456</span>
         </div>
-      </ReactWOW>
+      </ReactWOW> */}
       <div
         className="container container-custom-two"
         style={{ marginTop: "-100px" }}

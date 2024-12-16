@@ -1,7 +1,8 @@
 import axios, { Method } from "axios";
 import { StatusCodes } from "http-status-codes";
 // const serverUrl = 'https://vr-fashion-backend.vercel.app/api';
-const serverUrl = 'https://vr-fashion-backend-zyyi.vercel.app/api';
+// const serverUrl = 'https://vr-fashion-backend-zyyi.vercel.app/api';
+const serverUrl = 'http://localhost:3010/api'
 
 const errorCodes = [
     StatusCodes.INTERNAL_SERVER_ERROR,
@@ -162,6 +163,12 @@ export const serverGetOrder = async (userId) => {
   return res
 }
 
+export const serverCreateOrder = async (data) => {
+  let url = `/order`;
+  const res = await serverRequest(url, 'POST', data, true);
+  return res
+}
+
 
 /********** Wishlist Api **********/
 export const serverGetWishlistProduct = async (userId) => {
@@ -201,6 +208,15 @@ export const serverGetCartData = async (userId) => {
   return res
 }
 
+export const serverGetCartCountData = async (userId) => {
+  let url = `/cart/count`;
+  if (userId) {
+    url += `?userId=${userId}`;
+  }
+  const res = await serverRequest(url, 'GET', null, true);
+  return res
+}
+
 export const serverAddToCart = async (data) => {
   let url = `/cart`;
   const res = await serverRequest(url, 'POST', data, true);
@@ -216,5 +232,40 @@ export const serverRemoveToCart = async (userId, productId) => {
     url += `&productId=${productId}`;
   }
   const res = await serverRequest(url, 'DELETE', null, true);
+  return res
+}
+
+export const serverUpdateCartData = async (productId, data) => {
+  let url = `/cart`;
+  if (productId) {
+    url += `?productId=${productId}`;
+  }
+  const res = await serverRequest(url, 'PUT', data, true);
+  return res
+}
+
+/********** Delivery Address Api **********/
+export const serverGetDeliveryAddressData = async (userId) => {
+  let url = `/delivery/address`;
+  if (userId) {
+    url += `?userId=${userId}`;
+  }
+  const res = await serverRequest(url, 'GET', null, true);
+  return res
+}
+
+export const serverAddDeliveryAddressData = async (data) => {
+  let url = `/delivery/address`;
+  const res = await serverRequest(url, 'POST', data, true);
+  return res
+}
+
+/********** Reward Api **********/
+export const serverGetRewardData = async (userId) => {
+  let url = `/reward`;
+  if (userId) {
+    url += `?userId=${userId}`;
+  }
+  const res = await serverRequest(url, 'GET', null, true);
   return res
 }
