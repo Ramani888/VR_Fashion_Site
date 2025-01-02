@@ -66,24 +66,23 @@ const Shopinfo = ({ product }) => {
     dots: false,
   };
 
-  const settings2 = {
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    fade: false,
-    infinite: true,
-    autoplay: false,
-    arrows: false,
-    dots: false,
-    focusOnSelect: true,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 4,
-        },
-      },
-    ],
-  };
+
+    const settings2 = {
+        slidesToShow: Math.min(productData?.image?.length || 1, 5),
+        slidesToScroll: 1,
+        fade: false,
+        infinite: true,
+        autoplay: false,
+        arrows: false,
+        dots: false,
+        focusOnSelect: true,
+        responsive: [{
+            breakpoint: 768,
+            settings: {
+                slidesToShow: Math.min(productData?.image?.length || 1, 4),
+            },
+        }],
+    };
 
   return (
     <section className="Shop-section pt-120 pb-120">
@@ -92,7 +91,7 @@ const Shopinfo = ({ product }) => {
           <div className="col-lg-5">
             <div className="shop-detail-image">
               <Slider
-                className="detail-slider-1"
+                // className="detail-slider-1"
                 {...settings}
                 asNavFor={nav2}
                 ref={slider1}
@@ -109,7 +108,7 @@ const Shopinfo = ({ product }) => {
                 ))}
               </Slider>
               <Slider
-                className="detail-slider-2"
+                // className="detail-slider-2"
                 {...settings2}
                 asNavFor={nav1}
                 ref={slider2}
