@@ -64,7 +64,6 @@ const Ourcategory = () => {
     history.push(path, category); // Use history.push() for navigation
   };
 
-  console.log('categoryData', categoryData)
   return (
     <section className="restaurant-tab-area pb-90">
       {loading && <Preloader />}

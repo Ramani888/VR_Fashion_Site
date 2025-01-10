@@ -140,7 +140,7 @@ const Header = () => {
           </div>
         </div>
         <div className="main-menu-area sticky-header">
-          <div className="container-fluid container-custom-three">
+          {/* <div className="container-fluid container-custom-three"> */}
             <div className="nav-container d-flex align-items-center justify-content-between">
               {/* Site Logo */}
               <div className="site-logo site-logo-text">
@@ -996,7 +996,7 @@ const Header = () => {
                 </div>
               </div>
             </div>
-          </div>
+          {/* </div> */}
         </div>
         {/* Mobile Header Start */}
         <div className="sigma-mobile-header">

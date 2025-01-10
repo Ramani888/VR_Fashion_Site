@@ -33,111 +33,138 @@ const Banner = () => {
 
   // ==================================== Api ================================== //
 
+  // const settings = {
+  //   slidesToShow: 1,
+  //   slidesToScroll: 1,
+  //   fade: true,
+  //   infinite: true,
+  //   autoplay: true,
+  //   autoplaySpeed: 4000,
+  //   arrows: false,
+  //   dots: false,
+  // };
+
   const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    fade: true,
-    infinite: true,
     autoplay: true,
-    autoplaySpeed: 4000,
-    arrows: false,
-    dots: false,
+    autoplaySpeed: 3000,
   };
 
+
   return (
-    <section className="banner-area banner-style-one position-relative">
+    <section className="banner-style-one position-relative mb-80 mt-80">
       {loading && <Preloader />}
-      <Cursor />
-      <ReactWOW animation="fadeIn" data-delay=".3s">
-        <div className="d-none d-md-block vertical-text">
-          <ul>
-            <li>
-              <Link to="#">
-                {" "}
-                <i className="fab fa-facebook" /> Facebook{" "}
-              </Link>
-            </li>
-            <li>
-              <Link to="#">
-                {" "}
-                <i className="fab fa-instagram" /> Instagram{" "}
-              </Link>
-            </li>
-            {/* <li>
-              <Link to="#">
-                {" "}
-                <i className="fab fa-twitter" /> Twitter{" "}
-              </Link>
-            </li> */}
-          </ul>
-        </div>
-      </ReactWOW>
-      {/* <ReactWOW animation="fadeIn" data-delay=".3s">
-        <div className="d-none d-md-block vertical-text right">
-          <span>Call us on: </span>
-          <span>8141851456</span>
-        </div>
-      </ReactWOW> */}
-      <div
-        className="container container-custom-two"
-        style={{ marginTop: "-100px" }}
-      >
-        <div className="row align-items-center">
-          <div className="col-lg-6 col-md-6">
-            <div className="banner-content">
-              <ReactWOW animation="fadeInDown" data-delay=".3s">
-                <span className="promo-tag">Jewelry Design With Love</span>
-              </ReactWOW>
-              <ReactWOW animation="fadeInLeft" data-delay=".5s">
-                <h1 className="title">
-                  High-End <br />
-                  Jewelry Items
-                </h1>
-              </ReactWOW>
-              <ul>
-                <li>
-                  <ReactWOW animation="fadeInUp" data-delay=".7s">
-                    <Link className="main-btn btn-filled">
-                      Buy Now{" "}
-                    </Link>
-                  </ReactWOW>
-                </li>
-                <li>
-                  <ReactWOW animation="fadeInUp" data-delay=".9s">
-                    <Link className="main-btn btn-border">
-                      Explore Now
-                    </Link>
-                  </ReactWOW>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <ReactWOW animation="fadeInRight" data-delay="0.5s">
-            <div className="col-lg-6 col-md-6">
-              <div className="banner-thumb d-none d-md-block">
-                <Slider className="carousel hero-slider-one" {...settings}>
-                  {bannerData.map((item, i) => (
-                    <div key={i} className="single-thumb">
-                      <img
-                        src={item.imagePath}
-                        alt="images"
-                        style={{
-                          height: "710px",
-                          width: "669px",
-                          objectFit: "contain",
-                          marginTop: "-60px",
-                        }}
-                      />
-                    </div>
-                  ))}
-                </Slider>
-              </div>
-            </div>
-          </ReactWOW>
-        </div>
+      <div className="slider-container">
+        <Slider {...settings}>
+          {bannerData?.map((item) => {
+            return (
+              <img
+                src={item?.imagePath}
+                alt="images"
+                style={{
+                  objectFit: "contain",
+                  height: "100%"
+                }}
+              />
+            )
+          })}
+        </Slider>
       </div>
     </section>
-  );
+  )
+
+  // return (
+  //   <section className="banner-area banner-style-one position-relative">
+  //     {loading && <Preloader />}
+  //     <Cursor />
+  //     {/* <ReactWOW animation="fadeIn" data-delay=".3s">
+  //       <div className="d-none d-md-block vertical-text">
+  //         <ul>
+  //           <li>
+  //             <Link to="#">
+  //               {" "}
+  //               <i className="fab fa-facebook" /> Facebook{" "}
+  //             </Link>
+  //           </li>
+  //           <li>
+  //             <Link to="#">
+  //               {" "}
+  //               <i className="fab fa-instagram" /> Instagram{" "}
+  //             </Link>
+  //           </li>
+  //         </ul>
+  //       </div>
+  //     </ReactWOW> */}
+  //     {/* <ReactWOW animation="fadeIn" data-delay=".3s">
+  //       <div className="d-none d-md-block vertical-text right">
+  //         <span>Call us on: </span>
+  //         <span>8141851456</span>
+  //       </div>
+  //     </ReactWOW> */}
+  //     {/* <div
+  //       className="container container-custom-two"
+  //       style={{ marginTop: "-100px" }}
+  //     >
+  //       <div className="row align-items-center">
+  //         <div className="col-lg-6 col-md-6">
+  //           <div className="banner-content">
+  //             <ReactWOW animation="fadeInDown" data-delay=".3s">
+  //               <span className="promo-tag">Jewelry Design With Love</span>
+  //             </ReactWOW>
+  //             <ReactWOW animation="fadeInLeft" data-delay=".5s">
+  //               <h1 className="title">
+  //                 High-End <br />
+  //                 Jewelry Items
+  //               </h1>
+  //             </ReactWOW>
+  //             <ul>
+  //               <li>
+  //                 <ReactWOW animation="fadeInUp" data-delay=".7s">
+  //                   <Link className="main-btn btn-filled">
+  //                     Buy Now{" "}
+  //                   </Link>
+  //                 </ReactWOW>
+  //               </li>
+  //               <li>
+  //                 <ReactWOW animation="fadeInUp" data-delay=".9s">
+  //                   <Link className="main-btn btn-border">
+  //                     Explore Now
+  //                   </Link>
+  //                 </ReactWOW>
+  //               </li>
+  //             </ul>
+  //           </div>
+  //         </div>
+  //         <ReactWOW animation="fadeInRight" data-delay="0.5s">
+  //           <div className="col-lg-6 col-md-6">
+  //             <div className="banner-thumb d-none d-md-block">
+  //               <Slider className="carousel hero-slider-one" {...settings}>
+  //                 {bannerData.map((item, i) => (
+  //                   <div key={i} className="single-thumb">
+  //                     <img
+  //                       src={item.imagePath}
+  //                       alt="images"
+  //                       style={{
+  //                         height: "710px",
+  //                         width: "669px",
+  //                         objectFit: "contain",
+  //                         marginTop: "-60px",
+  //                       }}
+  //                     />
+  //                   </div>
+  //                 ))}
+  //               </Slider>
+  //             </div>
+  //           </div>
+  //         </ReactWOW>
+  //       </div>
+  //     </div> */}
+  //   </section>
+  // );
 };
 
 export default Banner;
