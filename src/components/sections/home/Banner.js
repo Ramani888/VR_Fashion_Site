@@ -56,7 +56,7 @@ const Banner = () => {
 
 
   return (
-    <section className="banner-style-one position-relative mb-80 mt-80">
+    <section className="banner-style-one position-relative mb-50 mt-80">
       {loading && <Preloader />}
       <div className="slider-container">
         <Slider {...settings}>
