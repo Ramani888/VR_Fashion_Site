@@ -65,7 +65,7 @@ const Ourcategory = () => {
   };
 
   return (
-    <section className="restaurant-tab-area pb-70">
+    <section className="restaurant-tab-area pb-50">
       {loading && <Preloader />}
       <div className="container-fluid">
         <div className="section-title mb-50">
