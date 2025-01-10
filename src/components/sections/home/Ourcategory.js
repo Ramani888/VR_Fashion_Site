@@ -88,7 +88,9 @@ const Ourcategory = () => {
                   flexDirection: 'column',
                   alignItems: 'center',
                   margin: '0 10px',
+                  cursor: 'pointer',
                 }}
+                onClick={() => handleNavigation("/classification", item)}
               >
                 <div 
                   style={{
