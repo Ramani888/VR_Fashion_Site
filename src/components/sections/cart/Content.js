@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import img1 from '../../../assets/img/shop/cart-1.png';
@@ -6,6 +6,7 @@ import img2 from '../../../assets/img/shop/cart-2.png';
 import useCart from './useCart';
 import Preloader from "../../layouts/Preloader";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
+import { getUserData } from '../../../helper/UserHelper';
 
 const cartlistpost = [
     { img: img1, title: 'Blue Blast', total: 109, qty: 1 },
@@ -101,6 +102,14 @@ const Content = () => {
     (Math.round(totalGst) !== 0
       ? Math.round(totalGst)
       : Math.round(totalIgst) + Math.round(totalSgst));
+
+    useEffect(() => {
+        const userData = getUserData();
+        if (!userData) {
+            history.push('/login')
+        }
+
+    }, [])
 
     return (
         <section className="cart-section pt-120 pb-120">
