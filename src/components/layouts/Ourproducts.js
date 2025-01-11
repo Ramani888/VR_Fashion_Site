@@ -76,7 +76,7 @@ const Ourproducts = () => {
               <div key={i} className="col-lg-3 col-6">
                 <div className="food-box shop-box">
                   <div className="thumb">
-                    <div style={{height: '270px', width: '100%'}}>
+                    <div className="product-img">
                       <img src={item?.image[0]?.path} alt="images" style={{height: '100%', width: '100%', objectFit: 'cover'}} />
                     </div>
                     {item?.discount && (
@@ -108,7 +108,7 @@ const Ourproducts = () => {
                     </div>
                   </div>
                   <div className="desc">
-                    <h4>
+                    <h4 className="product-name">
                       <Link onClick={() => handleNavigation('/shop-detail', item)}>{item?.name}</Link>
                     </h4>
                     <span className="price">

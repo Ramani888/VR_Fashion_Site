@@ -9600,6 +9600,23 @@ header.header-three.sigma-header
   margin-bottom: 10px;
 }
 
+.product-img {
+  height: 270px;
+  width: 100%;
+}
+
+@media (max-width: 575px) {
+  .product-img {
+    height: 160px;
+  }
+  .product-name {
+    font-size: 12px !important;
+  }
+  .price {
+    font-size: 12px !important;
+  }
+}
+
 @media (max-width: 575px) {
   .restaurant-tab-area .food-box .desc a.cat {
     letter-spacing: 1px;
