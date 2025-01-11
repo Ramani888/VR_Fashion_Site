@@ -39,7 +39,7 @@ const Content = () => {
   return (
     <section className="restaurant-tab-area pb-85 mt-100">
       {loading && <Preloader />}
-      <div className="container">
+      <div className="container-fluid">
         {/* <div className="section-title text-center mb-50">
           <div className="section-title-icon">
             <svg
@@ -84,7 +84,7 @@ const Content = () => {
               <div key={i} className="col-lg-3 col-6">
                 <div className="food-box shop-box">
                   <div className="thumb">
-                    <div style={{height: '270px', width: '100%'}}>
+                    <div className="product-img">
                       <img src={item?.image[0]?.path} alt="images" style={{height: '100%', width: '100%', objectFit: 'cover'}} />
                     </div>
                     {item?.discount && (
@@ -116,7 +116,7 @@ const Content = () => {
                     </div>
                   </div>
                   <div className="desc">
-                    <h4>
+                    <h4 className="product-name">
                       <Link onClick={() => handleNavigation("/shop-detail", item)}>{item?.name}</Link>
                     </h4>
                     <span className="price">
