@@ -223,7 +223,7 @@ const Category = ({category}) => {
   return (
     <section className="restaurant-tab-area pt-120">
       {loading && <Prelader />}
-      <div className="container">
+      <div className="container-fluid">
         <Tab.Container defaultActiveKey={category?.name}>
           {/* {category?._id && (
             <Nav
@@ -278,10 +278,10 @@ const Category = ({category}) => {
                 {productData?.map((item, i) => {
                   const percentageDiscount = Math.round(100 - Number(Number(item?.price * 100) / Number(item?.mrp)));
                   return (
-                    <div key={i} className="col-lg-3 col-md-6">
+                    <div key={i} className="col-lg-3 col-6">
                       <div className="food-box shop-box">
                         <div className="thumb">
-                          <div style={{height: '270px', width: '100%'}}>
+                          <div className="product-img">
                             <img src={item?.image[0]?.path} alt="images" style={{height: '100%', width: '100%', objectFit: 'cover'}} />
                           </div>
                           {item?.discount && (
@@ -316,7 +316,7 @@ const Category = ({category}) => {
                           </div>
                         </div>
                         <div className="desc">
-                          <h4>
+                          <h4 className="product-name">
                             <Link onClick={() => handleNavigation("/shop-detail", item)}>{item?.name}</Link>
                           </h4>
                           <span className="price">
