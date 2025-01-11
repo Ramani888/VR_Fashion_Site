@@ -24,9 +24,9 @@ const Content = () => {
         <Fragment>
             <Banner/>
             <Ourcategory/>
-            <Bestselling />
+            {/* <Bestselling /> */}
+            <Latestproducts />
             <Category/>
-            {/* <Latestproducts /> */}
             <Ourproducts />
             {/* <Habout/> */}
             {/* <Trending/> */}
