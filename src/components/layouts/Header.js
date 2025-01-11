@@ -31,7 +31,7 @@ const Header = () => {
   const [classMethod, setClassMethod] = useState(false);
   const [toggleMethod, setToggleMethod] = useState(false);
   const [toggleCart, setToggleCart] = useState(false);
-  const [isTop, setIsTop] = useState(false);
+  const [isTop, setIsTop] = useState(true);
   const [loading, setLoading] = useState(false);
   const [categoryData, setCategoryData] = useState([]);
   const [showLoginPopup, setShowLoginPopup] = useState(false);
@@ -59,29 +59,29 @@ const Header = () => {
     getCategoryData();
   }, []);
 
-  useEffect(() => {
-    function megamenu() {
-      $(".sigm-megamenu-nav>li").on("mouseover", function (e) {
-        e.preventDefault();
-        $(".sub-menu .sigm-megamenu-nav").find(".active").removeClass("active");
-        $(".sub-menu .tab-content").find(".active").removeClass("active show");
+  // useEffect(() => {
+  //   function megamenu() {
+  //     $(".sigm-megamenu-nav>li").on("mouseover", function (e) {
+  //       e.preventDefault();
+  //       $(".sub-menu .sigm-megamenu-nav").find(".active").removeClass("active");
+  //       $(".sub-menu .tab-content").find(".active").removeClass("active show");
 
-        $(this).find("a").addClass("active");
-        $(".sub-menu .tab-item").eq($(this).index()).addClass("active show");
-      });
-    }
-    megamenu();
+  //       $(this).find("a").addClass("active");
+  //       $(".sub-menu .tab-item").eq($(this).index()).addClass("active show");
+  //     });
+  //   }
+  //   megamenu();
 
-    const handleScroll = () => {
-      setIsTop(window.scrollY > 110);
-    };
+  //   const handleScroll = () => {
+  //     setIsTop(window.scrollY > 110);
+  //   };
 
-    window.addEventListener("scroll", handleScroll, false);
+  //   window.addEventListener("scroll", handleScroll, false);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll, false);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll, false);
+  //   };
+  // }, []);
 
   const stickyheader = isTop ? "sticky-active" : "";
 
@@ -122,7 +122,7 @@ const Header = () => {
         className={`header-three header-absolute sticky-header sigma-header ${stickyheader}`}
         id="header"
       >
-        <div className="header-top">
+        {/* <div className="header-top">
           <div className="container-fluid container-custom-three">
             <div className="d-md-flex align-items-center justify-content-between">
               <p className="welcome-text">
@@ -138,7 +138,7 @@ const Header = () => {
               </ul>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="main-menu-area sticky-header">
           {/* <div className="container-fluid container-custom-three"> */}
             <div className="nav-container d-flex align-items-center justify-content-between">

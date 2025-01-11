@@ -79,6 +79,12 @@ export const serverGetCategoryById = async (categoryId) => {
   return res
 }
 
+/********** Ads Poster Api **********/
+export const serverGetAdsPoster = async () => {
+  const res = await serverRequest('/ads/poster', 'GET', null, true);
+  return res
+}
+
 /********** Product Api **********/
 export const serverGetPramotionProduct = async (userId) => {
   let url = '/product/pramotion';

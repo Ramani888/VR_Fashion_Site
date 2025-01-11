@@ -8,6 +8,7 @@ import img3 from "../../../assets/img/shop/03.jpg";
 import useHome from "./useHome";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import Preloader from '../../layouts/Preloader';
+import Slider from "react-slick";
 
 const ringsposts = [
   { img: img3, discount: 10, title: "Diamond Ring.", price: 890 },
@@ -54,6 +55,7 @@ const ankletsposts = [
 const Ourcategory = () => {
   const {
     categoryData,
+    adsPosterData,
     loading
   } = useHome();
 
@@ -117,7 +119,6 @@ const Ourcategory = () => {
             );
           })}
         </div>
-
       </div>
     </section>
   )

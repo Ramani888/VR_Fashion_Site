@@ -1763,12 +1763,12 @@ header.header-three.header-absolute {
 }
 
 header.header-three .main-menu-area {
-  position: absolute;
+  /* position: absolute;
   left: 0;
   width: 100%;
   z-index: 99;
   height: auto;
-  bottom: -60px;
+  bottom: -60px; */
 }
 
 @media (max-width: 399px) {

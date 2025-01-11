@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { serverAddToCart, serverAddWishlistProduct, serverGetCategory, serverGetPramotionProduct, serverRemoveToCart, serverRemoveWishlistProduct } from '../../../services/serverApi';
+import { serverAddToCart, serverAddWishlistProduct, serverGetAdsPoster, serverGetCategory, serverGetPramotionProduct, serverRemoveToCart, serverRemoveWishlistProduct } from '../../../services/serverApi';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 import { getUserData } from '../../../helper/UserHelper';
 import { useCartContext } from '../../../hooks/CartContext';
@@ -9,6 +9,7 @@ const useHome = () => {
     const history = useHistory();
     const [loading, setLoading] = useState(false);
     const [categoryData, setCategoryData] = useState([]);
+    const [adsPosterData, setAdsPosterData] = useState([]);
     const [pramotionProductData, setPramotionProductData] = useState([]);
     const [currentPramotionProductData, setCurrentPramotionProductData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -32,6 +33,20 @@ const useHome = () => {
         } catch (err) {
             console.error(err);
             setCategoryData([]);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    // Fetch Ad Poster Data
+    const getAdsPosterData = async () => {
+        try {
+            setLoading(true);
+            const res = await serverGetAdsPoster();
+            setAdsPosterData(res?.data);
+        } catch (err) {
+            console.error(err);
+            setAdsPosterData([]);
         } finally {
             setLoading(false);
         }
@@ -158,6 +173,7 @@ const useHome = () => {
     useEffect(() => {
         getCategoryData();
         getPramotionProductData();
+        getAdsPosterData();
     }, []);
 
     // Update current promotion products when `currentPage` or `pramotionProductData` changes, but only if data has been fetched
@@ -179,7 +195,8 @@ const useHome = () => {
         handleNavigation,
         loading,
         handleWishlist,
-        handleCart
+        handleCart,
+        adsPosterData
     };
 };
 
