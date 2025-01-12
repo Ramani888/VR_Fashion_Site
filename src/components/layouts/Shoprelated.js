@@ -63,7 +63,7 @@ const Shoprelated = ({ product }) => {
   };
 
   return (
-    <section className="restaurant-tab-area bg-black pt-115 pb-115">
+    <section className="restaurant-tab-area bg-black pt-40">
       <div className="container">
         <div className="row align-items-center">
           <div className="col-md-8 col-sm-7">
@@ -84,7 +84,7 @@ const Shoprelated = ({ product }) => {
           </div>
         </div>
         <Slider
-          className="row related-product-slider mt-80"
+          className="row related-product-slider mt-40"
           ref={sliderRef}
           {...settings}
         >

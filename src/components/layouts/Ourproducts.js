@@ -29,10 +29,10 @@ const Ourproducts = () => {
     handleCart
   } = useHome();
   return (
-    <section className="restaurant-tab-area pb-10 mt-50">
+    <section className="restaurant-tab-area pb-10 mt-20">
       {loading && <Preloader />}
       <div className="container-fluid">
-        <div className="section-title text-center mb-50">
+        {/* <div className="section-title text-center mb-50">
           <div className="section-title-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -68,7 +68,7 @@ const Ourproducts = () => {
           </div>
           <span className="title-tag"> Featured </span>
           <h2>Our Products</h2>
-        </div>
+        </div> */}
         <div className="row">
           {pramotionProductData?.map((item, i) => {
             const percentageDiscount = Math.round(100 - Number(Number(item?.price * 100) / Number(item?.mrp)));

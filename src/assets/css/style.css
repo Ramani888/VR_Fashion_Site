@@ -2820,6 +2820,17 @@ header.header-three.sigma-header
   transition: 0.3s;
 }
 
+/* ====== Shop Section ====== */
+.Shop-section {
+  margin-top: 30px;
+}
+
+@media (max-width: 767px) {
+  .Shop-section {
+    margin-top: -20px;
+  }
+}
+
 /*=====Sigma Mobile Menu======*/
 
 .sigma-mobile-menu {

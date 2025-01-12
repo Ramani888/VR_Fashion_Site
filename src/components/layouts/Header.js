@@ -177,8 +177,8 @@ const Header = () => {
                     />
                   </svg>
                   <div className="site-logo-text">
-                    <h3>VR-Fashion</h3>
-                    <h6>Luxury Pieces</h6>
+                    <h3>VR Fashion</h3>
+                    {/* <h6>Luxury Pieces</h6> */}
                   </div>
                 </Link>
               </div>
@@ -1037,8 +1037,8 @@ const Header = () => {
                     />
                   </svg>
                   <div className="site-logo-text">
-                    <h3>VR-Fashion</h3>
-                    <h6>Luxury Pieces</h6>
+                    <h3>VR Fashion</h3>
+                    {/* <h6>Luxury Pieces</h6> */}
                   </div>
                 </Link>
               </div>

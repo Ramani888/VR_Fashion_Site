@@ -125,7 +125,7 @@ const Shopinfo = ({ product }) => {
           </div>
           <div className="col-lg-7">
             <div className="shop-detail-content">
-              <h3 className="product-title mb-20">
+              <h3 className="product-title mb-10">
                 {productData?.name}
               </h3>
               {/* <span className="rating mb-20">
@@ -149,13 +149,13 @@ const Shopinfo = ({ product }) => {
                   <span>1 Reviews</span>
                 </span>
               </span> */}
-              <div className="desc mb-20 pb-20 border-bottom">
+              <div className="desc mb-10 pb-10 border-bottom">
                 <span className="price">
                   ₹{productData?.price}{" "}
                   <span>₹{productData?.mrp}</span>
                 </span>
               </div>
-              <div className="mt-20 mb-20">
+              <div className="mt-10 mb-20">
                 <div className="d-inline-block other-info">
                   <h6>
                     Availability:
@@ -169,11 +169,11 @@ const Shopinfo = ({ product }) => {
                   </h6>
                 </div> */}
               </div>
-              <div className="short-descr mb-20">
+              <div className="short-descr mb-10">
                 <p>{productData?.description}</p>
               </div>
               {productData?.productColorCode && (
-                <div className="color-sec mb-20">
+                <div className="color-sec mb-10">
                   <label>Color</label>
                   <div className="color-box">
                     <label className="m-0">
@@ -203,7 +203,7 @@ const Shopinfo = ({ product }) => {
                 </div>
               )}
               {productData?.productColorName && (
-                <div className="color-sec mb-20">
+                <div className="color-sec mb-10">
                   <label>Material</label>
                   <div className="color-box">
                     <label className="m-0">
@@ -299,10 +299,10 @@ const Shopinfo = ({ product }) => {
             </div>
           </div>
           <div className="col-12">
-            <div className="product-description mt-100">
-              <Tab.Container defaultActiveKey="description">
+            <div className="product-description mt-40">
+              <Tab.Container defaultActiveKey="addinfo">
                 <div className="tabs">
-                  <Nav variant="tabs" className=" justify-content-center">
+                  <Nav variant="tabs" className="justify-content-center">
                     <Nav.Item>
                       <Nav.Link eventKey="description">Description</Nav.Link>
                     </Nav.Item>

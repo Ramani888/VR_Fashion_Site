@@ -20,7 +20,7 @@ const Shopdetail = () => {
         <meta name="description" content="#" />
       </MetaTags>
       <Header />
-      <Breadcrumb breadcrumb={{ pagename: product?.name }} />
+      {/* <Breadcrumb breadcrumb={{ pagename: product?.name }} /> */}
       <Content product={product}/>
       {/* <Instafeeds /> */}
       {/* <Footer /> */}
