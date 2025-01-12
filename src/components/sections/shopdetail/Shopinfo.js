@@ -85,7 +85,7 @@ const Shopinfo = ({ product }) => {
     };
 
   return (
-    <section className="Shop-section pt-120 pb-120">
+    <section className="Shop-section pt-120 pb-20">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-lg-5">
