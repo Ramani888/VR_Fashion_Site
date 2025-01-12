@@ -1,19 +1,7 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
-
-import img1 from "../../assets/img/shop/01.jpg";
-import img2 from "../../assets/img/shop/02.jpg";
-import img3 from "../../assets/img/shop/03.jpg";
-import img4 from "../../assets/img/shop/04.jpg";
 import useShopDetail from "../sections/shopdetail/useShopDetail";
-
-const relatedshopposts = [
-  { img: img1, discount: 15, title: "Ankle Bracelet", price: 390 },
-  { img: img2, discount: "", title: "Stud Earrings", price: 290 },
-  { img: img3, discount: 10, title: "Crumpled Ring", price: 450 },
-  { img: img4, discount: 25, title: "Moon Necklace", price: 500 },
-];
 
 const Shoprelated = ({ product }) => {
   const {

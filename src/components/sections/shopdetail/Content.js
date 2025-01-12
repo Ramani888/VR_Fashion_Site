@@ -11,8 +11,12 @@ const Content = ({ product }) => {
   return (
     <Fragment>
       {loading && <Preloader />}
-      <Shopinfo product={product} />
-      <Shoprelated product={product} />
+      {product && (
+        <>
+          <Shopinfo product={product} />
+          <Shoprelated product={product} />
+        </>
+      )}
     </Fragment>
   );
 };

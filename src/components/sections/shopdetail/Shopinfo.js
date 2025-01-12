@@ -2,37 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import { Tab, Nav } from "react-bootstrap";
-
-import bgimg1 from "../../../assets/img/shop/detail-1.png";
-import bgimg2 from "../../../assets/img/shop/detail-2.png";
-
-import smimg1 from "../../../assets/img/shop/s-1.png";
-import smimg2 from "../../../assets/img/shop/s-2.png";
-import smimg3 from "../../../assets/img/shop/s-3.png";
-import smimg4 from "../../../assets/img/shop/s-4.png";
-
-import comment1 from "../../../assets/img/blog-details/avatar-1.jpg";
-import comment2 from "../../../assets/img/blog-details/avatar-2.jpg";
-import comment3 from "../../../assets/img/blog-details/avatar-3.jpg";
-import { apiGet } from "../../Api/ApiService";
-import Api from "../../Api/EndPoint";
 import useShopDetail from "./useShopDetail";
-
-const bigsliderpost = [
-  { img: bgimg1, tag: "Sale" },
-  { img: bgimg2 },
-  { img: bgimg2, tag: "Sale" },
-  { img: bgimg2, tag: "Sale" },
-  { img: bgimg1, tag: "Sale" },
-];
-const smallsliderpost = [
-  { img: smimg1 },
-  { img: smimg2 },
-  { img: smimg3 },
-  { img: smimg4 },
-  { img: smimg1 },
-  { img: smimg2 },
-];
 
 const Shopinfo = ({ product }) => {
   const {
@@ -84,6 +54,10 @@ const Shopinfo = ({ product }) => {
         }],
     };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <section className="Shop-section pt-120 pb-20">
       <div className="container">
@@ -98,7 +72,7 @@ const Shopinfo = ({ product }) => {
               >
                 {productData?.image?.map((item, i) => (
                   <div key={i} className="slide-item">
-                    <div className="image-box" style={{height: '500px'}}>
+                    <div className="image-box" style={{ height: '500px' }}>
                       <Link>
                         <img src={item?.path} className="img-fluid" alt="img" />
                       </Link>
@@ -115,7 +89,7 @@ const Shopinfo = ({ product }) => {
               >
                 {productData?.image?.map((item, i) => (
                   <div key={i} className="slide-item" style={{display:'inline-block'}}>
-                    <div className="image-box" style={{height: '100px'}}>
+                    <div className="image-box" style={{ height: '100px' }}>
                       <img src={item?.path} className="img-fluid" alt="img" />
                     </div>
                   </div>
@@ -128,27 +102,6 @@ const Shopinfo = ({ product }) => {
               <h3 className="product-title mb-10">
                 {productData?.name}
               </h3>
-              {/* <span className="rating mb-20">
-                <span className="text-yellow">
-                  <i className="far fa-star" />
-                </span>
-                <span className="text-yellow">
-                  <i className="far fa-star" />
-                </span>
-                <span className="text-yellow">
-                  <i className="far fa-star" />
-                </span>
-                <span className="text-dark-white">
-                  <i className="far fa-star" />
-                </span>
-                <span className="text-dark-white">
-                  <i className="far fa-star" />
-                </span>
-                <span className="pro-review">
-                  {" "}
-                  <span>1 Reviews</span>
-                </span>
-              </span> */}
               <div className="desc mb-10 pb-10 border-bottom">
                 <span className="price">
                   ₹{productData?.price}{" "}
@@ -162,12 +115,6 @@ const Shopinfo = ({ product }) => {
                     <span className="text-success ml-2">In Stock</span>
                   </h6>
                 </div>
-                {/* <div className="ml-2 d-inline-block other-info">
-                  <h6>
-                    SKU:
-                    <span className="grey ml-2">006-bhg</span>
-                  </h6>
-                </div> */}
               </div>
               <div className="short-descr mb-10">
                 <p>{productData?.description}</p>
@@ -187,18 +134,6 @@ const Shopinfo = ({ product }) => {
                         style={{ backgroundColor: productData.productColorCode }} 
                       />
                     </label>
-                    {/* <label className="m-0">
-                      <input type="radio" name="color" value="yellow" />
-                      <span className="choose-color yellow" style={{ backgroundColor: "yellow" }} />
-                    </label>
-                    <label className="m-0">
-                      <input type="radio" name="color" value="blue" />
-                      <span className="choose-color blue" style={{ backgroundColor: "blue" }} />
-                    </label>
-                    <label className="m-0">
-                      <input type="radio" name="color" value="green" />
-                      <span className="choose-color green" style={{ backgroundColor: "green" }} />
-                    </label> */}
                   </div>
                 </div>
               )}
@@ -210,18 +145,6 @@ const Shopinfo = ({ product }) => {
                       <input type="radio" name="material" value={productData?.productColorName} defaultChecked />
                       <span className="choose-material">{productData?.productColorName}</span>
                     </label>
-                    {/* <label className="m-0">
-                      <input type="radio" name="material" />
-                      <span className="choose-material">Diamond</span>
-                    </label>
-                    <label className="m-0">
-                      <input type="radio" name="material" />
-                      <span className="choose-material">Silver</span>
-                    </label>
-                    <label className="m-0">
-                      <input type="radio" name="material" />
-                      <span className="choose-material">Stone</span>
-                    </label> */}
                   </div>
                 </div>
               )}
@@ -264,16 +187,6 @@ const Shopinfo = ({ product }) => {
                       {categoryData?.name}
                     </Link>
                   </li>
-                  {/* <li className="list-inline-item mr-2">
-                    <Link to="#" className="grey">
-                      Rings
-                    </Link>
-                  </li>
-                  <li className="list-inline-item">
-                    <Link to="#" className="grey">
-                      Silver Bracelet
-                    </Link>
-                  </li> */}
                 </ul>
               </div>
               <div className="other-info flex mt-20">
@@ -284,16 +197,6 @@ const Shopinfo = ({ product }) => {
                       {productData?.code}
                     </Link>
                   </li>
-                  {/* <li className="list-inline-item mr-2">
-                    <Link to="#" className="grey">
-                      necklaces
-                    </Link>
-                  </li>
-                  <li className="list-inline-item">
-                    <Link to="#" className="grey">
-                      bracelet
-                    </Link>
-                  </li> */}
                 </ul>
               </div>
             </div>
@@ -306,9 +209,6 @@ const Shopinfo = ({ product }) => {
                     <Nav.Item>
                       <Nav.Link eventKey="description">Description</Nav.Link>
                     </Nav.Item>
-                    {/* <Nav.Item>
-                      <Nav.Link eventKey="review">Reviews (3)</Nav.Link>
-                    </Nav.Item> */}
                     <Nav.Item>
                       <Nav.Link eventKey="addinfo">Additional Info</Nav.Link>
                     </Nav.Item>
@@ -319,128 +219,6 @@ const Shopinfo = ({ product }) => {
                         {productData?.description}
                       </p>
                     </Tab.Pane>
-                    {/* <Tab.Pane eventKey="review">
-                      <div className="news-details-box">
-                        <div className="comment-template">
-                          <h3 className="box-title">03 Reviews</h3>
-                          <ul className="comments-list mb-100">
-                            <li>
-                              <div className="comment-img">
-                                <img src={comment1} alt="img" />
-                              </div>
-                              <div className="comment-desc">
-                                <div className="desc-top">
-                                  <h6>Rosalina Kelian</h6>
-                                  <span className="date">19th May 2022</span>
-                                  <Link to="#" className="reply-link">
-                                    <i className="far fa-reply" />
-                                    Reply
-                                  </Link>
-                                </div>
-                                <p>
-                                  Lorem ipsum dolor sit amet, consectetur
-                                  adipisicing elit, sed do eiusmod tempor
-                                  incididunt ut labore et dolore magna aliqua.
-                                  Ut enim ad minim veniam, quis nostrud
-                                  exercitation ullamco laboris nisi ut aliquip
-                                  ex ea commodo consequat.
-                                </p>
-                              </div>
-                              <ul className="children">
-                                <li>
-                                  <div className="comment-img">
-                                    <img src={comment2} alt="img" />
-                                  </div>
-                                  <div className="comment-desc">
-                                    <div className="desc-top">
-                                      <h6>Rosalina Kelian</h6>
-                                      <span className="date">
-                                        19th May 2022
-                                      </span>
-                                      <Link to="#" className="reply-link">
-                                        <i className="far fa-reply" />
-                                        Reply
-                                      </Link>
-                                    </div>
-                                    <p>
-                                      Lorem ipsum dolor sit amet, consectetur
-                                      adipisicing elit, sed do eiusmod tempor
-                                      incididunt ut labore et dolore magna
-                                      aliqua. Ut enim ad minim veniam, quis
-                                      nostrud exercitation ullamco laboris nisi
-                                      ut aliquip ex ea commodo consequat.
-                                    </p>
-                                  </div>
-                                </li>
-                              </ul>
-                            </li>
-                            <li>
-                              <div className="comment-img">
-                                <img src={comment3} alt="img" />
-                              </div>
-                              <div className="comment-desc">
-                                <div className="desc-top">
-                                  <h6>Rosalina Kelian</h6>
-                                  <span className="date">19th May 2022</span>
-                                  <Link to="#" className="reply-link">
-                                    <i className="far fa-reply" />
-                                    Reply
-                                  </Link>
-                                </div>
-                                <p>
-                                  Lorem ipsum dolor sit amet, consectetur
-                                  adipisicing elit, sed do eiusmod tempor
-                                  incididunt ut labore et dolore magna aliqua.
-                                  Ut enim ad minim veniam, quis nostrud
-                                  exercitation ullamco laboris nisi ut aliquip
-                                  ex ea commodo consequat.
-                                </p>
-                              </div>
-                            </li>
-                          </ul>
-                          <h3 className="box-title">Post Comment</h3>
-                          <div className="comment-form">
-                            <form action="#">
-                              <div className="input-group input-group-two textarea mb-20">
-                                <textarea
-                                  placeholder="Type your Review...."
-                                  defaultValue={""}
-                                />
-                                <div className="icon">
-                                  <i className="fas fa-pen" />
-                                </div>
-                              </div>
-                              <div className="input-group input-group-two mb-20">
-                                <input
-                                  type="text"
-                                  placeholder="Type your Name...."
-                                />
-                                <div className="icon">
-                                  <i className="fas fa-user" />
-                                </div>
-                              </div>
-                              <div className="input-group input-group-two mb-20">
-                                <input
-                                  type="email"
-                                  placeholder="Type your email...."
-                                />
-                                <div className="icon">
-                                  <i className="fas fa-envelope" />
-                                </div>
-                              </div>
-                              <div className="input-group  mt-30">
-                                <button
-                                  type="submit"
-                                  className="main-btn btn-filled"
-                                >
-                                  <i className="far fa-comments" /> Post Review
-                                </button>
-                              </div>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                    </Tab.Pane> */}
                     <Tab.Pane eventKey="addinfo" className="additional-info">
                       <div>
                         <h3 className="text-white mb-20">
