@@ -80,6 +80,7 @@ const Ourcategory = () => {
             overflowX: 'auto',
             whiteSpace: 'nowrap',
           }}
+          className="no-scrollbar"
         >
           {categoryData?.map((item, index) => {
             return (
