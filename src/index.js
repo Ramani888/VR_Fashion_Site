@@ -16,11 +16,14 @@ import './assets/fonts/flaticon/flaticon-2.css';
 import './assets/css/default.css';
 import './assets/css/style.css';
 import { CartProvider } from './hooks/CartContext';
+import { DialogProvider } from './components/Dialog/DialogContext';
 
 ReactDOM.render(
   <BrowserRouter basename="/VR-Fashion">
     <CartProvider>
-      <App />
+      <DialogProvider>
+        <App />
+      </DialogProvider>
     </CartProvider>
   </BrowserRouter>,
   document.getElementById('root')
