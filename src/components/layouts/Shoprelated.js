@@ -79,7 +79,7 @@ const Shoprelated = ({ product }) => {
           {categoryProductData?.map((item, i) => {
             const percentageDiscount = Math.round(100 - Number(Number(item?.price * 100) / Number(item?.mrp)));
             return (
-              <div key={i} className="col-12">
+              <div key={i} className="col-12 mh-100">
                 <div className="food-box shop-box">
                   <div className="thumb">
                     <div style={{height: '400px', width: '100%'}}>

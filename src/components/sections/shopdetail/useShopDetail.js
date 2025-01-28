@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { serverAddToCart, serverGetCategoryById, serverGetProductByCategoryId, serverGetProductById, serverRemoveToCart } from '../../../services/serverApi';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getUserData } from '../../../helper/UserHelper';
 import { useCartContext } from '../../../hooks/CartContext';
 
 const useShopDetail = (product) => {
     const { updateCartCount } = useCartContext();
-    const history = useHistory();
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [productData, setProductData] = useState();
     const [categoryData, setCategoryData] = useState();
@@ -71,13 +71,14 @@ const useShopDetail = (product) => {
 
     // Function to handle navigation
     const handleNavigation = (path, product) => {
-        history.push(path, product); // Use history.push() for navigation
+        navigate(path, product); // Use history.push() for navigation
     };
 
     const handleAddToCart = async (item) => {
         try {
             setLoading(true);
             const userData = getUserData();
+            console.log('userData',userData)
             if (userData) {
                 const bodyData = {
                     userId: userData?._id,
@@ -101,13 +102,13 @@ const useShopDetail = (product) => {
         const userData = getUserData();
         if (userData) {
             if (item?.isCart) {
-                history.push('/cart');
+                navigate('/cart');
             } else {
                 handleAddToCart(item)
             }
             updateCartCount();
         } else {
-            history.push('/login');
+            navigate('/login');
         }
     }
 
@@ -162,7 +163,7 @@ const useShopDetail = (product) => {
             }
             updateCartCount();
         } else {
-            history.push('/login');
+            navigate('/login');
         }
     }
 

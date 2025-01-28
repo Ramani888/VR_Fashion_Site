@@ -5,11 +5,11 @@ import loginbg from "../../../assets/img/login.png";
 import { apiPost } from "../../Api/ApiService";
 import Api from "../../Api/EndPoint";
 import { serverLogin } from "../../../services/serverApi";
-import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Preloader from "../../layouts/Preloader";
 
 const Content = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -31,7 +31,7 @@ const Content = () => {
       console.log('loginData', res);
       if (res?.userDataAndToken) {
         localStorage.setItem('user', JSON.stringify(res?.userDataAndToken));
-        history.push('/account');
+        navigate('/account');
       }
     } catch (error) {
       console.error("Error fetching trending data:", error);
@@ -93,19 +93,6 @@ const Content = () => {
                   <div className="form-seperator">
                     <span>OR</span>
                   </div>
-                  {/* <div className="social-buttons">
-                    <button
-                      type="button"
-                      className="main-btn btn-border facebook mb-20"
-                    >
-                      <i className="fab fa-facebook-f" />
-                      Continue with Facebook
-                    </button>
-                    <button type="button" className="main-btn btn-filled mb-30">
-                      <i className="fab fa-google" />
-                      Continue with Google
-                    </button>
-                  </div> */}
                   <p>
                     Don't have an Account?{' '}
                     <Link to="/register" className="d-inline-block">

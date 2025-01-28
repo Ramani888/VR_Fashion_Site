@@ -10,29 +10,29 @@ import Pagination from "./Pagination";
 import Preloader from '../layouts/Preloader';
 
 const featureposts = [
-  { img: img1, discount: 15, title: "Ankle Bracelet", price: 390 },
-  { img: img2, discount: "", title: "Stud Earrings", price: 290 },
-  { img: img3, discount: 10, title: "Crumpled Ring", price: 450 },
-  { img: img4, discount: 25, title: "Moon Necklace", price: 500 },
+    { img: img1, discount: 15, title: "Ankle Bracelet", price: 390 },
+    { img: img2, discount: "", title: "Stud Earrings", price: 290 },
+    { img: img3, discount: 10, title: "Crumpled Ring", price: 450 },
+    { img: img4, discount: 25, title: "Moon Necklace", price: 500 },
 ];
 
 const Ourproducts = () => {
-  const {
-    pramotionProductData,
-    handlePageChange,
-    currentPage,
-    totalPages,
-    currentPramotionProductData,
-    handleNavigation,
-    loading,
-    handleWishlist,
-    handleCart
-  } = useHome();
-  return (
-    <section className="restaurant-tab-area pb-10 mt-20">
-      {loading && <Preloader />}
-      <div className="container-fluid">
-        {/* <div className="section-title text-center mb-50">
+    const {
+        pramotionProductData,
+        handlePageChange,
+        currentPage,
+        totalPages,
+        currentPramotionProductData,
+        handleNavigation,
+        loading,
+        handleWishlist,
+        handleCart
+    } = useHome();
+    return (
+        <section className="restaurant-tab-area pb-10 mt-20">
+            {loading && <Preloader />}
+            <div className="container-fluid">
+                {/* <div className="section-title text-center mb-50">
           <div className="section-title-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -69,74 +69,107 @@ const Ourproducts = () => {
           <span className="title-tag"> Featured </span>
           <h2>Our Products</h2>
         </div> */}
-        <div className="row">
-          {pramotionProductData?.map((item, i) => {
-            const percentageDiscount = Math.round(100 - Number(Number(item?.price * 100) / Number(item?.mrp)));
-            return (
-              <div key={i} className="col-lg-3 col-6">
-                <div className="food-box shop-box">
-                  <div className="thumb">
-                    <div className="product-img">
-                      <img src={item?.image[0]?.path} alt="images" style={{height: '100%', width: '100%', objectFit: 'cover'}} />
-                    </div>
-                    {item?.discount && (
-                      <div className="badges">
-                        {item?.discount > 0 || item?.discount !== "" ? (
-                          <span className="price">Sale</span>
-                        ) : (
-                          ""
-                        )}
-                        {item.discount > 0 || item.discount !== "" ? (
-                          <span className="price discounted">
-                            -{item?.discount}%
-                          </span>
-                        ) : (
-                          ""
-                        )}
-                      </div>
-                    )}
-                    <div className="button-group">
-                      <Link onClick={() => handleWishlist(item)}>
-                        <i className={item?.isWishlist ? 'fas fa-heart' : 'far fa-heart'} />
-                      </Link>
-                      <Link onClick={() => handleCart(item)}>
-                        <i className={item?.isCart ? 'fas fa-shopping-cart' : "far fa-shopping-cart"} />
-                      </Link>
-                      <Link onClick={() => handleNavigation('/shop-detail', item)}>
-                        <i className="far fa-eye" />
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="desc">
-                    <h4 className="product-name">
-                      <Link onClick={() => handleNavigation('/shop-detail', item)}>{item?.name}</Link>
-                    </h4>
-                    <span className="price">
-                    ₹{item?.price}
-                        <span>
-                        ₹{item?.mrp}
-                        </span>
-                    </span>
-                    <span className="price">
-                      {percentageDiscount}% off
-                    </span>
-                    <Link onClick={() => handleNavigation('/shop-detail', item)} className="link">
-                      <i className="fal fa-arrow-right" />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            )
-          })}
-          {/* {pramotionProductData?.map((item, i) => (
+                <div className="row">
+                    {pramotionProductData?.map((item, i) => {
+                        const percentageDiscount = Math.round(100 - Number(Number(item?.price * 100) / Number(item?.mrp)));
+                        return (
+                            <div key={i} className="col-lg-3 col-6">
+                                <div className="food-box shop-box">
+                                    <div className="thumb">
+                                        <div className="product-img">
+                                            <img src={item?.image[0]?.path} alt="images" style={{ height: '100%', width: '100%', objectFit: 'cover' }} />
+                                        </div>
+                                        {item?.discount && (
+                                            <div className="badges">
+                                                {item?.discount > 0 || item?.discount !== "" ? (
+                                                    <span className="price">Sale</span>
+                                                ) : (
+                                                    ""
+                                                )}
+                                                {item.discount > 0 || item.discount !== "" ? (
+                                                    <span className="price discounted">
+                                                        -{item?.discount}%
+                                                    </span>
+                                                ) : (
+                                                    ""
+                                                )}
+                                            </div>
+                                        )}
+                                        {/* <div className="button-group">
+                                            <Link onClick={() => handleWishlist(item)}>
+                                                <i className={item?.isWishlist ? 'fas fa-heart' : 'far fa-heart'} />
+                                            </Link>
+                                            <Link onClick={() => handleCart(item)}>
+                                                <i className={item?.isCart ? 'fas fa-shopping-cart' : "far fa-shopping-cart"} />
+                                            </Link>
+                                            <Link onClick={() => handleNavigation('/shop-detail', item)}>
+                                                <i className="far fa-eye" />
+                                            </Link>
+                                        </div> */}
+                                        <div className="button-group">
+  {/* Wishlist Button */}
+  <span
+    onClick={() => handleWishlist(item)}
+    className="action-btn"
+    style={{ cursor: 'pointer' }}
+  >
+    <i className={item?.isWishlist ? 'fas fa-heart' : 'far fa-heart'} />
+  </span>
+
+  {/* Cart Button */}
+  <span
+    onClick={() => handleCart(item)}
+    className="action-btn"
+    style={{ cursor: 'pointer' }}
+  >
+    <i className={item?.isCart ? 'fas fa-shopping-cart' : 'far fa-shopping-cart'} />
+  </span>
+
+  {/* View Details Button */}
+  <span
+    onClick={() => handleNavigation('/shop-detail', item)}
+    className="action-btn"
+    style={{ cursor: 'pointer' }}
+  >
+    <i className="far fa-eye" />
+  </span>
+</div>
+
+                                    </div>
+                                    <div className="desc">
+                                        <h4 className="product-name">
+                                            <Link onClick={() => handleNavigation('/shop-detail', item)}>{item?.name}</Link>
+                                        </h4>
+                                        <span className="price">
+                                            ₹{item?.price}
+                                            <span>
+                                                ₹{item?.mrp}
+                                            </span>
+                                        </span>
+                                        <span className="price">
+                                            {percentageDiscount}% off
+                                        </span>
+                                        <button
+                                            onClick={() => handleNavigation('/shop-detail', item)} className="link"
+                                            style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+                                        ><i className="fal fa-arrow-right" /></button>
+                                        {/* <Link onClick={() => handleNavigation('/shop-detail', item)} className="link">
+                      
+                    </Link> */}
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })}
+                    {/* {pramotionProductData?.map((item, i) => (
           ))} */}
-        </div>
-        {/* <div className="pagination-wrap">
+                </div>
+                {/* <div className="pagination-wrap">
           <Pagination onPageChange={handlePageChange} currentPage={currentPage} totalPages={totalPages}/>
         </div> */}
-      </div>
-    </section>
-  );
+            </div>
+        </section>
+    );
 };
 
 export default Ourproducts;

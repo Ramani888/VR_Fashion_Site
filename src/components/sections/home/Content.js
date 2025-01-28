@@ -24,24 +24,9 @@ const Content = () => {
         <Fragment>
             <Banner/>
             <Ourcategory/>
-            {/* <Bestselling /> */}
             <Latestproducts />
             <Category/>
             <Ourproducts />
-            {/* <Habout/> */}
-            {/* <Trending/> */}
-            {/* <Condos/>
-            <Cta/>
-            <Bestselling/>
-            <Ourcategory/>
-            <Handpick/>
-            <Ourproducts/>
-            <Saleproducts/>
-            <Counter/>
-            <Onsale/>
-            <Video/>
-            <Latestproducts/>
-            <Blog/> */}
         </Fragment>
     );
 }

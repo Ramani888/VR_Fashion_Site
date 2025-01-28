@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { serverAddToCart, serverAddWishlistProduct, serverGetAllProduct, serverRemoveToCart, serverRemoveWishlistProduct } from '../../../services/serverApi';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getUserData } from '../../../helper/UserHelper';
 import { useCartContext } from '../../../hooks/CartContext';
 
 const useShopLeft = () => {
     const { updateCartCount } = useCartContext();
-    const history = useHistory();
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [productData, setProductData] = useState([]);
 
@@ -27,7 +27,7 @@ const useShopLeft = () => {
 
     // Function to handle navigation
     const handleNavigation = (path, product) => {
-        history.push(path, product); // Use history.push() for navigation
+        navigate(path, product); // Use history.push() for navigation
     };
 
     const handleAddWishlist = async (productId) => {
@@ -71,7 +71,7 @@ const useShopLeft = () => {
                 handleAddWishlist(item?._id);
             }
         } else {
-            history.push('/login');
+            navigate('/login');
         }
     }
 
@@ -122,7 +122,7 @@ const useShopLeft = () => {
             }
             updateCartCount();
         } else {
-            history.push('/login');
+            navigate('/login');
         }
     }
 

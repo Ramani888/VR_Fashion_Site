@@ -5,7 +5,7 @@ import img1 from '../../../assets/img/shop/cart-1.png';
 import img2 from '../../../assets/img/shop/cart-2.png';
 import useCart from './useCart';
 import Preloader from "../../layouts/Preloader";
-import { useHistory } from 'react-router-dom/cjs/react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getUserData } from '../../../helper/UserHelper';
 
 const cartlistpost = [
@@ -20,7 +20,7 @@ const Content = () => {
         handleRemoveToCart,
         updateCartData
     } = useCart();
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const totalPrice = cartData?.data?.reduce((accumulator, item) => {
         return accumulator + item?.product?.mrp * item?.qty;
@@ -106,7 +106,7 @@ const Content = () => {
     useEffect(() => {
         const userData = getUserData();
         if (!userData) {
-            history.push('/login')
+            navigate('/login')
         }
 
     }, [])
@@ -159,7 +159,7 @@ const Content = () => {
                                 <tfoot>
                                     <tr>
                                         <td colSpan={4}>
-                                            <button onClick={() => history?.push('/shop-left')} className="main-btn btn-filled float-left">Continue Shoping</button>
+                                            <button onClick={() => navigate('/shop-left')} className="main-btn btn-filled float-left">Continue Shoping</button>
                                             {/* <button className="main-btn btn-filled float-right">Update Cart</button> */}
                                         </td>
                                     </tr>
@@ -167,20 +167,6 @@ const Content = () => {
                             </table>
                         </div>
                         <div className="row">
-                            {/* <div className="col-lg-12 mb-60">
-                                <div className="cw-product-promo">
-                                    <div className="cw-title">
-                                        <h5>Discount Code</h5>
-                                    </div>
-                                    <form>
-                                        <div className="form-group mb-0">
-                                            <label htmlFor="couponCode">Enter coupon code</label>
-                                            <input type="text" className="form-control" placeholder="Coupon Code" id="couponCode" />
-                                            <button type="submit" className="main-btn btn-filled mt-4">Apply</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div> */}
                             <div className="offset-lg-6 col-lg-6 col-md-12">
                                 <div className="cw-product-promo">
                                     <table className="table cw-table-borderless">

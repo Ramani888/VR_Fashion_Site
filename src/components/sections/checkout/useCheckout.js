@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { getUserData } from '../../../helper/UserHelper';
 import { serverAddDeliveryAddressData, serverCreateOrder, serverGetCartData, serverGetDeliveryAddressData, serverGetRewardData, serverTestingOrder } from '../../../services/serverApi';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const useCheckout = () => {
-    const history = useHistory();
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [cartData, setCartData] = useState([]);
     const [deliveryAddressData, setDeliveryAddressData] = useState([]);
@@ -120,7 +120,7 @@ const useCheckout = () => {
                 isWallet: useWallet
             };
             await serverCreateOrder(data);
-            history.push('/account');
+            navigate('/account');
         } catch (err) {
             console.log(err);
             setLoading(false);

@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { serverGetOrder } from '../../../services/serverApi';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const useAccount = () => {
-    const history = useHistory();
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [userData, setUserData] = useState();
     const [orderData, setOrderData] = useState([]);
@@ -35,7 +35,7 @@ const useAccount = () => {
 
     const handleLogout = () => {
         localStorage.removeItem('user');
-        history.push('/login')
+        navigate('/login')
     }
 
     useEffect(() => {

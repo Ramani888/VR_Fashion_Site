@@ -5,7 +5,7 @@ import Breadcrumb from '../layouts/Breadcrumbs';
 import Instafeeds from '../layouts/Instafeeds';
 import Footer from '../layouts/Footerthree';
 import Content from '../sections/classification/Content';
-import { useLocation } from 'react-router-dom/cjs/react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const Classification = () => {
     const location = useLocation();

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { serverAddToCart, serverAddWishlistProduct, serverGetProductByCategoryId, serverGetProductUnderFive, serverGetProductUnderTen, serverGetProductUnderThree, serverGetProductUnderTwo, serverRemoveToCart, serverRemoveWishlistProduct } from '../../../services/serverApi';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useNavigate } from 'react-router-dom';
 import { getUserData } from '../../../helper/UserHelper';
 import { useCartContext } from '../../../hooks/CartContext';
 
 const useClassification = (category) => {
     const { updateCartCount } = useCartContext();
-    const history = useHistory();
+    const navigate = useNavigate();
     const [productData, setProductData] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -41,7 +41,7 @@ const useClassification = (category) => {
 
     // Function to handle navigation
     const handleNavigation = (path, product) => {
-        history.push(path, product); // Use history.push() for navigation
+        navigate(path, product); // Use history.push() for navigation
     };
 
     const handleAddWishlist = async (productId) => {
@@ -85,7 +85,7 @@ const useClassification = (category) => {
                 handleAddWishlist(item?._id);
             }
         } else {
-            history.push('/login');
+            navigate('/login');
         }
     }
 
@@ -136,7 +136,7 @@ const useClassification = (category) => {
             }
             updateCartCount();
         } else {
-            history.push('/login');
+            navigate('/login');
         }
     }
 

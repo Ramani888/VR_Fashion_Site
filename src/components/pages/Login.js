@@ -6,19 +6,19 @@ import Instafeeds from '../layouts/Instafeeds';
 import Footer from '../layouts/Footerthree';
 import Content from '../sections/login/Content';
 import { getUserData } from '../../helper/UserHelper';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-    const history = useHistory();
+    const navigate = useNavigate();
     useEffect(() => {
         document.title = "VR-Fashion | Login";
 
         const userData = getUserData();
 
         if (userData) {
-            history.push('/');
+            navigate('/');
         }
-    }, [history]);
+    }, [navigate]);
 
     return (
         <Fragment>
