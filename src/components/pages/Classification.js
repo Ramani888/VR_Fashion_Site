@@ -9,7 +9,8 @@ import { useLocation } from 'react-router-dom';
 
 const Classification = () => {
     const location = useLocation();
-    const category = location?.state;
+    // const category = location?.state;
+    const { category } = location.state || {};
     return (
         <Fragment>
             <MetaTags>

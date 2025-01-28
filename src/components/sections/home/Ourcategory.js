@@ -63,7 +63,7 @@ const Ourcategory = () => {
 
   // Function to handle navigation
   const handleNavigation = (path, category) => {
-    navigate(path, category); // Use history.push() for navigation
+    navigate(path, {state: { category: category }}); // Use history.push() for navigation
   };
 
   return (

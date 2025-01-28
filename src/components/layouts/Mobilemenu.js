@@ -115,12 +115,12 @@ const Mobilemenu = () => {
             onClick={triggerChild}
           >
             {item.child ? (
-              <Link onClick={(e) => e.preventDefault()} to="/">
+              <Link onClick={(e) => e.preventDefault()} to="/" style={{ textDecoration: 'none' }}>
                 {" "}
                 {item.linkText}{" "}
               </Link>
             ) : (
-              <Link to={item.link}> {item.linkText} </Link>
+              <Link to={item.link} style={{ textDecoration: 'none' }}> {item.linkText} </Link>
             )}
             {item.child && (
               <ul className={submenuOpen ? "sub-menu d-block" : "sub-menu"}>
@@ -132,18 +132,18 @@ const Mobilemenu = () => {
                     }`}
                   >
                     {sub_item.child ? (
-                      <Link onClick={(e) => e.preventDefault()} to="/">
+                      <Link onClick={(e) => e.preventDefault()} to="/" style={{textDecoration: 'none'}}>
                         {" "}
                         {sub_item.linkText}{" "}
                       </Link>
                     ) : (
-                      <Link to={sub_item.link}> {sub_item.linkText} </Link>
+                      <Link to={sub_item.link} style={{textDecoration: 'none'}}> {sub_item.linkText} </Link>
                     )}
                     {sub_item.submenu && (
                       <ul className="sub-menu">
                         {sub_item.submenu.map((third_item, k) => (
                           <li className="menu-item" key={k}>
-                            <Link to={third_item.link}>
+                            <Link to={third_item.link} style={{textDecoration: 'none'}}>
                               {third_item.linkText}
                             </Link>
                           </li>

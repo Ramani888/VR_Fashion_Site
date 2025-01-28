@@ -103,7 +103,9 @@ const Header = () => {
             <div className="nav-container d-flex align-items-center justify-content-between">
               {/* Site Logo */}
               <div className="site-logo site-logo-text">
-                <Link to="/">
+                {/* <img alt="images" src={}></img> */}
+                <img onClick={() => navigate('/')} alt="sample" src="vr_logo.png" style={{height: '120px', width: '100%', cursor: 'pointer'}} />
+                {/* <Link to="/">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -137,9 +139,8 @@ const Header = () => {
                   </svg>
                   <div className="site-logo-text">
                     <h3>VR Fashion</h3>
-                    {/* <h6>Luxury Pieces</h6> */}
                   </div>
-                </Link>
+                </Link> */}
               </div>
               {/* Main Menu */}
               <div className="nav-menu d-lg-flex align-items-center justify-content-between">
@@ -157,20 +158,20 @@ const Header = () => {
                       <nav>
                         <ul className="sigma-main-menu">
                           <li className="menu-item menu-item-has-children">
-                            <Link to="/">Home</Link>
+                            <Link to="/" style={{textDecoration: 'none'}}>Home</Link>
                             <ul className="sub-menu">
                             </ul>
                           </li>
                           <li className="menu-item menu-item-has-children">
-                            <Link to="/shop-left">Shop</Link>
+                            <Link to="/shop-left" style={{ textDecoration: 'none' }}>Shop</Link>
                             <ul className="sub-menu">
                             </ul>
                           </li>
                           <li className="menu-item">
-                            <Link onClick={() => handleWishlistNavigate()}>Wishlist</Link>
+                            <Link onClick={() => handleWishlistNavigate()} style={{ textDecoration: 'none' }}>Wishlist</Link>
                           </li>
                           <li className="menu-item">
-                            <Link to="/contact">Contact</Link>
+                            <Link to="/contact" style={{textDecoration: 'none'}}>Contact</Link>
                           </li>
                         </ul>
                       </nav>
@@ -209,7 +210,7 @@ const Header = () => {
             <div className="sigma-mobile-header-inner">
               {/* Site Logo */}
               <div className="site-logo site-logo-text">
-                <Link to="/">
+                {/* <Link to="/">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -243,9 +244,9 @@ const Header = () => {
                   </svg>
                   <div className="site-logo-text">
                     <h3>VR Fashion</h3>
-                    {/* <h6>Luxury Pieces</h6> */}
                   </div>
-                </Link>
+                </Link> */}
+                <img onClick={() => navigate('/')} alt="sample" src="vr_logo.png" style={{height: '60px', cursor: 'pointer'}} />
               </div>
               <div className="sigma-hamburger-menu" onClick={toggleClass}>
                 <div

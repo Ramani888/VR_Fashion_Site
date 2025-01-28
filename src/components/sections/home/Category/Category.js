@@ -14,7 +14,7 @@ const Category = () => {
   ];
 
   const handleNavigation = (path, category) => {
-    navigate(path, category);
+    navigate(path, {state: {category: category}});
   }
 
   return (
