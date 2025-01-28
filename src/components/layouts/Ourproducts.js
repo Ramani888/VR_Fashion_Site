@@ -95,7 +95,7 @@ const Ourproducts = () => {
                                                 )}
                                             </div>
                                         )}
-                                        {/* <div className="button-group">
+                                        <div className="button-group">
                                             <Link onClick={() => handleWishlist(item)}>
                                                 <i className={item?.isWishlist ? 'fas fa-heart' : 'far fa-heart'} />
                                             </Link>
@@ -105,36 +105,7 @@ const Ourproducts = () => {
                                             <Link onClick={() => handleNavigation('/shop-detail', item)}>
                                                 <i className="far fa-eye" />
                                             </Link>
-                                        </div> */}
-                                        <div className="button-group">
-  {/* Wishlist Button */}
-  <span
-    onClick={() => handleWishlist(item)}
-    className="action-btn"
-    style={{ cursor: 'pointer' }}
-  >
-    <i className={item?.isWishlist ? 'fas fa-heart' : 'far fa-heart'} />
-  </span>
-
-  {/* Cart Button */}
-  <span
-    onClick={() => handleCart(item)}
-    className="action-btn"
-    style={{ cursor: 'pointer' }}
-  >
-    <i className={item?.isCart ? 'fas fa-shopping-cart' : 'far fa-shopping-cart'} />
-  </span>
-
-  {/* View Details Button */}
-  <span
-    onClick={() => handleNavigation('/shop-detail', item)}
-    className="action-btn"
-    style={{ cursor: 'pointer' }}
-  >
-    <i className="far fa-eye" />
-  </span>
-</div>
-
+                                        </div>
                                     </div>
                                     <div className="desc">
                                         <h4 className="product-name">
