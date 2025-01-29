@@ -104,7 +104,7 @@ const Header = () => {
               {/* Site Logo */}
               <div className="site-logo site-logo-text">
                 {/* <img alt="images" src={}></img> */}
-                <img onClick={() => navigate('/')} alt="sample" src="vr_logo.png" style={{height: '120px', width: '100%', cursor: 'pointer'}} />
+                <img onClick={() => navigate('/')} alt="sample" src="vr logo-Photoroom (1)-Photoroom.png" style={{height: '100px', width: '100%', cursor: 'pointer'}} />
                 {/* <Link to="/">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -246,7 +246,7 @@ const Header = () => {
                     <h3>VR Fashion</h3>
                   </div>
                 </Link> */}
-                <img onClick={() => navigate('/')} alt="sample" src="vr_logo.png" style={{height: '60px', cursor: 'pointer'}} />
+                <img onClick={() => navigate('/')} alt="sample" src="vr logo-Photoroom (1)-Photoroom.png" style={{height: '60px', cursor: 'pointer'}} />
               </div>
               <div className="sigma-hamburger-menu" onClick={toggleClass}>
                 <div
