@@ -31,8 +31,11 @@ import Team from "./components/pages/Team";
 import Typography from "./components/pages/Typography";
 import Wishlist from "./components/pages/Wishlist";
 import ErrorPage from "./components/pages/Error";
+import { useDialog } from "./components/Dialog/DialogContext";
+import LoginDialog from "./components/Dialog/LoginDialog";
 
 const App = () => {
+  const { open, closeDialog, openDialog } = useDialog();
   return (
     <>
       <Preloader />
@@ -65,6 +68,10 @@ const App = () => {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
+
+      {open && (
+        <LoginDialog open={open} closeDialog={closeDialog} openDialog={openDialog} />
+      )}
     </>
   );
 };

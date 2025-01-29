@@ -104,12 +104,12 @@ const Content = () => {
                       </div>
                     )}
                     <div className="button-group">
-                      <Link onClick={() => handleWishlist(item)}>
+                      <a onClick={() => handleWishlist(item)} style={{ cursor: 'pointer' }}>
                         <i className={item?.isWishlist ? 'fas fa-heart' : 'far fa-heart'} />
-                      </Link>
-                      <Link onClick={() => handleCart(item)}>
+                      </a>
+                      <a onClick={() => handleCart(item)} style={{ cursor: 'pointer' }}>
                         <i className={item?.isCart ? 'fas fa-shopping-cart' : "far fa-shopping-cart"} />
-                      </Link>
+                      </a>
                       <Link to='/shop-detail' state={{ product: item }}>
                         <i className="far fa-eye" />
                       </Link>

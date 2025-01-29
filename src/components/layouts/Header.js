@@ -16,6 +16,7 @@ import { getUserData } from "../../helper/UserHelper";
 import CustomeLoginPopup from "../Custome/LoginPopup/CustomeLoginPopup";
 import Newsletter from "./Newsletter";
 import { useCartContext } from "../../hooks/CartContext";
+import { useDialog } from "../Dialog/DialogContext";
 
 // Cart loop
 const cartposts = [
@@ -27,6 +28,7 @@ const cartposts = [
 
 const Header = () => {
   const { cartCount } = useCartContext();
+  const { open, openDialog, closeDialog  } = useDialog();
   const navigate = useNavigate();
   const [classMethod, setClassMethod] = useState(false);
   const [toggleMethod, setToggleMethod] = useState(false);
@@ -68,7 +70,6 @@ const Header = () => {
       navigate('/account')
     } else {
       navigate('/login')
-      // return (<CustomeLoginPopup isOpen={true} onClose={() => {}} />)
     }
   }
 
@@ -77,9 +78,7 @@ const Header = () => {
     if (userData) {
       navigate('/wishlist')
     } else {
-      navigate('/login')
-      // window.location.reload();
-      // setShowLoginPopup(true);
+      openDialog();
     }
   }
 
@@ -88,7 +87,7 @@ const Header = () => {
     if (userData) {
       navigate('/cart')
     } else {
-      navigate('/login')
+      openDialog();
     }
   }
 
@@ -159,12 +158,12 @@ const Header = () => {
                       <nav>
                         <ul className="sigma-main-menu">
                           <li className="menu-item menu-item-has-children">
-                            <Link to="/" style={{textDecoration: 'none'}}>Home</Link>
+                            <Link to="/" style={{ textDecoration: 'none', cursor: 'pointer' }}>Home</Link>
                             <ul className="sub-menu">
                             </ul>
                           </li>
                           <li className="menu-item menu-item-has-children">
-                            <Link to="/shop-left" style={{ textDecoration: 'none' }}>Shop</Link>
+                            <Link to="/shop-left" style={{ textDecoration: 'none', cursor: 'pointer' }}>Shop</Link>
                             <ul className="sub-menu">
                             </ul>
                           </li>
@@ -172,7 +171,7 @@ const Header = () => {
                             <a onClick={() => handleWishlistNavigate()} style={{ textDecoration: 'none', cursor: 'pointer' }}>Wishlist</a>
                           </li>
                           <li className="menu-item">
-                            <Link to="/contact" style={{textDecoration: 'none'}}>Contact</Link>
+                            <Link to="/contact" style={{ textDecoration: 'none', cursor: 'pointer' }}>Contact</Link>
                           </li>
                         </ul>
                       </nav>

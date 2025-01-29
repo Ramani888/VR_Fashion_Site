@@ -68,6 +68,11 @@ export const serverLogin = async (data) => {
   return res
 }
 
+export const serverRegisterLogin = async (data) => {
+  const res = await serverRequest('/register/login', 'POST', data, true);
+  return res
+}
+
 /********** Category Api **********/
 export const serverGetCategory = async () => {
   const res = await serverRequest('/category', 'GET', null, true);

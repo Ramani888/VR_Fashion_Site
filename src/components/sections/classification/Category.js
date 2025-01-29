@@ -301,15 +301,15 @@ const Category = ({category}) => {
                             </div>
                           )}
                           <div className="button-group">
-                            <Link onClick={() => handleWishlist(item)}>
+                            <a onClick={() => handleWishlist(item)} style={{ cursor: 'pointer' }}>
                               <i className={item?.isWishlist ? 'fas fa-heart' : 'far fa-heart'} />
-                            </Link>
+                            </a>
                             {/* <Link to="#">
                               <i className="far fa-sync-alt" />
                             </Link> */}
-                            <Link onClick={() => handleCart(item)}>
+                            <a onClick={() => handleCart(item)} style={{ cursor: 'pointer' }}>
                               <i className={item?.isCart ? 'fas fa-shopping-cart' : "far fa-shopping-cart"} />
-                            </Link>
+                            </a>
                             <Link onClick={() => handleNavigation("/shop-detail", item)}>
                               <i className="far fa-eye" />
                             </Link>
@@ -317,7 +317,7 @@ const Category = ({category}) => {
                         </div>
                         <div className="desc">
                           <h4 className="product-name">
-                            <Link onClick={() => handleNavigation("/shop-detail", item)}>{item?.name}</Link>
+                            <Link onClick={() => handleNavigation("/shop-detail", item)} style={{ textDecoration: 'none' }}>{item?.name}</Link>
                           </h4>
                           <span className="price">
                           ₹{item?.price} <span>₹{item?.mrp}</span>

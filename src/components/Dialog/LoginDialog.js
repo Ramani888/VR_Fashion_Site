@@ -1,146 +1,60 @@
-// import React, { useState } from "react";
-// import {
-//   Dialog,
-//   DialogTitle,
-//   DialogContent,
-//   TextField,
-//   MenuItem,
-//   Button,
-//   Box,
-//   Typography,
-// } from "@mui/material";
-// import { useDialog } from "./DialogContext";
-
-// const LoginDialog = () => {
-//   const { open, closeDialog } = useDialog();
-
-//   const [state, setState] = useState("");
-//   const [mobile, setMobile] = useState("");
-//   const [city, setCity] = useState("");
-//   const [pincode, setPincode] = useState("");
-
-//   const states = ["State 1", "State 2", "State 3"];
-
-//   const handleSubmit = () => {
-//     console.log({ mobile, state, city, pincode });
-//     closeDialog();
-//   };
-
-//   return (
-//     <Dialog open={open} onClose={closeDialog}>
-//       <DialogTitle>
-//         <Box display="flex" justifyContent="center" alignItems="center">
-//           <img
-//             src="logo.png"
-//             alt="VR Fashion Logo"
-//             style={{ width: "50px", marginRight: "8px" }}
-//           />
-//           <Typography variant="h6" fontWeight="bold">
-//             Login to VR Fashion
-//           </Typography>
-//         </Box>
-//       </DialogTitle>
-//       <DialogContent>
-//         <Box display="flex" flexDirection="column" gap={2}>
-//           <TextField
-//             label="Mobile No."
-//             type="text"
-//             value={mobile}
-//             onChange={(e) => setMobile(e.target.value)}
-//             fullWidth
-//           />
-//           <TextField
-//             label="State"
-//             select
-//             value={state}
-//             onChange={(e) => setState(e.target.value)}
-//             fullWidth
-//           >
-//             {states.map((state, index) => (
-//               <MenuItem key={index} value={state}>
-//                 {state}
-//               </MenuItem>
-//             ))}
-//           </TextField>
-//           <TextField
-//             label="City"
-//             type="text"
-//             value={city}
-//             onChange={(e) => setCity(e.target.value)}
-//             fullWidth
-//           />
-//           <TextField
-//             label="Pincode"
-//             type="text"
-//             value={pincode}
-//             onChange={(e) => setPincode(e.target.value)}
-//             fullWidth
-//           />
-//           <Button
-//             variant="contained"
-//             onClick={handleSubmit}
-//             style={{
-//               backgroundColor: "#000",
-//               color: "#fff",
-//               borderRadius: "8px",
-//               padding: "10px",
-//             }}
-//           >
-//             Continue
-//           </Button>
-//         </Box>
-//       </DialogContent>
-//     </Dialog>
-//   );
-// };
-
-// export default LoginDialog;
-
-
-
-
 import React, { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap"; // Using react-bootstrap for modal
-import popupimg from "../../assets/img/popup.jpg"; // Background image
+import { StateData } from "../../helper/RegisterHelper";
+import { serverRegisterLogin } from "../../services/serverApi";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const LoginDialog = () => {
-  const [show, setShow] = useState(true);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const LoginDialog = ({ open, closeDialog, openDialog }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    mobileNumber: "",
+    state: "",
+    city: "",
+    pinCode: "",
+  });
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ email, password });
-    handleClose(); // Close the modal after submitting
+    try {
+      const res = await serverRegisterLogin({...formData, country: 'India'});
+      if (res?.userDataAndToken) {
+        localStorage.setItem('user', JSON.stringify(res?.userDataAndToken));
+        navigate(location?.pathname === '/login' ? '/' : location?.pathname)
+      }
+      closeDialog();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleInputChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
   // Handle dialog state properly when switching pages
   useEffect(() => {
     const body = document.querySelector("body");
-    if (show) {
+    if (open) {
       body.style.overflow = "hidden"; // Prevent body scrolling when modal is open
     } else {
       body.style.overflow = "auto"; // Re-enable scrolling when modal is closed
     }
-  }, [show]);
+  }, [open]);
 
   return (
     <Modal
-      show={show}
+      show={open}
       className="on-load-modal"
-      onHide={handleClose}
+      onHide={closeDialog}
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
       <div
         className="modal-content"
-        style={{ backgroundImage: `url(${popupimg})` }} // Background image
       >
         <Modal.Header>
-          <button type="button" className="close" onClick={handleClose}>
+          <button type="button" className="close" onClick={closeDialog} style={{ background: '#1d1b19', border: 'none' }}>
             <span aria-hidden="true">×</span>
           </button>
         </Modal.Header>
@@ -148,32 +62,85 @@ const LoginDialog = () => {
           <div className="modal-inner">
             <h3 className="title">Login to Your Account</h3>
             <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label htmlFor="email">Email Address</label>
+              {/* <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+                <label style={{ color: '#ffffff', textAlign: 'left' }}>Email Address</label>
+                <input
+                  type="number"
+                  id="mobileNumber"
+                  placeholder="Mobile Number"
+                  name="mobileNumber"
+                  value={String()}
+                  onChange={(e) => {}}
+                  required
+                  className="form-control"
+                />
+              </div> */}
+              <div className="input-group input-group-two mb-20">
+                <input
+                  type="number"
+                  placeholder="Enter Mobile Number"
+                  name="mobileNumber"
+                  onChange={handleInputChange}
+                  value={formData?.mobileNumber}
+                  required
+                />
+              </div>
+              <div className="input-group input-group-two mb-20">
+                <select name="state" className="nice-select" required onChange={handleInputChange} value={formData?.state}>
+                  <option disabled>Select State</option>
+                  {StateData?.map((item) => {
+                    return (
+                      <option value={item?.name}>{item?.name}</option>
+                    )
+                  })}
+                </select>
+              </div>
+              <div className="input-group input-group-two mb-20">
+                <input
+                  type="text"
+                  placeholder="Enter City"
+                  name="city"
+                  onChange={handleInputChange}
+                  value={formData?.city}
+                  required
+                />
+              </div>
+              <div className="input-group input-group-two mb-20">
+                <input
+                  type="number"
+                  placeholder="Enter Pincode"
+                  name="pinCode"
+                  onChange={handleInputChange}
+                  value={formData?.pinCode}
+                  required
+                />
+              </div>
+              {/* <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+                <label style={{ color: '#ffffff', textAlign: 'left' }}>Email Address</label>
                 <input
                   type="email"
                   id="email"
                   placeholder="Email Address"
                   name="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={''}
+                  onChange={(e) => {}}
                   required
                   className="form-control"
                 />
               </div>
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+                <label style={{ color: '#ffffff', textAlign: 'left' }}>Email Address</label>
                 <input
                   type="password"
                   id="password"
                   placeholder="Password"
                   name="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={''}
+                  onChange={(e) => {}}
                   required
                   className="form-control"
                 />
-              </div>
+              </div> */}
               <button
                 type="submit"
                 className="main-btn btn-filled"

@@ -24,11 +24,9 @@ const Content = () => {
   const handleLogin = async (e) => {
     e.preventDefault(); 
 
-    console.log('formData', formData);
     try {
       setLoading(true);
       const res = await serverLogin(formData);
-      console.log('loginData', res);
       if (res?.userDataAndToken) {
         localStorage.setItem('user', JSON.stringify(res?.userDataAndToken));
         navigate('/account');
@@ -39,8 +37,6 @@ const Content = () => {
       setLoading(false);
     }
   };
-
-  console.log('formData', formData);
 
 
   return (

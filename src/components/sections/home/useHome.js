@@ -219,8 +219,10 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { getUserData } from '../../../helper/UserHelper';
 import { useCartContext } from '../../../hooks/CartContext';
+import { useDialog } from '../../Dialog/DialogContext';
 
 const useHome = () => {
+    const { openDialog } = useDialog();
     const { updateCartCount } = useCartContext();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
@@ -288,7 +290,7 @@ const useHome = () => {
     const handleWishlist = async (item) => {
         const userData = getUserData();
         if (!userData) {
-            navigate('/login');
+            openDialog();
             return;
         }
 
@@ -311,7 +313,7 @@ const useHome = () => {
     const handleCart = async (item) => {
         const userData = getUserData();
         if (!userData) {
-            navigate('/login');
+            openDialog();
             return;
         }
 

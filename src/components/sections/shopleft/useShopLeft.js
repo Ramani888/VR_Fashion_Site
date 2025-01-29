@@ -3,8 +3,10 @@ import { serverAddToCart, serverAddWishlistProduct, serverGetAllProduct, serverR
 import { useNavigate } from 'react-router-dom';
 import { getUserData } from '../../../helper/UserHelper';
 import { useCartContext } from '../../../hooks/CartContext';
+import { useDialog } from '../../Dialog/DialogContext';
 
 const useShopLeft = () => {
+    const { openDialog } = useDialog();
     const { updateCartCount } = useCartContext();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
@@ -27,7 +29,6 @@ const useShopLeft = () => {
 
     // Function to handle navigation
     const handleNavigation = (path, product) => {
-        console.log(path, product);
         navigate(path, { state: { product: product } }); // Use history.push() for navigation
     };
 
@@ -72,7 +73,7 @@ const useShopLeft = () => {
                 handleAddWishlist(item?._id);
             }
         } else {
-            navigate('/login');
+            openDialog();
         }
     }
 
@@ -123,7 +124,7 @@ const useShopLeft = () => {
             }
             updateCartCount();
         } else {
-            navigate('/login');
+            openDialog();
         }
     }
 

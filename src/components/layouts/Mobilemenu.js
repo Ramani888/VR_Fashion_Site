@@ -1,42 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getUserData } from "../../helper/UserHelper";
 import profileImg from '../../assets/img/profile_img.png'
-
-const navigationmenu = [
-  {
-    id: 5,
-    linkText: "Home",
-    link: "/",
-  },
-  {
-    id: 6,
-    linkText: "Shop",
-    link: "/shop-left",
-  },
-  {
-    id: 6,
-    linkText: "Wishlist",
-    link: "/wishlist",
-  },
-  {
-    id: 7,
-    linkText: "Cart",
-    link: "/cart",
-  },
-  {
-    id: 7,
-    linkText: "Contact",
-    link: "/contact",
-  },
-  // {
-  //   id: 8,
-  //   linkText: "Accessories",
-  //   link: "/shop-left",
-  // },
-];
+import { useDialog } from "../Dialog/DialogContext";
 
 const Mobilemenu = () => {
+  const { openDialog } = useDialog();
+  const navigate = useNavigate();
   const [submenuOpen, setSubmenuOpen] = useState(false);
 
   const getNextSibling = (elem, selector) => {
@@ -56,6 +26,28 @@ const Mobilemenu = () => {
   };
 
   const user = getUserData();
+
+  const handleNavigation = (route) => {
+    const userData = getUserData();
+    if (userData) {
+      navigate(route);
+    } else {
+      if (route === '/cart' || route === '/wishlist') {
+        openDialog();
+      } else {
+        navigate(route);
+      }
+    }
+  }
+
+  const navigationmenu = [
+    { id: 5, linkText: "Home", link: "/" },
+    { id: 6, linkText: "Shop", link: "/shop-left" },
+    { id: 6, linkText: "Wishlist", link: "/wishlist" },
+    { id: 7, linkText: "Cart", link: "/cart" },
+    { id: 7, linkText: "Contact", link: "/contact" },
+    ...(user ? [{ id: 8, linkText: "Account", link: "/account" }] : []), // Conditionally add "Account"
+  ];
 
   return (
     <div className="mobilemenu-container">
@@ -120,7 +112,7 @@ const Mobilemenu = () => {
                 {item.linkText}{" "}
               </Link>
             ) : (
-              <Link to={item.link} style={{ textDecoration: 'none' }}> {item.linkText} </Link>
+              <a onClick={() => handleNavigation(item?.link)} style={{ textDecoration: 'none' }}> {item.linkText} </a>
             )}
             {item.child && (
               <ul className={submenuOpen ? "sub-menu d-block" : "sub-menu"}>

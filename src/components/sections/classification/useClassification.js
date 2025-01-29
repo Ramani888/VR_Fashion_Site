@@ -3,8 +3,10 @@ import { serverAddToCart, serverAddWishlistProduct, serverGetProductByCategoryId
 import { useNavigate } from 'react-router-dom';
 import { getUserData } from '../../../helper/UserHelper';
 import { useCartContext } from '../../../hooks/CartContext';
+import { useDialog } from '../../Dialog/DialogContext';
 
 const useClassification = (category) => {
+    const { openDialog } = useDialog();
     const { updateCartCount } = useCartContext();
     const navigate = useNavigate();
     const [productData, setProductData] = useState([]);
@@ -85,7 +87,7 @@ const useClassification = (category) => {
                 handleAddWishlist(item?._id);
             }
         } else {
-            navigate('/login');
+            openDialog();
         }
     }
 
@@ -136,7 +138,7 @@ const useClassification = (category) => {
             }
             updateCartCount();
         } else {
-            navigate('/login');
+            openDialog();
         }
     }
 
