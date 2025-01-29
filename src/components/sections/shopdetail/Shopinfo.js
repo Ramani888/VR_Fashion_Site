@@ -464,12 +464,12 @@ const Shopinfo = ({ product }) => {
                                     </button>
                                 </div>
                                 <div className="cart-btn pl-40">
-                                    <Link
+                                    <div
                                         onClick={() => handleCart(productData)}
                                         className="main-btn btn-border"
                                     >
                                         {productData?.isCart ? "View in Cart" : "Add to Cart"}
-                                    </Link>
+                                    </div>
                                 </div>
                             </div>
 
@@ -478,7 +478,7 @@ const Shopinfo = ({ product }) => {
                                 <h6>Category:</h6>
                                 <ul>
                                     <li>
-                                        <Link to="#" className="grey">
+                                        <Link className="grey" style={{ textDecoration: 'none' }}>
                                             {categoryData?.name || "Uncategorized"}
                                         </Link>
                                     </li>
@@ -488,7 +488,7 @@ const Shopinfo = ({ product }) => {
                                 <h6>Code:</h6>
                                 <ul>
                                     <li>
-                                        <Link to="#" className="grey">
+                                        <Link className="grey" style={{ textDecoration: 'none' }}>
                                             {productData?.code || "N/A"}
                                         </Link>
                                     </li>
@@ -528,7 +528,7 @@ const Shopinfo = ({ product }) => {
                                                         {productData?.availability ? (
                                                             <span className="text-success">In Stock</span>
                                                         ) : (
-                                                            <span className="text-danger">Out of Stock</span>
+                                                            <span className="text-success">In Stock</span>
                                                         )}
                                                     </td>
                                                 </tr>
