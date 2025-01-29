@@ -9626,12 +9626,25 @@ header.header-three.sigma-header
   width: 100%;
 }
 
+.product-name {
+  color: #a3a3a3 !important;
+}
+
+.product-qty {
+  color: #a3a3a3 !important;
+}
+
+.product-price {
+  color: #a3a3a3 !important;
+}
+
 @media (max-width: 575px) {
   .product-img {
     height: 160px;
   }
   .product-name {
     font-size: 12px !important;
+    color: #a3a3a3 !important;
   }
   .price {
     font-size: 12px !important;
@@ -10723,6 +10736,14 @@ header.header-three.sigma-header
 .input-group.input-group-two textarea {
   background-color: #353530;
   border: 0;
+}
+
+.table tr td {
+  background-color: transparent !important;
+}
+
+.table tr th {
+  background-color: transparent !important;
 }
 
 .product-description .additional-info table th {

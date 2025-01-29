@@ -77,11 +77,11 @@ const Content = () => {
                   <div>
                     <div className="content-heading mb-50">
                       <h3>My Orders</h3>
-                      <p>
+                      {/* <p>
                         Lorem Ipsum is simply dummy text of the printing and
                         typesetting industry. Lorem Ipsum has been the
                         industry's standard dummy text ever since the 1500s
-                      </p>
+                      </p> */}
                     </div>
                     <div className="order-table">
                       <table className="table cw-cart-table mb-0">
@@ -103,6 +103,11 @@ const Content = () => {
                           </tr>
                         </thead>
                         <tbody>
+                          {orderData?.length < 1 && (
+                            <tr>
+                              <td className="product-price text-white cw-align has-title text-center" colSpan={5}>No Data Found</td>
+                            </tr>
+                          )}
                           {orderData?.map((item, i) => (
                             <tr key={i}>
                               <td className="product-remove text-center cw-align">

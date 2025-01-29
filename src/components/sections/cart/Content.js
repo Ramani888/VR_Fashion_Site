@@ -137,7 +137,7 @@ const Content = () => {
                                                 <div className="product-thumbnail">
                                                     <img src={item?.product?.image?.[0]?.path} alt="product_thumbnail" />
                                                 </div>
-                                                <Link to="/shop-detail">{item?.product?.name}</Link>
+                                                <Link to="/shop-detail" state={{ product: item?.product }} style={{ textDecoration: 'none' }}>{item?.product?.name}</Link>
                                             </td>
                                             <td className="quantity shop-detail-content cw-qty-sec cw-align has-title" data-title="Quantity">
                                                 <div className="quantity-box">
@@ -210,11 +210,11 @@ const Content = () => {
                                         </tbody>
                                     </table>
                                     {cartData?.data?.length <= 0 ? (
-                                        <button className="main-btn btn-filled w-100" disabled>
+                                        <button className="main-btn btn-filled w-100" disabled style={{ pointerEvents: 'none' }}>
                                             Proceed to Checkout
                                         </button>
                                         ) : (
-                                        <Link to="/checkout" className="main-btn btn-filled w-100">
+                                        <Link to="/checkout" className="main-btn btn-filled w-100" style={{ textDecoration: 'none' }}>
                                             Proceed to Checkout
                                         </Link>
                                     )}

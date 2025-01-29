@@ -500,31 +500,31 @@ const Shopinfo = ({ product }) => {
                     {/* Product Tabs */}
                     <div className="col-12">
                         <div className="product-description mt-40">
-                            <Tab.Container defaultActiveKey="description">
+                            <Tab.Container defaultActiveKey="addinfo">
                                 <Nav variant="tabs" className="justify-content-center">
                                     <Nav.Item>
-                                        <Nav.Link eventKey="description">Description</Nav.Link>
+                                        <Nav.Link eventKey="addinfo">Additional Info</Nav.Link>
                                     </Nav.Item>
                                     <Nav.Item>
-                                        <Nav.Link eventKey="addinfo">Additional Info</Nav.Link>
+                                        <Nav.Link eventKey="description">Description</Nav.Link>
                                     </Nav.Item>
                                 </Nav>
                                 <Tab.Content>
                                     <Tab.Pane eventKey="description">
                                         <p>{productData?.description || "No description available."}</p>
                                     </Tab.Pane>
-                                    <Tab.Pane eventKey="addinfo">
+                                    <Tab.Pane eventKey="addinfo" className="additional-info">
                                         <h3 className="mb-2">Additional Information</h3>
                                         <table className="table">
                                             <tbody>
                                                 <tr>
                                                     <th>Price</th>
-                                                    <td>₹{productData?.price || "0"} (MRP: ₹{productData?.mrp || "0"})</td>
+                                                    <td className="value">₹{productData?.price || "0"} (MRP: ₹{productData?.mrp || "0"})</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Availability</th>
                                                     {console.log('productData?.availability',productData?.availability)}
-                                                    <td>
+                                                    <td className="value">
                                                         {productData?.availability ? (
                                                             <span className="text-success">In Stock</span>
                                                         ) : (
@@ -534,27 +534,27 @@ const Shopinfo = ({ product }) => {
                                                 </tr>
                                                 <tr>
                                                     <th>Description</th>
-                                                    <td>{productData?.description || "No description available."}</td>
+                                                    <td className="value">{productData?.description || "No description available."}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Category</th>
-                                                    <td>{categoryData?.name || "Uncategorized"}</td>
+                                                    <td className="value">{categoryData?.name || "Uncategorized"}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Code</th>
-                                                    <td>{productData?.code || "N/A"}</td>
+                                                    <td className="value">{productData?.code || "N/A"}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Base Metal</th>
-                                                    <td>{productData?.productBaseMetalName || "N/A"}</td>
+                                                    <td className="value">{productData?.productBaseMetalName || "N/A"}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Brand</th>
-                                                    <td>{productData?.productBrandName || "N/A"}</td>
+                                                    <td className="value">{productData?.productBrandName || "N/A"}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Color</th>
-                                                    <td>
+                                                    <td className="value">
                                                         {productData?.productColorCode ? (
                                                             <span
                                                                 style={{
@@ -572,27 +572,27 @@ const Shopinfo = ({ product }) => {
                                                 </tr>
                                                 <tr>
                                                     <th>Material</th>
-                                                    <td>{productData?.productColorName || "N/A"}</td>
+                                                    <td className="value">{productData?.productColorName || "N/A"}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Occasion</th>
-                                                    <td>{productData?.productOccasionName || "N/A"}</td>
+                                                    <td className="value">{productData?.productOccasionName || "N/A"}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Plating</th>
-                                                    <td>{productData?.productPlatingName || "N/A"}</td>
+                                                    <td className="value">{productData?.productPlatingName || "N/A"}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Stone Type</th>
-                                                    <td>{productData?.productStoneTypeName || "N/A"}</td>
+                                                    <td className="value">{productData?.productStoneTypeName || "N/A"}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Trend</th>
-                                                    <td>{productData?.productTrendName || "N/A"}</td>
+                                                    <td className="value">{productData?.productTrendName || "N/A"}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Weight</th>
-                                                    <td>{productData?.weight || "N/A"}</td>
+                                                    <td className="value">{productData?.weight || "N/A"}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
