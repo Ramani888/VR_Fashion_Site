@@ -67,7 +67,8 @@ const Header = () => {
     if (userData) {
       navigate('/account')
     } else {
-      return (<CustomeLoginPopup isOpen={true} onClose={() => {}} />)
+      navigate('/login')
+      // return (<CustomeLoginPopup isOpen={true} onClose={() => {}} />)
     }
   }
 
@@ -168,7 +169,7 @@ const Header = () => {
                             </ul>
                           </li>
                           <li className="menu-item">
-                            <Link onClick={() => handleWishlistNavigate()} style={{ textDecoration: 'none' }}>Wishlist</Link>
+                            <a onClick={() => handleWishlistNavigate()} style={{ textDecoration: 'none', cursor: 'pointer' }}>Wishlist</a>
                           </li>
                           <li className="menu-item">
                             <Link to="/contact" style={{textDecoration: 'none'}}>Contact</Link>
@@ -182,10 +183,10 @@ const Header = () => {
               {/* navbar right content */}
               <div className="menu-right-buttons">
                 {/* Log in icon */}
-                <div className="login-btn">
-                  <Link onClick={() => handleAccountNavigate()} id="loginBtn">
+                <div className="login-btn" style={{ cursor: 'pointer' }}>
+                  <a onClick={() => handleAccountNavigate()} id="loginBtn">
                     <i className="fal fa-user" />
-                  </Link>
+                  </a>
                 </div>
                 <div className="toggle dropdown-btn">
                   <span className="sigma-notification">{cartCount}</span>
