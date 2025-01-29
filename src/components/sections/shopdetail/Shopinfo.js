@@ -420,7 +420,7 @@ const Shopinfo = ({ product }) => {
                                     <h6>
                                         Availability:
                                         <span className="text-success ml-5">
-                                            {productData?.availability ? "In Stock" : "Out of Stock"}
+                                            {productData?.availability ? "In Stock" : "In Stock"}
                                         </span>
                                     </h6>
                                 </div>

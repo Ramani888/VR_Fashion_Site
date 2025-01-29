@@ -9,9 +9,7 @@ import { useLocation } from "react-router-dom";
 
 const Shopdetail = () => {
   const location = useLocation();
-  const {product} = location.state;
-
-  console.log('product', product)
+  const { product } = location?.state;
 
   return (
     <Fragment>

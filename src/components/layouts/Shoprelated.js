@@ -111,14 +111,14 @@ const Shoprelated = ({ product }) => {
                       <Link onClick={() => handleCartRelated(item)}>
                         <i className={item?.isCart ? 'fas fa-shopping-cart' : "far fa-shopping-cart"} />
                       </Link>
-                      <Link onClick={() => handleNavigation('/shop-detail', item)}>
+                      <Link to='/shop-detail' state={{ product: item }}>
                         <i className="far fa-eye" />
                       </Link>
                     </div>
                   </div>
                   <div className="desc">
                     <h4>
-                      <Link onClick={() => handleNavigation('/shop-detail', item)}>{item?.name}</Link>
+                      <Link to='/shop-detail' state={{ product: item }} style={{ textDecoration: 'none' }}>{item?.name}</Link>
                     </h4>
                     <span className="price">
                     ₹{item?.price}
@@ -129,7 +129,7 @@ const Shoprelated = ({ product }) => {
                     <span className="price">
                       {percentageDiscount}% off
                     </span>
-                    <Link onClick={() => handleNavigation('/shop-detail', item)} className="link">
+                    <Link to='/shop-detail' state={{ product: item }} className="link">
                       <i className="fal fa-arrow-right" />
                     </Link>
                   </div>

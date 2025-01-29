@@ -267,7 +267,7 @@ const useHome = () => {
 
     // Handle navigation
     const handleNavigation = (path, product) => {
-        navigate(path, { state: { product } }); // Correctly pass data using `state`
+        navigate(path, { state: { product: product } }); // Correctly pass data using `state`
     };
 
     // Fetch promotion product data

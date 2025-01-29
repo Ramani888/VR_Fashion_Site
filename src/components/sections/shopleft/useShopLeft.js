@@ -27,7 +27,8 @@ const useShopLeft = () => {
 
     // Function to handle navigation
     const handleNavigation = (path, product) => {
-        navigate(path, product); // Use history.push() for navigation
+        console.log(path, product);
+        navigate(path, { state: { product: product } }); // Use history.push() for navigation
     };
 
     const handleAddWishlist = async (productId) => {

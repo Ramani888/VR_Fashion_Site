@@ -41,7 +41,7 @@ const useClassification = (category) => {
 
     // Function to handle navigation
     const handleNavigation = (path, product) => {
-        navigate(path, product); // Use history.push() for navigation
+        navigate(path, { state: { product } }); // Use history.push() for navigation
     };
 
     const handleAddWishlist = async (productId) => {
