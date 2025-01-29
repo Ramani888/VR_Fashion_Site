@@ -188,11 +188,11 @@ const Header = () => {
                     <i className="fal fa-user" />
                   </a>
                 </div>
-                <div className="toggle dropdown-btn">
+                <div className="toggle dropdown-btn" style={{ cursor: 'pointer' }}>
                   <span className="sigma-notification">{cartCount}</span>
-                  <Link onClick={() => handleCartNavigate()}>
+                  <a onClick={() => handleCartNavigate()}>
                     <i className="fal fa-shopping-bag" />
-                  </Link>
+                  </a>
                   
                 </div>
                 {/* Navbar Toggler */}

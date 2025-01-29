@@ -15,7 +15,7 @@ const Breadcrumbs = (props) => {
           <h2 className="page-title">{props.breadcrumb.pagename}</h2>
           <ul className="breadcrumb-nav">
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/" style={{ textDecoration: 'none' }}>Home</Link>
             </li>
             <li className="active">{props.breadcrumb.pagename}</li>
           </ul>
