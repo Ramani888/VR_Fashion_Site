@@ -190,14 +190,14 @@ const Content = () => {
                       <Link onClick={() => handleCart(item?.product)}>
                         <i className={item?.product?.isCart ? 'fas fa-shopping-cart' : "far fa-shopping-cart"} />
                       </Link>
-                      <Link onClick={() => handleNavigation("/shop-detail", item?.product)}>
+                      <Link to='/shop-detail' state={{ product: item?.product }}>
                         <i className="far fa-eye" />
                       </Link>
                     </div>
                   </div>
                   <div className="desc">
                     <h4 className="product-name">
-                      <Link onClick={() => handleNavigation("/shop-detail", item?.product)}>{item?.product?.name}</Link>
+                      <Link to='/shop-detail' state={{ product: item?.product }} style={{ textDecoration: 'none' }}>{item?.product?.name}</Link>
                     </h4>
                     <span className="price">
                     ₹{item?.product?.price}
@@ -208,7 +208,7 @@ const Content = () => {
                     <span className="price">
                       {percentageDiscount}% off
                     </span>
-                    <Link onClick={() => handleNavigation("/shop-detail", item?.product)} className="link">
+                    <Link to='/shop-detail' state={{ product: item?.product }} className="link">
                       <i className="fal fa-arrow-right" />
                     </Link>
                   </div>
