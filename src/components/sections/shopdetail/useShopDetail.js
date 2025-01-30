@@ -3,8 +3,10 @@ import { serverAddToCart, serverGetCategoryById, serverGetProductByCategoryId, s
 import { useNavigate } from 'react-router-dom';
 import { getUserData } from '../../../helper/UserHelper';
 import { useCartContext } from '../../../hooks/CartContext';
+import { useDialog } from '../../Dialog/DialogContext';
 
 const useShopDetail = (product) => {
+    const { openDialog } = useDialog();
     const { updateCartCount } = useCartContext();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
@@ -108,7 +110,7 @@ const useShopDetail = (product) => {
             }
             updateCartCount();
         } else {
-            navigate('/login');
+            openDialog();
         }
     }
 

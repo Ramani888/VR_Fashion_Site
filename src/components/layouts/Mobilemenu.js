@@ -53,7 +53,7 @@ const Mobilemenu = () => {
     <div className="mobilemenu-container">
       {/* User Info Section */}
       <div
-        className="bg-black"
+        // className="bg-black"
         style={{
           display: "flex",
           alignItems: "center",
@@ -61,6 +61,7 @@ const Mobilemenu = () => {
           flexDirection: "column",
           padding: "20px",
           borderBottom: "1px solid #ddd",
+          background: '#987e3c'
         }}
       >
         <div

@@ -367,6 +367,15 @@ const Shopinfo = ({ product }) => {
         asNavFor: nav1,
     };
 
+    const settings = {
+        dots: false,
+        infinite: true,
+        arrows: false,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    };
+
     return (
         <section className="Shop-section pt-120 pb-20">
             <div className="container">
@@ -374,7 +383,20 @@ const Shopinfo = ({ product }) => {
                     {/* Product Images */}
                     <div className="col-lg-5">
                         <div className="shop-detail-image">
-                            <Slider {...mainSliderSettings} ref={slider1}>
+                        <Slider {...settings}>
+                            {productData?.image?.map((item, i) => {
+                                return (
+                                    <div className="image-box" style={{ height: "500px" }}>
+                                        <img
+                                            src={item?.path || "/default-image.jpg"}
+                                            className="img-fluid"
+                                            alt={`Product Image ${i + 1}`}
+                                        />
+                                    </div>
+                                )
+                            })}
+                        </Slider>
+                            {/* <Slider {...mainSliderSettings} ref={slider1}>
                                 {productData?.image?.map((item, i) => (
                                     <div key={i} className="slide-item">
                                         <div className="image-box" style={{ height: "500px" }}>
@@ -388,8 +410,8 @@ const Shopinfo = ({ product }) => {
                                         </div>
                                     </div>
                                 ))}
-                            </Slider>
-                            <Slider {...thumbnailSliderSettings} ref={slider2} >
+                            </Slider> */}
+                            {/* <Slider {...thumbnailSliderSettings} ref={slider2} >
                                 {productData?.image?.map((item, i) => (
                                     <div key={i} className="slide-item">
                                         <div className="image-box" style={{ height: "100px" }}>
@@ -401,7 +423,7 @@ const Shopinfo = ({ product }) => {
                                         </div>
                                     </div>
                                 ))}
-                            </Slider>
+                            </Slider> */}
                         </div>
                     </div>
 
