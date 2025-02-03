@@ -17,11 +17,13 @@ const Shopdetail = () => {
         <title>VR-Fashion | {product?.name}</title>
         <meta name="description" content="#" />
       </MetaTags>
+      <div style={{backgroundColor:'white'}}>
       <Header />
       {/* <Breadcrumb breadcrumb={{ pagename: product?.name }} /> */}
       <Content product={product}/>
       {/* <Instafeeds /> */}
       {/* <Footer /> */}
+      </div>
     </Fragment>
   );
 };

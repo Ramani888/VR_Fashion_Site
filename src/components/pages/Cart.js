@@ -16,11 +16,13 @@ const Cart = () => {
                     content="#"
                 />
             </MetaTags>
+            <div style={{backgroundColor:'white'}}>
             <Header/>
             <Breadcrumb breadcrumb={{pagename:'Cart'}}/>
             <Content/>
             {/* <Instafeeds/>
             <Footer/> */}
+            </div>
         </Fragment>
     );
 }

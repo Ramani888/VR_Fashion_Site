@@ -16,11 +16,13 @@ const Shopleft = () => {
                     content="#"
                 />
             </MetaTags>
+            <div style={{backgroundColor:'white'}}>
             <Header />
             <Breadcrumb breadcrumb={{ pagename: 'Shopping' }} />
             <Content />
             {/* <Instafeeds /> */}
             {/* <Footer /> */}
+            </div>
         </Fragment>
     );
 }

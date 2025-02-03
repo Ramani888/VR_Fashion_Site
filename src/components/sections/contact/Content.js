@@ -5,86 +5,80 @@ import { Alert } from "react-bootstrap";
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 
 const Content = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
-  const [serverResponse, setServerResponse] = useState({
-    success: false,
-    error: false,
-  });
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+    const [subject, setSubject] = useState("");
+    const [message, setMessage] = useState("");
+    const [serverResponse, setServerResponse] = useState({
+        success: false,
+        error: false,
+    });
 
-  const Map = ReactMapboxGl({
-    accessToken:
-      "pk.eyJ1IjoiYWJlZHNoIiwiYSI6ImNrNnRyZ3d4aDAyMzkzZXBoc3RsYnM0aGwifQ.yhr3W_OOI6xXElmSY8cyPg",
-  });
+    const Map = ReactMapboxGl({
+        accessToken:
+            "pk.eyJ1IjoiYWJlZHNoIiwiYSI6ImNrNnRyZ3d4aDAyMzkzZXBoc3RsYnM0aGwifQ.yhr3W_OOI6xXElmSY8cyPg",
+    });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Implement your form submission logic here
-    // Example: You can call a method from Contacthelper class
-    // this.handleSubmit();
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if (name && email && phone && subject && message) {
+            setServerResponse({ success: true, error: false });
+            setTimeout(() => {
+                setServerResponse({ success: false, error: false });
+            }, 3000);
+        } else {
+            setServerResponse({ success: false, error: true });
+        }
+    };
 
-    // Simulate server response for demonstration
-    // Replace with actual server interaction in your application
-    if (name && email && phone && subject && message) {
-      setServerResponse({ success: true, error: false });
-      setTimeout(() => {
-        setServerResponse({ success: false, error: false });
-      }, 3000);
-    } else {
-      setServerResponse({ success: false, error: true });
-    }
-  };
-
-  return (
-    <section className="contact-part pt-115 pb-20">
-      <div className="container">
-        {/* Contact Info */}
-        <div className="contact-info">
-          <div className="row justify-content-center">
-            <div className="col-lg-4 col-sm-6 col-10">
-              <div className="info-box">
-                <div className="icon">
-                  <i className="flaticon-home" />
+    return (
+        <section className="contact-part pt-115 pb-20" style={{ backgroundColor: 'white' }}>
+            <div className="container">
+                {/* Contact Info */}
+                <div className="contact-info">
+                    <div className="row justify-content-center">
+                        <div className="col-lg-4 col-sm-6 col-10" >
+                            <div className="info-box" style={{ backgroundColor: '#f2f2f2' }}>
+                                <div className="icon">
+                                    <i className="flaticon-home" style={{ color: 'black' }}/>
+                                </div>
+                                <div className="desc" >
+                                    <h4 style={{ color: 'black' }}>Office Address</h4>
+                                    <p style={{ color: 'black' }}>A-34, 2nd Floor Laxmidhara Complex, Baroda Pristage, Varachha Road, Surat - 395006, Gujrat, India</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-sm-6 col-10">
+                            <div className="info-box" style={{ backgroundColor: '#f2f2f2' }}>
+                                <div className="icon">
+                                    <i className="flaticon-phone" style={{ color: 'black' }}/>
+                                </div>
+                                <div className="desc" >
+                                    <h4 style={{ color: 'black' }}>Phone Number</h4>
+                                    <p style={{ color: 'black' }}>
+                                        +91 8141851456 <br /> +91 8141851456
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-sm-6 col-10">
+                            <div className="info-box" style={{ backgroundColor: '#f2f2f2' }}>
+                                <div className="icon">
+                                    <i className="flaticon-message" style={{ color: 'black' }}/>
+                                </div>
+                                <div className="desc">
+                                    <h4 style={{ color: 'black' }}>Email Address</h4>
+                                    <p style={{ color: 'black' }}>
+                                        vrfashionjewellery0044@gmail.com <br /> vrfashionjewellery0044@gmail.com
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className="desc">
-                  <h4>Office Address</h4>
-                  <p>A-34, 2nd Floor Laxmidhara Complex, Baroda Pristage, Varachha Road, Surat - 395006, Gujrat, India</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-sm-6 col-10">
-              <div className="info-box">
-                <div className="icon">
-                  <i className="flaticon-phone" />
-                </div>
-                <div className="desc">
-                  <h4>Phone Number</h4>
-                  <p>
-                  +91 8141851456 <br /> +91 8141851456
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-sm-6 col-10">
-              <div className="info-box">
-                <div className="icon">
-                  <i className="flaticon-message" />
-                </div>
-                <div className="desc">
-                  <h4>Email Address</h4>
-                  <p>
-                  vrfashionjewellery0044@gmail.com <br /> vrfashionjewellery0044@gmail.com
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* Contact Maps */}
-        {/* <Map
+                {/* Contact Maps */}
+                {/* <Map
           // eslint-disable-next-line react/style-prop-object
           style="mapbox://styles/mapbox/light-v10"
           className="contact-maps mb-30"
@@ -97,8 +91,8 @@ const Content = () => {
             <Feature coordinates={[-77.04, 38.907]} zoom={11.5} />
           </Layer>
         </Map> */}
-        {/* Contact Form */}
-        {/* <div className="contact-form">
+                {/* Contact Form */}
+                {/* <div className="contact-form">
           <form onSubmit={handleSubmit} method="GET">
             <div className="row">
               <div className="col-md-6">
@@ -200,9 +194,9 @@ const Content = () => {
             </div>
           </form>
         </div> */}
-      </div>
-    </section>
-  );
+            </div>
+        </section>
+    );
 };
 
 export default Content;

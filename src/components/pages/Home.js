@@ -15,7 +15,7 @@ const Home = () => {
       <div style={{ backgroundColor: "white", minHeight: "100vh" }}>
         <Header />
         <Content />
-        {/* <Footer/> */}
+        <Footer/>
       </div>
     </Fragment>
   );

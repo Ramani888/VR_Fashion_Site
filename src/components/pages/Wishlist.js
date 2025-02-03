@@ -16,11 +16,13 @@ const Wishlist = () => {
                     content="#"
                 />
             </MetaTags>
-            <Header />
-            <Breadcrumb breadcrumb={{ pagename: 'Wishlist' }} />
-            <Content />
-            {/* <Instafeeds />
+            <div style={{ backgroundColor: 'white' }}>
+                <Header />
+                <Breadcrumb breadcrumb={{ pagename: 'Wishlist' }} />
+                <Content />
+                {/* <Instafeeds />
             <Footer /> */}
+            </div>
         </Fragment>
     );
 }

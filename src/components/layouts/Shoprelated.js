@@ -51,13 +51,13 @@ const Shoprelated = ({ product }) => {
   };
 
   return (
-    <section className="restaurant-tab-area bg-black pt-40">
-      <div className="container">
+    <section className="restaurant-tab-area  pt-40" >
+      <div className="container" >
         <div className="row align-items-center">
           <div className="col-md-8 col-sm-7">
             <div className="section-title">
               <span className="title-tag">Shop</span>
-              <h2>Related Products</h2>
+              <h2 style={{color: 'black'}}>Related Products</h2>
             </div>
           </div>
           <div className="col-md-4 col-sm-5 d-none d-sm-block">
@@ -116,17 +116,17 @@ const Shoprelated = ({ product }) => {
                       </Link>
                     </div>
                   </div>
-                  <div className="desc">
+                  <div className="desc" style={{backgroundColor:'#f2f2f2'}}>
                     <h4>
-                      <Link to='/shop-detail' state={{ product: item }} style={{ textDecoration: 'none' }}>{item?.name}</Link>
+                      <Link to='/shop-detail' state={{ product: item }} style={{ textDecoration: 'none',color:'black' }}>{item?.name}</Link>
                     </h4>
-                    <span className="price">
+                    <span className="price" style={{color:'black'}}>
                     ₹{item?.price}
-                          <span>
+                          <span  style={{color:'grey'}}>
                           ₹{item?.mrp}
                           </span>
                     </span>
-                    <span className="price">
+                    <span className="price"  style={{color:'black'}}>
                       {percentageDiscount}% off
                     </span>
                     <Link to='/shop-detail' state={{ product: item }} className="link">

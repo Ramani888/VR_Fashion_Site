@@ -16,11 +16,13 @@ const Checkout = () => {
                     content="#"
                 />
             </MetaTags>
+            <div style={{backgroundColor:'white'}}>
             <Header/>
             <Breadcrumb breadcrumb={{ pagename: 'Checkout' }}/>
             <Content/>
             {/* <Instafeeds/>
             <Footer/> */}
+            </div>
         </React.Fragment>
     );
 };
