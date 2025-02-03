@@ -50,7 +50,7 @@ const Latestproducts = () => {
   };
 
   return (
-    <section className="restaurant-tab-area mb-50">
+    <section className="restaurant-tab-area mb-50" style={{ backgroundColor: "white" }}>
       {loading && <Preloader />}
       <div className="slider-container">
           <Slider {...settings}>

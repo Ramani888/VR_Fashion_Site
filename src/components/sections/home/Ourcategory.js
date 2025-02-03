@@ -67,11 +67,11 @@ const Ourcategory = () => {
   };
 
   return (
-    <section className="restaurant-tab-area mb-50">
+    <section className="restaurant-tab-area mb-50" style={{ backgroundColor: "white" }}>
       {loading && <Preloader />}
       <div className="container-fluid">
         <div className="section-title mb-10">
-          <span className="title-tag"> Categories </span>
+          <span className="title-tag" style={{color:'black'}}> Categories </span>
           {/* <h2>Our Categories</h2> */}
         </div>
         <div
@@ -79,6 +79,7 @@ const Ourcategory = () => {
             display: 'flex',
             overflowX: 'auto',
             whiteSpace: 'nowrap',
+             backgroundColor: "white"
           }}
           className="no-scrollbar"
         >
@@ -115,7 +116,7 @@ const Ourcategory = () => {
                     }}
                   />
                 </div>
-                <span style={{width: '100%', overflow: 'hidden', whiteSpace: 'wrap', textAlign: 'center'}} className="title">{item?.name}</span>
+                <span style={{width: '100%', overflow: 'hidden', whiteSpace: 'wrap', textAlign: 'center',color:'black'}} className="title">{item?.name}</span>
               </div>
             );
           })}

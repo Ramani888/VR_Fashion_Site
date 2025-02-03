@@ -29,7 +29,7 @@ const Ourproducts = () => {
         handleCart
     } = useHome();
     return (
-        <section className="restaurant-tab-area pb-10 mt-20">
+        <section className="restaurant-tab-area pb-10 mt-20" style={{ backgroundColor: "white" }}>
             {loading && <Preloader />}
             <div className="container-fluid">
                 {/* <div className="section-title text-center mb-50">
@@ -107,21 +107,21 @@ const Ourproducts = () => {
                                             </Link>
                                         </div>
                                     </div>
-                                    <div className="desc">
+                                    <div className="desc" style={{backgroundColor: '#f2f2f2'}}>
                                         <h4 className="product-name">
-                                            <Link to='/shop-detail' state={{ product: item }} style={{ textDecoration: 'none' }}>{item?.name}</Link>
+                                            <Link to='/shop-detail' state={{ product: item }} style={{ textDecoration: 'none',color:'black' }}>{item?.name}</Link>
                                         </h4>
-                                        <span className="price">
+                                        <span className="price" style={{color:'black' }}>
                                             ₹{item?.price}
                                             <span>
                                                 ₹{item?.mrp}
                                             </span>
                                         </span>
-                                        <span className="price">
+                                        <span className="price" style={{color:'black' }}>
                                             {percentageDiscount}% off
                                         </span>
                                         <Link to='/shop-detail' state={{ product: item }} className="link">
-                                            <i className="fal fa-arrow-right" />
+                                            <i className="fal fa-arrow-right" style={{color:'black'}}/>
                                         </Link>
                                     </div>
                                 </div>

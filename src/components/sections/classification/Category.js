@@ -225,53 +225,6 @@ const Category = ({category}) => {
       {loading && <Prelader />}
       <div className="container-fluid">
         <Tab.Container defaultActiveKey={category?.name}>
-          {/* {category?._id && (
-            <Nav
-              variant="pills"
-              className="restaurant-rood-list row justify-content-center mb-30"
-            >
-              <Nav.Item className="col-lg-2 col-md-3 col-sm-4 col-6">
-                <Nav.Link eventKey={category?.name}>
-                  <img
-                    src={category?.imagePath}
-                    alt="images"
-                    className="category-image"
-                  />
-                  <span className="title">{category?.name}</span>
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item className="col-lg-2 col-md-3 col-sm-4 col-6">
-                <Nav.Link eventKey="earrings">
-                  <i className="flaticon-earrings" />
-                  <span className="title">Earrings</span>
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item className="col-lg-2 col-md-3 col-sm-4 col-6">
-                <Nav.Link eventKey="necklaces">
-                  <i className="flaticon-necklace" />
-                  <span className="title">Necklaces</span>
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item className="col-lg-2 col-md-3 col-sm-4 col-6">
-                <Nav.Link eventKey="bracelets">
-                  <i className="flaticon-bracelet-2" />
-                  <span className="title">Bracelets</span>
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item className="col-lg-2 col-md-3 col-sm-4 col-6">
-                <Nav.Link eventKey="armlets">
-                  <i className="flaticon-bracelet" />
-                  <span className="title">Armlets</span>
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item className="col-lg-2 col-md-3 col-sm-4 col-6">
-                <Nav.Link eventKey="anklets">
-                  <i className="flaticon-bracelet-1" />
-                  <span className="title">Anklets</span>
-                </Nav.Link>
-              </Nav.Item>
-            </Nav>
-          )} */}
           <Tab.Content>
             <Tab.Pane eventKey={category?.name}>
               <div className="row">
@@ -315,18 +268,18 @@ const Category = ({category}) => {
                             </Link>
                           </div>
                         </div>
-                        <div className="desc">
+                        <div className="desc" style={{backgroundColor:'#f2f2f2'}}>
                           <h4 className="product-name">
-                            <Link onClick={() => handleNavigation("/shop-detail", item)} style={{ textDecoration: 'none' }}>{item?.name}</Link>
+                            <Link onClick={() => handleNavigation("/shop-detail", item)} style={{ textDecoration: 'none',color:'black',lineHeight: '30px' }}>{item?.name}</Link>
                           </h4>
-                          <span className="price">
-                          ₹{item?.price} <span>₹{item?.mrp}</span>
+                          <span className="price" style={{color:'black'}}>
+                          ₹{item?.price} <span style={{color:'black'}}>₹{item?.mrp}</span>
                           </span>
-                          <span className="price">
+                          <span className="price" style={{color:'black'}}>
                             {percentageDiscount}% off
                           </span>
                           <Link onClick={() => handleNavigation("/shop-detail", item)} className="link">
-                            <i className="fal fa-arrow-right" />
+                            <i className="fal fa-arrow-right" style={{color:'black'}}/>
                           </Link>
                         </div>
                       </div>
