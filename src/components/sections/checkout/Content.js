@@ -446,6 +446,10 @@ const Content = () => {
                                     </tbody>
                                 </table>
                             </div>
+<<<<<<< Updated upstream
+=======
+                            <button className="main-btn btn-filled w-100" style={{backgroundColor:'black'}} onClick={() => razorPayPayment(finalPrice)}>Place Order</button>
+>>>>>>> Stashed changes
                         </div>
                         <button className="main-btn btn-filled w-100" style={{backgroundColor:'black'}} onClick={() => razorPayPayment(finalPrice)}>Place Order</button>
                     </div>
