@@ -51,7 +51,7 @@ const Mobilemenu = () => {
   ];
 
   return (
-    <div className="mobilemenu-container" style={{ position: 'relative', height: '100vh' }}>
+    <div className="mobilemenu-container" style={{ position: 'relative' }}>
       {/* User Info Section */}
       <div
         // className="bg-black"
@@ -152,7 +152,7 @@ const Mobilemenu = () => {
         ))}
       </ul>
 
-      <div style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', bottom: '50px' }}>
+      <div style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', bottom: '-80px' }}>
         <GetAppButton />
       </div>
     </div>
