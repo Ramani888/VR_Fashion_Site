@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { getUserData } from "../../helper/UserHelper";
 import profileImg from '../../assets/img/profile_img.png'
 import { useDialog } from "../Dialog/DialogContext";
+import GetAppButton from "./GetAppButton";
 
 const Mobilemenu = () => {
   const { openDialog } = useDialog();
@@ -50,7 +51,7 @@ const Mobilemenu = () => {
   ];
 
   return (
-    <div className="mobilemenu-container">
+    <div className="mobilemenu-container" style={{ position: 'relative', height: '100%' }}>
       {/* User Info Section */}
       <div
         // className="bg-black"
@@ -150,6 +151,10 @@ const Mobilemenu = () => {
           </li>
         ))}
       </ul>
+
+      <div style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', bottom: '50px' }}>
+        <GetAppButton />
+      </div>
     </div>
   );
 };
