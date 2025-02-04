@@ -42,12 +42,13 @@ const Mobilemenu = () => {
   }
 
   const navigationmenu = [
-    { id: 5, linkText: "Home", link: "/" },
-    { id: 6, linkText: "Shop", link: "/shop-left" },
-    { id: 6, linkText: "Wishlist", link: "/wishlist" },
-    { id: 7, linkText: "Cart", link: "/cart" },
-    { id: 7, linkText: "Contact", link: "/contact" },
-    ...(user ? [{ id: 8, linkText: "Account", link: "/account" }] : []), // Conditionally add "Account"
+    { id: 1, linkText: "Home", link: "/" },
+    { id: 2, linkText: "Shop", link: "/shop-left" },
+    { id: 3, linkText: "Category", link: "/category" },
+    { id: 4, linkText: "Wishlist", link: "/wishlist" },
+    { id: 5, linkText: "Cart", link: "/cart" },
+    { id: 6, linkText: "Contact", link: "/contact" },
+    ...(user ? [{ id: 7, linkText: "Account", link: "/account" }] : []), // Conditionally add "Account"
   ];
 
   const height = window.innerHeight;
