@@ -51,7 +51,7 @@ const Mobilemenu = () => {
   ];
 
   return (
-    <div className="mobilemenu-container" style={{ position: 'relative', height: '100%' }}>
+    <div className="mobilemenu-container" style={{ position: 'relative', height: '100vh' }}>
       {/* User Info Section */}
       <div
         // className="bg-black"
