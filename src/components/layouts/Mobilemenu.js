@@ -156,7 +156,7 @@ const Mobilemenu = () => {
         ))}
       </ul>
 
-      <div style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', top: `${height * 0.9}px` }}>
+      <div style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', top: `${height * 0.86}px` }}>
         <GetAppButton />
       </div>
     </div>
