@@ -3,8 +3,9 @@ import MetaTags from "react-meta-tags";
 import Header from '../layouts/Header';
 import Breadcrumb from '../layouts/Breadcrumbs';
 import Instafeeds from '../layouts/Instafeeds';
-import Footer from '../layouts/Footerthree';
+// import Footer from '../layouts/Footerthree';
 import Content from '../sections/cart/Content';
+import Footer from '../sections/footer/Footer';
 
 const Cart = () => {
     return (
@@ -21,6 +22,7 @@ const Cart = () => {
             <Content/>
             {/* <Instafeeds/>
             <Footer/> */}
+            <Footer />
         </Fragment>
     );
 }

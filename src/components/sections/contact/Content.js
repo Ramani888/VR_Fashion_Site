@@ -39,7 +39,7 @@ const Content = () => {
   };
 
   return (
-    <section className="contact-part pt-115 pb-20">
+    <section className="contact-part pt-115 pb-10">
       <div className="container">
         {/* Contact Info */}
         <div className="contact-info">

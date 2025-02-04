@@ -3,10 +3,11 @@ import MetaTags from "react-meta-tags";
 import Header from '../layouts/Header';
 import Breadcrumb from '../layouts/Breadcrumbs';
 import Instafeeds from '../layouts/Instafeeds';
-import Footer from '../layouts/Footerthree';
+// import Footer from '../layouts/Footerthree';
 import Content from '../sections/login/Content';
 import { getUserData } from '../../helper/UserHelper';
 import { useNavigate } from 'react-router-dom';
+import Footer from '../sections/footer/Footer';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -33,7 +34,7 @@ const Login = () => {
             <Breadcrumb breadcrumb={{pagename:'Login'}}/>
             <Content/>
             {/* <Instafeeds/> */}
-            {/* <Footer/> */}
+            <Footer/>
         </Fragment>
     );
 };

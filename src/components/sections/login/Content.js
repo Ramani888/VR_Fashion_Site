@@ -40,7 +40,7 @@ const Content = () => {
 
 
   return (
-    <section className="login-sec pt-120 pb-120">
+    <section className="login-sec pt-70 pb-40">
       {loading && <Preloader />}
       <div className="container">
         <div className="account-wrapper">

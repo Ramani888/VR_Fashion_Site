@@ -37,7 +37,7 @@ const Content = () => {
   } = useShopLeft();
 
   return (
-    <section className="restaurant-tab-area pb-85 mt-100">
+    <section className="restaurant-tab-area pb-10 mt-100">
       {loading && <Preloader />}
       <div className="container-fluid">
         {/* <div className="section-title text-center mb-50">

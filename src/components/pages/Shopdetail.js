@@ -3,9 +3,10 @@ import MetaTags from "react-meta-tags";
 import Header from "../layouts/Header";
 import Breadcrumb from "../layouts/Breadcrumbs";
 import Instafeeds from "../layouts/Instafeeds";
-import Footer from "../layouts/Footerthree";
+// import Footer from "../layouts/Footerthree";
 import Content from "../sections/shopdetail/Content";
 import { useLocation } from "react-router-dom";
+import Footer from "../sections/footer/Footer";
 
 const Shopdetail = () => {
   const location = useLocation();
@@ -21,7 +22,7 @@ const Shopdetail = () => {
       {/* <Breadcrumb breadcrumb={{ pagename: product?.name }} /> */}
       <Content product={product}/>
       {/* <Instafeeds /> */}
-      {/* <Footer /> */}
+      <Footer />
     </Fragment>
   );
 };

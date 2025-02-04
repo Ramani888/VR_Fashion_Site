@@ -55,7 +55,7 @@ const Footer = () => {
 
   return (
     <footer className="sigma-footer">
-      <div className="sigma-footer-top">
+      {/* <div className="sigma-footer-top">
         <div className="container-fluid">
           <div className="row no-gutters">
             <div className="col-lg-8">
@@ -72,7 +72,7 @@ const Footer = () => {
                     </Link>
                   </div>
                 </div>
-                {/* <div className="col-lg-6">
+                <div className="col-lg-6">
                   <div className="h-100 d-flex align-items-center justify-content-end">
                     <select className="nice-select">
                       <option>English</option>
@@ -84,7 +84,7 @@ const Footer = () => {
                       <option>INR</option>
                     </select>
                   </div>
-                </div> */}
+                </div>
               </div>
               <div className="sigma-footer-box">
                 <div className="sigma-footer-box-top">
@@ -119,12 +119,12 @@ const Footer = () => {
                     <li className="menu-item">
                       <Link to="/about">About Us</Link>
                     </li>
-                    {/* <li className="menu-item">
+                    <li className="menu-item">
                       <Link to="/blog-grid">News</Link>
                     </li>
                     <li className="menu-item">
                       <Link to="/gallery">Gallery</Link>
-                    </li> */}
+                    </li>
                     <li className="menu-item">
                       <Link to="/contact">Contact</Link>
                     </li>
@@ -148,7 +148,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="sigma-footer-bottom">
         <div className="container-fluid">
           <div className="sigma-footer-bottom-inner">
