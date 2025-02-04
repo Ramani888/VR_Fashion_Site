@@ -24,7 +24,7 @@ const Content = () => {
                                 <Nav.Item className="col-lg-2 col-md-3 col-sm-4 col-6">
                                     <Nav.Link eventKey={item?.name} onClick={() => handleNavigation("/classification", item)}>
                                         <img src={item?.imagePath} height={130} width={150}></img>
-                                        <span className="title">Rings</span>
+                                        <span className="title">{item?.name}</span>
                                     </Nav.Link>
                                 </Nav.Item>
                             )
