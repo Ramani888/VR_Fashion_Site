@@ -50,6 +50,10 @@ const Mobilemenu = () => {
     ...(user ? [{ id: 8, linkText: "Account", link: "/account" }] : []), // Conditionally add "Account"
   ];
 
+  const height = window.innerHeight;
+
+  console.log('height', height)
+
   return (
     <div className="mobilemenu-container" style={{ position: 'relative' }}>
       {/* User Info Section */}
@@ -152,7 +156,7 @@ const Mobilemenu = () => {
         ))}
       </ul>
 
-      <div style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', bottom: '-80px' }}>
+      <div style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', top: `${height * 0.9}px` }}>
         <GetAppButton />
       </div>
     </div>
