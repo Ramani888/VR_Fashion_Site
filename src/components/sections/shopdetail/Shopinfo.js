@@ -171,13 +171,13 @@ const Shopinfo = ({ product }) => {
                                         readOnly
                                     />
                                     <button type="button" className="plus-btn" onClick={IncrementItem}>
-                                        <i className="fal fa-plus" style={{color: 'black'}}/>
+                                        <i className="fal fa-plus text-white" />
                                     </button>
                                 </div>
                                 <div className="cart-btn pl-40">
                                     <div
                                         onClick={() => handleCart(productData)}
-                                        className="main-btn btn-border"
+                                        className="main-btn btn-border text-black"
                                     >
                                         {productData?.isCart ? "View in Cart" : "Add to Cart"}
                                     </div>
@@ -230,7 +230,7 @@ const Shopinfo = ({ product }) => {
                                             <tbody>
                                                 <tr>
                                                     <th style={{color: 'black'}}>Price</th>
-                                                    <td className="value">₹{productData?.price || "0"} (MRP: ₹{productData?.mrp || "0"})</td>
+                                                    <td className="value text-black">₹{productData?.price || "0"} (MRP: ₹{productData?.mrp || "0"})</td>
                                                 </tr>
                                                 <tr>
                                                     <th style={{color: 'black'}}>Availability</th>
@@ -245,27 +245,27 @@ const Shopinfo = ({ product }) => {
                                                 </tr>
                                                 <tr>
                                                     <th style={{color: 'black'}}>Description</th>
-                                                    <td className="value">{productData?.description || "No description available."}</td>
+                                                    <td className="value text-black">{productData?.description || "No description available."}</td>
                                                 </tr>
                                                 <tr>
                                                     <th style={{color: 'black'}}>Category</th>
-                                                    <td className="value">{categoryData?.name || "Uncategorized"}</td>
+                                                    <td className="value text-black">{categoryData?.name || "Uncategorized"}</td>
                                                 </tr>
                                                 <tr>
                                                     <th style={{color: 'black'}}>Code</th>
-                                                    <td className="value">{productData?.code || "N/A"}</td>
+                                                    <td className="value text-black">{productData?.code || "N/A"}</td>
                                                 </tr>
                                                 <tr>
                                                     <th style={{color: 'black'}}>Base Metal</th>
-                                                    <td className="value">{productData?.productBaseMetalName || "N/A"}</td>
+                                                    <td className="value text-black">{productData?.productBaseMetalName || "N/A"}</td>
                                                 </tr>
                                                 <tr>
                                                     <th style={{color: 'black'}}>Brand</th>
-                                                    <td className="value">{productData?.productBrandName || "N/A"}</td>
+                                                    <td className="value text-black">{productData?.productBrandName || "N/A"}</td>
                                                 </tr>
                                                 <tr>
                                                     <th style={{color: 'black'}}>Color</th>
-                                                    <td className="value">
+                                                    <td className="value text-black">
                                                         {productData?.productColorCode ? (
                                                             <span
                                                                 style={{
@@ -283,27 +283,27 @@ const Shopinfo = ({ product }) => {
                                                 </tr>
                                                 <tr>
                                                     <th style={{color: 'black'}}>Material</th>
-                                                    <td className="value">{productData?.productColorName || "N/A"}</td>
+                                                    <td className="value text-black">{productData?.productColorName || "N/A"}</td>
                                                 </tr>
                                                 <tr>
                                                     <th style={{color: 'black'}}>Occasion</th>
-                                                    <td className="value">{productData?.productOccasionName || "N/A"}</td>
+                                                    <td className="value text-black">{productData?.productOccasionName || "N/A"}</td>
                                                 </tr>
                                                 <tr>
                                                     <th style={{color: 'black'}}>Plating</th>
-                                                    <td className="value">{productData?.productPlatingName || "N/A"}</td>
+                                                    <td className="value text-black">{productData?.productPlatingName || "N/A"}</td>
                                                 </tr>
                                                 <tr>
                                                     <th style={{color: 'black'}}>Stone Type</th>
-                                                    <td className="value">{productData?.productStoneTypeName || "N/A"}</td>
+                                                    <td className="value text-black">{productData?.productStoneTypeName || "N/A"}</td>
                                                 </tr>
                                                 <tr>
                                                     <th style={{color: 'black'}}>Trend</th>
-                                                    <td className="value">{productData?.productTrendName || "N/A"}</td>
+                                                    <td className="value text-black">{productData?.productTrendName || "N/A"}</td>
                                                 </tr>
                                                 <tr>
                                                     <th style={{color: 'black'}}>Weight</th>
-                                                    <td className="value">{productData?.weight || "N/A"}</td>
+                                                    <td className="value text-black">{productData?.weight || "N/A"}</td>
                                                 </tr>
                                             </tbody>
                                         </table>

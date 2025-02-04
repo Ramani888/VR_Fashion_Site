@@ -5,6 +5,7 @@ import useShopDetail from "./useShopDetail";
 import Preloader from '../../layouts/Preloader';
 
 const Content = ({ product }) => {
+    console.log('1010101010',product)
   const {
     loading
   } = useShopDetail();

@@ -6,8 +6,8 @@ import breadcrumbimg from "../../assets/img/bg/04.jpg";
 const Breadcrumbs = (props) => {
   return (
     <section
-      className="breadcrumb-area"
-      style={{ backgroundImage: `https://firebasestorage.googleapis.com/v0/b/vr-fashion-8ec02.appspot.com/o/images%2Ftt5.jpg-1724996019139?alt=media&token=fe531696-bffa-431e-bd9c-a18c4bbbbe73` }}
+      className="breadcrumb-area bg-red"
+      style={{ backgroundImage: `https://www.colorbook.io/imagecreator.php?hex=f2f2f2&width=1920&height=1080&text=%201920x1080`,backgroundColor:'#f2f2f2' }}
     >
       <div className="container">
         <div className="breadcrumb-text">
