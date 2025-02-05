@@ -14,6 +14,8 @@ const Footer = () => {
           openDialog();
         }
     }
+    const playStoreUrl = "https://play.google.com/store/apps/details?id=com.vr_fashion"
+    const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=${encodeURIComponent(playStoreUrl)}`
     return (
         <footer>
         <div>
@@ -58,6 +60,11 @@ const Footer = () => {
             <p>Email: vrfashionjewellery0044@gmail.com</p>
             <p>Phone: +91 8141851456</p>
             <p>Address: A-34, 2nd Floor Laxmidhara Complex, Baroda Pristage, Varachha Road, Surat - 395006, Gujrat, India.</p>
+            </div>
+            <div>
+            <h3>Get Our App</h3>
+            <img src={qrCodeUrl || "/placeholder.svg"} alt="QR Code for Play Store" />
+            {/* <p>Scan to download our app</p> */}
             </div>
         </div>
         <div>
