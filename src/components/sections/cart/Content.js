@@ -1,17 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
-import img1 from '../../../assets/img/shop/cart-1.png';
-import img2 from '../../../assets/img/shop/cart-2.png';
 import useCart from './useCart';
 import Preloader from "../../layouts/Preloader";
 import { useNavigate } from 'react-router-dom';
 import { getUserData } from '../../../helper/UserHelper';
-
-const cartlistpost = [
-    { img: img1, title: 'Blue Blast', total: 109, qty: 1 },
-    { img: img2, title: "Florida's Finest", total: 44, qty: 1 },
-];
 
 const Content = () => {
     const {
@@ -112,7 +104,7 @@ const Content = () => {
     }, [])
 
     return (
-        <section className="cart-section pt-120 pb-40">
+        <section className="cart-section pt-60 pb-40">
             {loading && <Preloader />}
             <div className="container">
                 <div className="row">
@@ -229,178 +221,3 @@ const Content = () => {
 };
 
 export default Content;
-
-
-// import React, { useEffect } from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
-
-// import img1 from '../../../assets/img/shop/cart-1.png';
-// import img2 from '../../../assets/img/shop/cart-2.png';
-// import useCart from './useCart';
-// import Preloader from '../../layouts/Preloader';
-// import { getUserData } from '../../../helper/UserHelper';
-
-// const Content = () => {
-//   const { cartData, loading, handleRemoveToCart, updateCartData } = useCart();
-//   const navigate = useNavigate();
-
-//   // Calculate totals
-//   const totalPrice = cartData?.data?.reduce((acc, item) => acc + item?.product?.mrp * item?.qty, 0);
-//   const totalDiscount = cartData?.data?.reduce((acc, item) => acc + (item?.product?.mrp - item?.product?.price) * item?.qty, 0);
-//   const extraDiscount = cartData?.data?.reduce((acc, item) => {
-//     return item?.product?.discount
-//       ? acc + ((item?.product?.discount * item?.product?.mrp) / 100) * item?.qty
-//       : acc;
-//   }, 0);
-
-//   const gstData = cartData?.data?.map((item) => {
-//     const product = item?.product;
-//     const gstRate = parseFloat(product?.gst || 0) / 100;
-//     const sgstRate = parseFloat(product?.sgst || 0) / 100;
-//     const igstRate = parseFloat(product?.igst || 0) / 100;
-
-//     return {
-//       ...product,
-//       gstAmount: product?.price * gstRate,
-//       sgstAmount: product?.price * sgstRate,
-//       igstAmount: product?.price * igstRate,
-//     };
-//   });
-
-//   const calculateTotalTax = (key) =>
-//     gstData?.reduce((total, item) => {
-//       const cartItem = cartData?.data?.find((cart) => cart?.product?._id === item?._id);
-//       return total + (parseFloat(item?.[key] || 0) * (cartItem?.qty || 0));
-//     }, 0);
-
-//   const totalGst = calculateTotalTax('gstAmount');
-//   const totalIgst = calculateTotalTax('igstAmount');
-//   const totalSgst = calculateTotalTax('sgstAmount');
-
-//   const total = totalPrice - Math.round(extraDiscount) - totalDiscount + Math.round(totalGst || totalIgst + totalSgst);
-
-//   // Redirect if user not logged in
-//   useEffect(() => {
-//     if (!getUserData()) navigate('/login');
-//   }, [navigate]);
-
-//   return (
-//     <section className="cart-section pt-120 pb-120">
-//       {loading && <Preloader />}
-//       <div className="container">
-//         <div className="row">
-//           <div className="col-md-12">
-//             <div className="w-100 table-responsive mb-60">
-//               <table className="table cw-cart-table mb-0">
-//                 <thead>
-//                   <tr>
-//                     <th />
-//                     <th className="product-name">Product</th>
-//                     <th className="product-qty">Quantity</th>
-//                     <th className="product-price">Total</th>
-//                   </tr>
-//                 </thead>
-//                 <tbody>
-//                   {cartData?.data?.map((item, i) => (
-//                     <tr key={i}>
-//                       <td className="text-center">
-//                         <Link onClick={() => handleRemoveToCart(item?.product)}>
-//                           <i className="fas fa-times text-dark" />
-//                         </Link>
-//                       </td>
-//                       <td>
-//                         <div className="product-thumbnail">
-//                           <img src={item?.product?.image?.[0]?.path || img1} alt="product_thumbnail" />
-//                         </div>
-//                         <Link to="/shop-detail" state={{ product: item?.product }} className="text-dark">
-//                           {item?.product?.name}
-//                         </Link>
-//                       </td>
-//                       <td>
-//                         <div className="quantity-box d-flex align-items-center">
-//                           <button type="button" onClick={() => updateCartData(item, false)} className="btn btn-outline-dark btn-sm">
-//                             <i className="fal fa-minus" />
-//                           </button>
-//                           <input type="text" className="mx-2 form-control form-control-sm text-center" value={item?.qty} readOnly />
-//                           <button type="button" onClick={() => updateCartData(item, true)} className="btn btn-outline-dark btn-sm">
-//                             <i className="fal fa-plus" />
-//                           </button>
-//                         </div>
-//                       </td>
-//                       <td>₹ {item?.total}</td>
-//                     </tr>
-//                   ))}
-//                 </tbody>
-//                 <tfoot>
-//                   <tr>
-//                     <td colSpan={4}>
-//                       <button onClick={() => navigate('/shop-left')} className="btn btn-dark float-left">
-//                         Continue Shopping
-//                       </button>
-//                     </td>
-//                   </tr>
-//                 </tfoot>
-//               </table>
-//             </div>
-
-//             <div className="row">
-//               <div className="offset-lg-6 col-lg-6">
-//                 <table className="table table-borderless">
-//                   <tbody>
-//                     <tr>
-//                       <td><strong>Price ({cartData?.data?.length} items)</strong></td>
-//                       <td className="text-right">₹ {totalPrice}</td>
-//                     </tr>
-//                     <tr>
-//                       <td><strong>Discount</strong></td>
-//                       <td className="text-right">- ₹ {totalDiscount}</td>
-//                     </tr>
-//                     {extraDiscount > 0 && (
-//                       <tr>
-//                         <td><strong>Extra Discount</strong></td>
-//                         <td className="text-right">- ₹ {Math.round(extraDiscount)}</td>
-//                       </tr>
-//                     )}
-//                     {totalGst > 0 && (
-//                       <tr>
-//                         <td><strong>GST</strong></td>
-//                         <td className="text-right">+ ₹ {Math.round(totalGst)}</td>
-//                       </tr>
-//                     )}
-//                     {totalIgst > 0 && (
-//                       <tr>
-//                         <td><strong>IGST</strong></td>
-//                         <td className="text-right">+ ₹ {Math.round(totalIgst)}</td>
-//                       </tr>
-//                     )}
-//                     {totalSgst > 0 && (
-//                       <tr>
-//                         <td><strong>SGST</strong></td>
-//                         <td className="text-right">+ ₹ {Math.round(totalSgst)}</td>
-//                       </tr>
-//                     )}
-//                     <tr>
-//                       <td><strong>Total</strong></td>
-//                       <td className="text-right">₹ {total}</td>
-//                     </tr>
-//                   </tbody>
-//                 </table>
-//                 {cartData?.data?.length <= 0 ? (
-//                   <button className="btn btn-dark w-100" disabled>
-//                     Proceed to Checkout
-//                   </button>
-//                 ) : (
-//                   <Link to="/checkout" className="btn btn-dark w-100">
-//                     Proceed to Checkout
-//                   </Link>
-//                 )}
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Content;
