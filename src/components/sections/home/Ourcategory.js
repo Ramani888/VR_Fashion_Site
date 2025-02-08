@@ -1,61 +1,11 @@
 import React from "react";
-import { Tab, Nav } from "react-bootstrap";
-import { Link } from "react-router-dom";
-
-import img1 from "../../../assets/img/shop/01.jpg";
-import img2 from "../../../assets/img/shop/02.jpg";
-import img3 from "../../../assets/img/shop/03.jpg";
 import useHome from "./useHome";
 import { useNavigate } from "react-router-dom";
 import Preloader from '../../layouts/Preloader';
-import Slider from "react-slick";
-
-const ringsposts = [
-  { img: img3, discount: 10, title: "Diamond Ring.", price: 890 },
-  { img: img1, discount: 15, title: "Stud Earrings ", price: 580 },
-  { img: img2, discount: 40, title: "Ankle Bracelet", price: 290 },
-  { img: img3, discount: 10, title: "Diamond Ring.", price: 890 },
-];
-
-const earingposts = [
-  { img: img1, discount: 15, title: "Ankle Bracelet", price: 390 },
-  { img: img2, discount: "", title: "Stud Earrings", price: 290 },
-  { img: img3, discount: 10, title: "Crumpled Ring", price: 450 },
-  { img: img1, discount: 15, title: "Golden Pendant", price: 780 },
-];
-
-const necklessposts = [
-  { img: img1, discount: 15, title: "Ankle Bracelet", price: 390 },
-  { img: img2, discount: "", title: "Stud Earrings", price: 290 },
-  { img: img3, discount: 10, title: "Crumpled Ring", price: 450 },
-  { img: img1, discount: 15, title: "Golden Pendant", price: 780 },
-];
-
-const braceletposts = [
-  { img: img1, discount: 15, title: "Ankle Bracelet", price: 390 },
-  { img: img2, discount: "", title: "Stud Earrings", price: 290 },
-  { img: img3, discount: 10, title: "Crumpled Ring", price: 450 },
-  { img: img1, discount: 15, title: "Golden Pendant", price: 780 },
-];
-
-const armletsposts = [
-  { img: img1, discount: 15, title: "Ankle Bracelet", price: 390 },
-  { img: img2, discount: "", title: "Stud Earrings", price: 290 },
-  { img: img3, discount: 10, title: "Crumpled Ring", price: 450 },
-  { img: img1, discount: 15, title: "Golden Pendant", price: 780 },
-];
-
-const ankletsposts = [
-  { img: img1, discount: 15, title: "Ankle Bracelet", price: 390 },
-  { img: img2, discount: "", title: "Stud Earrings", price: 290 },
-  { img: img3, discount: 10, title: "Crumpled Ring", price: 450 },
-  { img: img1, discount: 15, title: "Golden Pendant", price: 780 },
-];
 
 const Ourcategory = () => {
   const {
     categoryData,
-    adsPosterData,
     loading
   } = useHome();
 
