@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import { Tab, Nav } from "react-bootstrap";
@@ -14,47 +14,6 @@ const Shopinfo = ({ product }) => {
         DecreaseItem,
         clicks,
     } = useShopDetail(product);
-
-    const [nav1, setNav1] = useState(null);
-    const [nav2, setNav2] = useState(null);
-
-    const slider1 = useRef(null);
-    const slider2 = useRef(null);
-
-    useEffect(() => {
-        setNav1(slider1.current);
-        setNav2(slider2.current);
-        window.scrollTo(0, 0); // Ensure the page scrolls to the top on load
-    }, []);
-
-    // Slider settings
-    const mainSliderSettings = {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        infinite: true,
-        autoplay: false,
-        arrows: false,
-        dots: false,
-        asNavFor: nav2,
-    };
-
-    const thumbnailSliderSettings = {
-        slidesToShow: Math.min(productData?.image?.length || 1, 5),
-        slidesToScroll: 1,
-        infinite: true,
-        focusOnSelect: true,
-        arrows: false,
-        dots: false,
-        responsive: [
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: Math.min(productData?.image?.length || 1, 4),
-                },
-            },
-        ],
-        asNavFor: nav1,
-    };
 
     const settings = {
         dots: false,
@@ -85,34 +44,6 @@ const Shopinfo = ({ product }) => {
                                 )
                             })}
                         </Slider>
-                            {/* <Slider {...mainSliderSettings} ref={slider1}>
-                                {productData?.image?.map((item, i) => (
-                                    <div key={i} className="slide-item">
-                                        <div className="image-box" style={{ height: "500px" }}>
-                                            <Link>
-                                                <img
-                                                    src={item?.path || "/default-image.jpg"}
-                                                    className="img-fluid"
-                                                    alt={`Product Image ${i + 1}`}
-                                                />
-                                            </Link>
-                                        </div>
-                                    </div>
-                                ))}
-                            </Slider> */}
-                            {/* <Slider {...thumbnailSliderSettings} ref={slider2} >
-                                {productData?.image?.map((item, i) => (
-                                    <div key={i} className="slide-item">
-                                        <div className="image-box" style={{ height: "100px" }}>
-                                            <img
-                                                src={item?.path || "/default-thumbnail.jpg"}
-                                                className="img-fluid"
-                                                alt={`Thumbnail ${i + 1}`}
-                                            />
-                                        </div>
-                                    </div>
-                                ))}
-                            </Slider> */}
                         </div>
                     </div>
 
