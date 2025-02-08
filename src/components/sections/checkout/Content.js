@@ -1,14 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import useCheckout from './useCheckout';
 import Preloader from "../../layouts/Preloader";
 import { StateData } from '../../../helper/RegisterHelper';
-
-const checkouttableposts = [
-    { title: 'Apples', piece: 1, qty: 1, total: 32.00 },
-    { title: 'Oranges', piece: 1, qty: 1, total: 32.80 },
-    { title: 'Mangoes', piece: 1, qty: 1, total: 50.99 },
-];
 
 const Content = () => {
     const {
@@ -122,7 +115,7 @@ const Content = () => {
     const finalPrice = price > walletBalance ? price - walletBalance : 0;
 
     return (
-        <section className="checkout pt-120 pb-40">
+        <section className="checkout pt-60 pb-40">
             {loading && <Preloader />}
             <div className="container">
                 {/* <form method="post"> */}
@@ -147,77 +140,6 @@ const Content = () => {
                                 </>
                             )}
                             {openAddressForm && (
-                                // <form onSubmit={handleSubmitAddress}>
-                                //     <div className="row">
-                                //         <div className="col-xl-12 input-group input-group-two mb-20">
-                                //             <label>
-                                //                 <span className="text-white" style={{color: 'black'}}>Address Line 1</span>
-                                //                 <span className="text-danger">*</span>
-                                //             </label>
-                                //             <input type="text" placeholder="Address First" name="addressFirst" onChange={handleInputChange} value={formData?.addressFirst} required style={{color: 'black'}}/>
-                                //         </div>
-                                //         <div className="col-xl-12 input-group input-group-two mb-20">
-                                //             <label>
-                                //                 <span className="text-white" style={{color: 'black'}}>Address Line 2</span>
-                                //             </label>
-                                //             <input type="text" placeholder="Address Second" name="addressSecond" onChange={handleInputChange} value={formData?.addressSecond} style={{color: 'black'}}/>
-                                //         </div>
-                                //         <div className="col-12 input-group input-group-two mb-20">
-                                //             <label>
-                                //                 <span className="text-white" style={{color: 'black'}}>Area</span>
-                                //                 <span className="text-danger">*</span>
-                                //             </label>
-                                //             <input type="text" placeholder="Area" name="area" onChange={handleInputChange} value={formData?.area} required style={{color: 'black'}}/>
-                                //         </div>
-                                //         <div className="col-12 input-group input-group-two mb-20">
-                                //             <label>
-                                //                 <span className="text-white">Landmark</span>
-                                //             </label>
-                                //             <input type="text" placeholder="Landmark" name="landmark" onChange={handleInputChange} value={formData?.landmark} />
-                                //         </div>
-                                //         <div className="col-6 input-group input-group-two mb-20">
-                                //             <label>
-                                //                 <span className="text-white">City</span>
-                                //                 <span className="text-danger">*</span>
-                                //             </label>
-                                //             <input type="text" placeholder="City" name="city" onChange={handleInputChange} value={formData?.city} required/>
-                                //         </div>
-                                //         <div className="col-6 input-group input-group-two mb-20">
-                                //             <label>
-                                //                 <span className="text-white">Pin Code</span>
-                                //                 <span className="text-danger">*</span>
-                                //             </label>
-                                //             <input type="number" placeholder="Pin Code" name="pinCode" onChange={handleInputChange} value={formData?.pinCode} required/>
-                                //         </div>
-                                //         <div className="col-6 input-group input-group-two mb-20">
-                                //             <label>
-                                //                 <span className="text-white">State</span>
-                                //                 <span className="text-danger">*</span>
-                                //             </label>
-                                //             <select name='state' className="nice-select" onChange={handleInputChange} value={formData?.state} required>
-                                //                 <option disabled>Select State</option>
-                                //                 {StateData?.map((item) => {
-                                //                     return (
-                                //                         <option value={item?.name}>{item?.name}</option>
-                                //                     )
-                                //                 })}
-                                //             </select>
-                                //         </div>
-                                //         <div className="col-6 input-group input-group-two mb-20">
-                                //             <label>
-                                //                 <span className="text-white">Country</span>
-                                //                 <span className="text-danger">*</span>
-                                //             </label>
-                                //             <input type="text" placeholder="Country" name="country" value={formData?.country} disabled required/>
-                                //         </div>
-                                //         <div className="col-xl-6 input-group input-group-two mb-20">
-                                //             <div className="main-btn btn-border w-100" onClick={() => handleCloseAddressForm()}>Cancel</div>
-                                //         </div>
-                                //         <div className="col-xl-6 input-group input-group-two mb-20">
-                                //             <button type='submit' className="main-btn btn-filled w-100">Save</button>
-                                //         </div>
-                                //     </div>
-                                // </form>
                                 <form onSubmit={handleSubmitAddress}>
                                     <div className="row">
                                         <div className="col-xl-12 input-group input-group-two mb-20">
@@ -402,31 +324,6 @@ const Content = () => {
                             </div>
                             <label>Note: you can only use wallet balance above Rs.200</label>
                         </div>
-                        {/* <div className="row">
-                                <div className="col-12 input-group input-group-two mb-20">
-                                    <label>Card Number</label>
-                                    <input type="text" placeholder="Card Number" name="Card" required />
-                                </div>
-                                <div className="col-12 input-group input-group-two mb-20">
-                                    <label>Full Name</label>
-                                    <input type="text" placeholder="Full name" name="full-name" required />
-                                </div>
-                                <div className="col-xl-6 input-group input-group-two mb-20">
-                                    <label>Expiry Date</label>
-                                    <input type="text" placeholder="Expiry Date (MM/YY)" name="exp-date" required />
-                                </div>
-                                <div className="col-xl-6 input-group input-group-two mb-20">
-                                    <label>CVV*</label>
-                                    <input type="text" placeholder="CVV" name="CVV-no" required />
-                                </div>
-                                <div className="col-12">
-                                    <p className="small mb-20">
-                                        Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our
-                                        <Link to="#">Privacy Policy</Link>
-                                    </p>
-                                    <button type="submit" className="main-btn btn-filled w-100">Place Order</button>
-                                </div>
-                            </div> */}
                         <div className="offset-lg-12 col-lg-12 col-md-12 mt-20 mb-20">
                             <div className="cw-product-promo">
                                 <table className="table cw-table-borderless">
