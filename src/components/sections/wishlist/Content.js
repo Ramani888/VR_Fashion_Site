@@ -1,62 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Preloader from '../../layouts/Preloader';
-
-import img1 from "../../../assets/img/shop/cart-1.png";
-import img2 from "../../../assets/img/shop/cart-2.png";
-import img3 from "../../../assets/img/shop/cart-3.png";
-import img4 from "../../../assets/img/shop/cart-4.png";
-import img5 from "../../../assets/img/shop/cart-5.png";
 import useWishlist from "./useWishlist";
-
-const wishlistposts = [
-    {
-        img: img1,
-        name: "Product1",
-        price: "109",
-        instock: "In Stock",
-        total: "320",
-    },
-    {
-        img: img2,
-        name: "Product2",
-        price: "109",
-        outstock: "Out Of Stock",
-        total: "320",
-    },
-    {
-        img: img3,
-        name: "Product3",
-        price: "109",
-        outstock: "Out Of Stock",
-        total: "320",
-    },
-    {
-        img: img4,
-        name: "Product4",
-        price: "109",
-        instock: "In Stock",
-        total: "320",
-    },
-    {
-        img: img5,
-        name: "Product5",
-        price: "109",
-        instock: "In Stock",
-        total: "320",
-    },
-];
 
 const Content = () => {
     const {
         wishListData,
-        handleNavigation,
         loading,
         handleRemoveWishlist,
         handleCart
     } = useWishlist();
     return (
-        <section className="restaurant-tab-area pb-85 mt-100">
+        <section className="restaurant-tab-area mt-60">
             {loading && <Preloader />}
             <div className="container">
                 <div className="row">
@@ -118,8 +73,6 @@ const Content = () => {
                             </div>
                         )
                     })}
-                    {/* {pramotionProductData?.map((item, i) => (
-          ))} */}
                 </div>
             </div>
         </section>
