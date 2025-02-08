@@ -5,7 +5,6 @@ import Trending from './Trending';
 const Content = ({ category }) => (
     <Fragment>
         <Category category={category}/>
-        {/* <Trending/> */}
     </Fragment>
 );
 
