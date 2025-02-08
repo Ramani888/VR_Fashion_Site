@@ -1,43 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Pagination from "../../layouts/Pagination";
-import Sidebar from "../../layouts/Shopsidebar";
 import Preloader from '../../layouts/Preloader';
-
-import img1 from "../../../assets/img/shop/01.jpg";
-import img2 from "../../../assets/img/shop/02.jpg";
-import img3 from "../../../assets/img/shop/03.jpg";
 import useShopLeft from "./useShopLeft";
-
-const shopgridpost = [
-    { img: img1, title: "Ankle Bracelet", discount: 15, price: 390 },
-    { img: img2, title: "Stud Earrings", discount: "", price: 290 },
-    { img: img3, title: "Crumpled Ring", discount: 10, price: 450 },
-
-    { img: img1, title: "Golden Pendant", discount: 15, price: 780 },
-    { img: img2, title: "Silver Pendant.", discount: "", price: 290 },
-    { img: img3, title: "Diamond Ring.", discount: 10, price: 890 },
-
-    { img: img1, title: "Stud Earrings", discount: 15, price: 580 },
-    { img: img2, title: "Ankle Bracelet", discount: 40, price: 290 },
-    { img: img3, title: "Diamond Ring.", discount: 10, price: 800 },
-
-    { img: img1, title: "Ankle Bracelet", discount: 15, price: 390 },
-    { img: img2, title: "Stud Earrings", discount: "", price: 290 },
-    { img: img3, title: "Crumpled Ring", discount: 10, price: 450 },
-];
 
 const Content = () => {
     const {
         productData,
         loading,
-        handleNavigation,
         handleWishlist,
         handleCart
     } = useShopLeft();
 
     return (
-        <section className="restaurant-tab-area pb-85 mt-100">
+        <section className="restaurant-tab-area mt-60">
             {loading && <Preloader />}
             <div className="container-fluid">
                 <div className="row">
@@ -99,12 +74,7 @@ const Content = () => {
                             </div>
                         )
                     })}
-                    {/* {pramotionProductData?.map((item, i) => (
-          ))} */}
                 </div>
-                {/* <div className="pagination-wrap">
-          <Pagination onPageChange={handlePageChange} currentPage={currentPage} totalPages={totalPages}/>
-        </div> */}
             </div>
         </section>
     );

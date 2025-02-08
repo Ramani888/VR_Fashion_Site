@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <Fragment>
       <MetaTags>
-        <title>VR-Fashion | Homepage</title>
+        <title>VR-Fashion | Home</title>
         <meta name="description" content="#" />
       </MetaTags>
       <div style={{ backgroundColor: "white", minHeight: "100vh" }}>
