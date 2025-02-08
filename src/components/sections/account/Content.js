@@ -26,7 +26,7 @@ const Content = () => {
   console.log('userData', userData)
   console.log('orderData', orderData)
   return (
-    <section className="account-sec pt-120 pb-120">
+    <section className="account-sec pt-120 pb-60">
       {loading && <Preloader />}
       <Tab.Container defaultActiveKey="dashboard">
         <div className="container">

@@ -122,7 +122,7 @@ const Content = () => {
     const finalPrice = price > walletBalance ? price - walletBalance : 0;
 
     return (
-        <section className="checkout pt-120 pb-120">
+        <section className="checkout pt-120 pb-40">
             {loading && <Preloader />}
             <div className="container">
                 {/* <form method="post"> */}

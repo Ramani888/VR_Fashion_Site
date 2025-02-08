@@ -17,6 +17,7 @@ import CustomeLoginPopup from "../Custome/LoginPopup/CustomeLoginPopup";
 import Newsletter from "./Newsletter";
 import { useCartContext } from "../../hooks/CartContext";
 import { useDialog } from "../Dialog/DialogContext";
+import GetAppButton from "./GetAppButton";
 
 // Cart loop
 const cartposts = [
@@ -137,23 +138,26 @@ const Header = () => {
                   </div>
                 </div>
               </div>
-              <div className="menu-right-buttons">
-                <div className="login-btn" style={{ cursor: 'pointer' }}>
-                  <a onClick={() => handleAccountNavigate()} id="loginBtn">
-                    <i className="fal fa-user" />
-                  </a>
-                </div>
-                <div className="toggle dropdown-btn" style={{ cursor: 'pointer' }}>
-                  <span className="sigma-notification">{cartCount}</span>
-                  <a onClick={() => handleCartNavigate()}>
-                    <i className="fal fa-shopping-bag" />
-                  </a>
-                  
-                </div>
-                <div className="navbar-toggler">
-                  <span />
-                  <span />
-                  <span />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <GetAppButton />
+                <div className="menu-right-buttons">
+                  <div className="login-btn" style={{ cursor: 'pointer' }}>
+                    <a onClick={() => handleAccountNavigate()} id="loginBtn">
+                      <i className="fal fa-user" />
+                    </a>
+                  </div>
+                  <div className="toggle dropdown-btn" style={{ cursor: 'pointer' }}>
+                    <span className="sigma-notification">{cartCount}</span>
+                    <a onClick={() => handleCartNavigate()}>
+                      <i className="fal fa-shopping-bag" />
+                    </a>
+                    
+                  </div>
+                  <div className="navbar-toggler">
+                    <span />
+                    <span />
+                    <span />
+                  </div>
                 </div>
               </div>
             </div>

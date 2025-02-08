@@ -1,9 +1,11 @@
 import React, { Fragment } from "react";
 import MetaTags from "react-meta-tags";
 import Header from "../layouts/Header";
-import Footer from "../layouts/Footer";
+// import Footer from "../layouts/Footer";
 import Newsletter from "../layouts/Newsletter";
 import Content from "../sections/home/Content";
+import Footerthree from "../layouts/Footerthree";
+import Footer from "../sections/footer/Footer";
 
 const Home = () => {
   return (
@@ -15,7 +17,9 @@ const Home = () => {
       <div style={{ backgroundColor: "white", minHeight: "100vh" }}>
         <Header />
         <Content />
-        <Footer/>
+        <Footer />
+        {/* <Footer/> */}
+        {/* <Footerthree /> */}
       </div>
     </Fragment>
   );

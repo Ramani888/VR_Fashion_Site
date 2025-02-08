@@ -112,7 +112,7 @@ const Content = () => {
     }, [])
 
     return (
-        <section className="cart-section pt-120 pb-120">
+        <section className="cart-section pt-120 pb-40">
             {loading && <Preloader />}
             <div className="container">
                 <div className="row">

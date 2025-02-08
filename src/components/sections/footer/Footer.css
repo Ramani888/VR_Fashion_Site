@@ -1,0 +1,80 @@
+:root {
+    --primary-color: #333;
+    --background-color: #f8f8f8;
+    --border-color: #ddd;
+    --font-family: Arial, sans-serif;
+  }
+  
+  footer {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    padding: 2rem 1rem;
+    font-family: var(--font-family);
+  }
+  
+  footer > div:first-child {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* max-width: 1200px; */
+    margin: 0 auto;
+  }
+  
+  footer > div:first-child > div {
+    flex: 1;
+    margin-bottom: 1rem;
+    min-width: 200px;
+    padding: 0 1rem;
+  }
+  
+  footer h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+  }
+  
+  footer ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  footer li {
+    margin-bottom: 0.5rem;
+  }
+  
+  footer a {
+    color: var(--background-color);
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    /* text-decoration: underline; */
+  }
+  
+  footer > div:last-child {
+    border-top: 1px solid var(--border-color);
+    padding-top: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  
+  footer > div:last-child > div {
+    margin-top: 0.5rem;
+  }
+  
+  footer > div:last-child a {
+    margin: 0 0.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    footer > div:first-child {
+      flex-direction: column;
+    }
+  
+    footer > div:first-child > div {
+      margin-bottom: 2rem;
+    }
+  }
+  
+  

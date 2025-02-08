@@ -33,6 +33,7 @@ import Wishlist from "./components/pages/Wishlist";
 import ErrorPage from "./components/pages/Error";
 import { useDialog } from "./components/Dialog/DialogContext";
 import LoginDialog from "./components/Dialog/LoginDialog";
+import Category from "./components/pages/Category";
 
 const App = () => {
   const { open, closeDialog, openDialog } = useDialog();
@@ -48,6 +49,7 @@ const App = () => {
         <Route path="/classification" element={<Classification />} />
         <Route path="/coming-soon" element={<ComingSoon />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/category" element={<Category />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/gallery-two" element={<GalleryTwo />} />

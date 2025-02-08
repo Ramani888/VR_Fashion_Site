@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { getUserData } from "../../helper/UserHelper";
 import profileImg from '../../assets/img/profile_img.png'
 import { useDialog } from "../Dialog/DialogContext";
+import GetAppButton from "./GetAppButton";
 
 const Mobilemenu = () => {
   const { openDialog } = useDialog();
@@ -41,16 +42,21 @@ const Mobilemenu = () => {
   }
 
   const navigationmenu = [
-    { id: 5, linkText: "Home", link: "/" },
-    { id: 6, linkText: "Shop", link: "/shop-left" },
-    { id: 6, linkText: "Wishlist", link: "/wishlist" },
-    { id: 7, linkText: "Cart", link: "/cart" },
-    { id: 7, linkText: "Contact", link: "/contact" },
-    ...(user ? [{ id: 8, linkText: "Account", link: "/account" }] : []), // Conditionally add "Account"
+    { id: 1, linkText: "Home", link: "/" },
+    { id: 2, linkText: "Shop", link: "/shop-left" },
+    { id: 3, linkText: "Category", link: "/category" },
+    { id: 4, linkText: "Wishlist", link: "/wishlist" },
+    { id: 5, linkText: "Cart", link: "/cart" },
+    { id: 6, linkText: "Contact", link: "/contact" },
+    ...(user ? [{ id: 7, linkText: "Account", link: "/account" }] : []), // Conditionally add "Account"
   ];
 
+  const height = window.innerHeight;
+
+  console.log('height', height)
+
   return (
-    <div className="mobilemenu-container">
+    <div className="mobilemenu-container" style={{ position: 'relative' }}>
       {/* User Info Section */}
       <div
         // className="bg-black"
@@ -150,6 +156,10 @@ const Mobilemenu = () => {
           </li>
         ))}
       </ul>
+
+      <div style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', top: `${height * 0.86}px` }}>
+        <GetAppButton />
+      </div>
     </div>
   );
 };
