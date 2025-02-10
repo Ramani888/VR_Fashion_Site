@@ -44,10 +44,6 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/account" element={<Account />} />
-        {/* <Route path="/blog-detail" element={<BlogDetail />} />
-        <Route path="/blog-grid" element={<BlogGrid />} />
-        <Route path="/blog-grid-sidebar" element={<BlogGridSidebar />} />
-        <Route path="/blog-list" element={<BlogList />} /> */}
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/classification" element={<Classification />} />

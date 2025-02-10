@@ -878,6 +878,7 @@ header {
 	position: relative;
 	z-index: 1;
 	margin-top: 130px;
+    background-color: red;
 
 	@media #{$md} {
 		margin-top: 100px;

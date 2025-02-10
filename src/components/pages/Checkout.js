@@ -2,8 +2,6 @@ import React from 'react';
 import MetaTags from "react-meta-tags";
 import Header from '../layouts/Header';
 import Breadcrumb from '../layouts/Breadcrumbs';
-import Instafeeds from '../layouts/Instafeeds';
-// import Footer from '../layouts/Footerthree';
 import Content from '../sections/checkout/Content';
 import Footer from '../sections/footer/Footer';
 
@@ -17,11 +15,11 @@ const Checkout = () => {
                     content="#"
                 />
             </MetaTags>
+            <div style={{backgroundColor:'white'}}>
             <Header/>
             <Breadcrumb breadcrumb={{ pagename: 'Checkout' }}/>
             <Content/>
-            {/* <Instafeeds/>
-            <Footer/> */}
+            </div>
             <Footer />
         </React.Fragment>
     );

@@ -1,8 +1,9 @@
 import axios, { Method } from "axios";
 import { StatusCodes } from "http-status-codes";
 // const serverUrl = 'https://vr-fashion-backend.vercel.app/api';
-const serverUrl = 'https://vr-fashion-backend-zyyi.vercel.app/api';
+// const serverUrl = 'https://vr-fashion-backend-zyyi.vercel.app/api';
 // const serverUrl = 'http://localhost:3010/api'
+const serverUrl = 'https://vrfashion.site/api'
 
 const errorCodes = [
     StatusCodes.INTERNAL_SERVER_ERROR,
@@ -45,7 +46,7 @@ const serverRequest = async (
         url: serverUrl + url,
         headers: headers,
         method: command,
-        timeout: 60000,
+        timeout: 200000,
         data: data,
       };
       const response = await axios(config);

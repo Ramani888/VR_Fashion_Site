@@ -14,7 +14,7 @@ const Content = ({ product }) => {
       {product && (
         <>
           <Shopinfo product={product} />
-          <Shoprelated product={product} />
+          {/* <Shoprelated product={product} /> */}
         </>
       )}
     </Fragment>
