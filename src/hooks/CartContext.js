@@ -12,15 +12,19 @@ export const CartProvider = ({ children }) => {
 
   const updateCartCount = async () => {
     try {
-        setLoading(true);
-        const userData = getUserData();
+      setLoading(true);
+      const userData = getUserData();
+      if (userData) {
         const res = await serverGetCartCountData(userData?._id);
         setCartCount(res?.data);
+      } else {
+        setCartCount(0);
+      }
     } catch (err) {
-        console.log(err);
-        setLoading(false);
+      console.log(err);
+      setLoading(false);
     } finally {
-        setLoading(false);
+      setLoading(false);
     }
   };
 
