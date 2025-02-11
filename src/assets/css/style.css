@@ -9651,6 +9651,12 @@ header.header-three.sigma-header
   }
 }
 
+@media (min-width: 1600px) {
+  .product-img {
+    height: 330px;
+  }
+}
+
 @media (max-width: 575px) {
   .restaurant-tab-area .food-box .desc a.cat {
     letter-spacing: 1px;

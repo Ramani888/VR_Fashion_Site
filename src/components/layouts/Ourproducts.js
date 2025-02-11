@@ -29,7 +29,7 @@ const Ourproducts = () => {
                         style={{
                           height: "100%",
                           width: "100%",
-                          objectFit: "cover",
+                          objectFit: "fill",
                         }}
                       />
                     </div>
