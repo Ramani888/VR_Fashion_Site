@@ -10,7 +10,7 @@ const Shoplefttwo = () => {
     return (
         <Fragment>
             <MetaTags>
-                <title>VR-Fashion | Shop Left</title>
+                <title>VR Fashion | Shop Left</title>
                 <meta
                     name="description"
                     content="#"

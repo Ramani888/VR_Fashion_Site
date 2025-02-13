@@ -12,7 +12,7 @@ const Shopdetail = () => {
   return (
     <Fragment>
       <MetaTags>
-        <title>VR-Fashion | {product?.name}</title>
+        <title>VR Fashion | {product?.name}</title>
         <meta name="description" content="#" />
       </MetaTags>
       <div style={{backgroundColor:'white'}}>

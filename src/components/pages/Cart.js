@@ -9,7 +9,7 @@ const Cart = () => {
     return (
         <Fragment>
             <MetaTags>
-                <title>VR-Fashion | Cart</title>
+                <title>VR Fashion | Cart</title>
                 <meta
                     name="description"
                     content="#"

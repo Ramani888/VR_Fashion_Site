@@ -15,7 +15,7 @@ const Faq = () => {
     return (
         <Fragment>
             <MetaTags>
-                <title>VR-Fashion | FAQ's</title>
+                <title>VR Fashion | FAQ's</title>
                 <meta
                     name="description"
                     content="#"

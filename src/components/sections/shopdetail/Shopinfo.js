@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import { Tab, Nav } from "react-bootstrap";
@@ -23,6 +23,10 @@ const Shopinfo = ({ product }) => {
         slidesToShow: 1,
         slidesToScroll: 1
     };
+
+    useEffect(() => {
+        window.scrollTo(0, 0); // Scroll to the top when the component mounts
+    }, []);
 
     return (
         <section className="Shop-section pt-120 pb-20">

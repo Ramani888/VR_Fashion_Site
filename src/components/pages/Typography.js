@@ -10,7 +10,7 @@ const Typography = () => {
     return (
         <Fragment>
             <MetaTags>
-                <title>VR-Fashion | Typography</title>
+                <title>VR Fashion | Typography</title>
                 <meta
                     name="description"
                     content="#"

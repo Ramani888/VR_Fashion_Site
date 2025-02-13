@@ -12,7 +12,7 @@ const Classification = () => {
   return (
     <Fragment>
       <MetaTags>
-        <title>VR-Fashion | {category?.name}</title>
+        <title>VR Fashion | {category?.name}</title>
         <meta name="description" content="#" />
       </MetaTags>
       <div style={{ backgroundColor: "white", minHeight: "100vh" }}>

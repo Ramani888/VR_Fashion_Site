@@ -10,7 +10,7 @@ const Legal = () => {
     return (
         <Fragment>
             <MetaTags>
-                <title>VR-Fashion | Legal</title>
+                <title>VR Fashion | Legal</title>
                 <meta
                     name="description"
                     content="#"

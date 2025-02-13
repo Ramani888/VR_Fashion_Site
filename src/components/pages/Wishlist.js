@@ -9,7 +9,7 @@ const Wishlist = () => {
     return (
         <Fragment>
             <MetaTags>
-                <title>VR-Fashion | Wishlist</title>
+                <title>VR Fashion | Wishlist</title>
                 <meta
                     name="description"
                     content="#"

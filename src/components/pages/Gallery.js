@@ -10,7 +10,7 @@ const Gallery = () => {
     return (
         <Fragment>
             <MetaTags>
-                <title>VR-Fashion | Gallery</title>
+                <title>VR Fashion | Gallery</title>
                 <meta
                     name="description"
                     content="#"

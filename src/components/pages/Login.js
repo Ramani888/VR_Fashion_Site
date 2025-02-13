@@ -24,7 +24,7 @@ const Login = () => {
     return (
         <Fragment>
             <MetaTags>
-                <title>VR-Fashion | Login</title>
+                <title>VR Fashion | Login</title>
                 <meta
                     name="description"
                     content="#"

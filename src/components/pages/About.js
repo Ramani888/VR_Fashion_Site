@@ -10,7 +10,7 @@ const About = () => {
     return (
         <React.Fragment>
             <MetaTags>
-                <title>VR-Fashion | About Us</title>
+                <title>VR Fashion | About Us</title>
                 <meta
                     name="description"
                     content="#"

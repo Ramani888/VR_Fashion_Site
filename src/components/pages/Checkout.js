@@ -9,7 +9,7 @@ const Checkout = () => {
     return (
         <React.Fragment>
             <MetaTags>
-                <title>VR-Fashion | Checkout</title>
+                <title>VR Fashion | Checkout</title>
                 <meta
                     name="description"
                     content="#"

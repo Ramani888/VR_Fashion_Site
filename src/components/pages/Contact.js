@@ -10,7 +10,7 @@ const Contact = () => {
     return (
         <Fragment>
             <MetaTags>
-                <title>VR-Fashion | Contact Us</title>
+                <title>VR Fashion | Contact Us</title>
                 <meta
                     name="description"
                     content="#"

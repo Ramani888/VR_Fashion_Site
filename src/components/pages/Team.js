@@ -17,7 +17,7 @@ const Team = () => {
     return (
         <Fragment>
             <MetaTags>
-                <title>VR-Fashion | Team</title>
+                <title>VR Fashion | Team</title>
                 <meta
                     name="description"
                     content="#"

@@ -13,7 +13,7 @@ const Error = () => {
     return (
         <Fragment>
             <MetaTags>
-                <title>VR-Fashion | Error</title>
+                <title>VR Fashion | Error</title>
                 <meta
                     name="description"
                     content="#"

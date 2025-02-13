@@ -9,7 +9,7 @@ const Shopleft = () => {
     return (
         <Fragment>
             <MetaTags>
-                <title>VR-Fashion | Shopping</title>
+                <title>VR Fashion | Shopping</title>
                 <meta name="description" content="#" />
             </MetaTags>
             <div style={{backgroundColor:'white'}}>

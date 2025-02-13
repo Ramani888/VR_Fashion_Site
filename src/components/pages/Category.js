@@ -9,7 +9,7 @@ const Category = () => {
     return (
         <Fragment>
             <MetaTags>
-                <title>VR-Fashion | Category</title>
+                <title>VR Fashion | Category</title>
                 <meta
                     name="description"
                     content="#"

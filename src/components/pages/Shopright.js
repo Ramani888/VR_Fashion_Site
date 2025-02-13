@@ -14,7 +14,7 @@ const Shopright = () => {
   return (
     <Fragment>
       <MetaTags>
-        <title>VR-Fashion | Shop Right</title>
+        <title>VR Fashion | Shop Right</title>
         <meta name="description" content="#" />
       </MetaTags>
       <Header />

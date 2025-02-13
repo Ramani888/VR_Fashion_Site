@@ -11,7 +11,7 @@ const Register = () => {
     return (
         <Fragment>
             <MetaTags>
-                <title>VR-Fashion | Register</title>
+                <title>VR Fashion | Register</title>
                 <meta
                     name="description"
                     content="#"

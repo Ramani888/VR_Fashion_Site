@@ -13,7 +13,7 @@ const Comingsoon = () => {
     return (
         <Fragment>
             <MetaTags>
-                <title>VR-Fashion | Coming Soon</title>
+                <title>VR Fashion | Coming Soon</title>
                 <meta
                     name="description"
                     content="#"

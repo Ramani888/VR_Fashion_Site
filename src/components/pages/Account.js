@@ -11,7 +11,7 @@ const Account = () => {
     return (
         <React.Fragment>
             <MetaTags>
-                <title>VR-Fashion | My Account</title>
+                <title>VR Fashion | My Account</title>
                 <meta
                     name="description"
                     content="#"
