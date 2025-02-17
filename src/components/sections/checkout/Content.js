@@ -29,10 +29,12 @@ const Content = () => {
     return total / array?.length; // Divide by the number of objects
   };
 
-  const deliveryCharge = calculateDeliveryCharge(
-    cartData?.data,
-    "deliveryCharge"
-  );
+  // const deliveryCharge = calculateDeliveryCharge(
+  //   cartData?.data,
+  //   "deliveryCharge"
+  // );
+
+  const deliveryCharge = cartData?.totalDeliveryCharge;
 
   const totalPrice = cartData?.data?.reduce((accumulator, item) => {
     return accumulator + item?.product?.mrp * item?.qty;
