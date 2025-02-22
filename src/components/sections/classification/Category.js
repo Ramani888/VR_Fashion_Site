@@ -28,7 +28,7 @@ const Category = ({category}) => {
                       <div className="food-box shop-box">
                         <div className="thumb">
                           <div className="product-img">
-                            <img src={item?.image[0]?.path} alt="images" style={{height: '100%', width: '100%', objectFit: 'cover'}} />
+                            <img src={item?.image[0]?.path} alt="images" style={{height: '100%', width: '100%', objectFit: 'fill'}} />
                           </div>
                           {item?.discount && (
                             <div className="badges">

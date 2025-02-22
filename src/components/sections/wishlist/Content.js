@@ -22,7 +22,7 @@ const Content = () => {
                                 <div className="food-box shop-box">
                                     <div className="thumb">
                                         <div className="product-img">
-                                            <img src={item?.product?.image[0]?.path} alt="images" style={{ height: '100%', width: '100%', objectFit: 'cover' }} />
+                                            <img src={item?.product?.image[0]?.path} alt="images" style={{ height: '100%', width: '100%', objectFit: 'fill' }} />
                                         </div>
                                         {item?.product?.discount && (
                                             <div className="badges">
