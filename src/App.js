@@ -13,8 +13,6 @@ import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
 import ShopDetail from "./components/pages/Shopdetail";
 import ShopLeft from "./components/pages/Shopleft";
-import Team from "./components/pages/Team";
-import Typography from "./components/pages/Typography";
 import Wishlist from "./components/pages/Wishlist";
 import ErrorPage from "./components/pages/Error";
 import { useDialog } from "./components/Dialog/DialogContext";
@@ -39,8 +37,6 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/shop-detail" element={<ShopDetail />} />
         <Route path="/shop-left" element={<ShopLeft />} />
-        <Route path="/team" element={<Team />} />
-        <Route path="/typography" element={<Typography />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
