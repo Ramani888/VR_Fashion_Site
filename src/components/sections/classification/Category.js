@@ -56,14 +56,14 @@ const Category = ({category}) => {
                             <a onClick={() => handleCart(item)} style={{ cursor: 'pointer' }}>
                               <i className={item?.isCart ? 'fas fa-shopping-cart' : "far fa-shopping-cart"} />
                             </a>
-                            <Link onClick={() => handleNavigation("/shop-detail", item)}>
+                            <Link to="/shop-detail" state={{ product: item }}>
                               <i className="far fa-eye" />
                             </Link>
                           </div>
                         </div>
                         <div className="desc" style={{backgroundColor:'#f2f2f2'}}>
                           <h4 className="product-name">
-                            <Link onClick={() => handleNavigation("/shop-detail", item)} style={{ textDecoration: 'none',color:'black',lineHeight: '30px' }}>{item?.name}</Link>
+                            <Link to="/shop-detail" state={{ product: item }} style={{ textDecoration: 'none',color:'black',lineHeight: '30px' }}>{item?.name}</Link>
                           </h4>
                           <span className="price" style={{color:'black'}}>
                           ₹{item?.price} <span style={{color:'black'}}>₹{item?.mrp}</span>
@@ -71,7 +71,7 @@ const Category = ({category}) => {
                           <span className="price" style={{color:'black'}}>
                             {percentageDiscount}% off
                           </span>
-                          <Link onClick={() => handleNavigation("/shop-detail", item)} className="link">
+                          <Link to="/shop-detail" state={{ product: item }} className="link">
                             <i className="fal fa-arrow-right" style={{color:'black'}}/>
                           </Link>
                         </div>

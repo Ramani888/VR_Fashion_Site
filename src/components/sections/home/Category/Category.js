@@ -20,7 +20,7 @@ const Category = () => {
   return (
     <section className="restaurant-tab-area" style={{ backgroundColor: "white" }}>
       <div className="container">
-        <Tab.Container defaultActiveKey="category-2">
+        <Tab.Container>
           <Nav variant="pills" className="restaurant-rood-list row justify-content-center mb-30">
             {categoryposts.map((item) => (
               <Nav.Item
@@ -28,7 +28,7 @@ const Category = () => {
                 className="col-lg-2 col-md-3 col-sm-4 col-6"
                 onClick={() => handleNavigation("/classification", item)}
               >
-                <Nav.Link eventKey={`category-${item.tag}`}>
+                <Nav.Link>
                   <i className={item.icon} />
                   <span className="title">{item.name}</span>
                 </Nav.Link>
