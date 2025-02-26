@@ -38,7 +38,7 @@ const Home = () => {
           content="Discover the latest fashion trends at VR Fashion."
         />
       </MetaTags>
-      <div className="bg-white min-vh-100 d-flex flex-column">
+      <div style={{ backgroundColor: "white", minHeight: "100vh" }}>
         <Header />
         <Content />
         <Footer />

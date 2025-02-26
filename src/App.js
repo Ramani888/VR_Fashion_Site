@@ -23,7 +23,7 @@ const App = () => {
   const { open, closeDialog, openDialog } = useDialog();
   return (
     <>
-      <Preloader />
+      {/* <Preloader /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/account" element={<Account />} />
