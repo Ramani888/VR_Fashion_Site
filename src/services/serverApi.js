@@ -1,9 +1,9 @@
 import axios, { Method } from "axios";
 import { StatusCodes } from "http-status-codes";
-// const serverUrl = 'https://vr-fashion-backend.vercel.app/api';
-// const serverUrl = 'https://vr-fashion-backend-zyyi.vercel.app/api';
+
 // const serverUrl = 'http://localhost:3010/api'
-const serverUrl = "https://vrfashion.site/api";
+// const serverUrl = "https://vrfashion.site/api";
+const serverUrl = 'https://vr-fashion-backend.vercel.app/api';
 
 const errorCodes = [
   StatusCodes.INTERNAL_SERVER_ERROR,
