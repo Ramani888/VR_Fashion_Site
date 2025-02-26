@@ -3,6 +3,7 @@ import { Tab } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import useClassification from "./useClassification";
 import Prelader from '../../layouts/Preloader';
+import NoDataFound from "../../layouts/NoDataFound";
 
 const Category = ({category}) => {
   const {
@@ -79,6 +80,10 @@ const Category = ({category}) => {
                     </div>
                   )
                 })}
+
+                {productData?.length === 0 && (
+                  <NoDataFound />
+                )}
               </div>
             </Tab.Pane>
           </Tab.Content>

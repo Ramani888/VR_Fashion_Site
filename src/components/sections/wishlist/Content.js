@@ -85,6 +85,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Preloader from "../../layouts/Preloader";
 import useWishlist from "./useWishlist";
+import NoDataFound from "../../layouts/NoDataFound";
 
 const Content = () => {
   const { wishListData, loading, handleRemoveWishlist, handleCart } =
@@ -179,6 +180,10 @@ const Content = () => {
               </div>
             );
           })}
+
+          {wishListData?.length === 0 && (
+            <NoDataFound />
+          )}
         </div>
       </div>
     </section>
