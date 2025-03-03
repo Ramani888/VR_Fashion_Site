@@ -187,7 +187,8 @@ const useShopDetail = (product) => {
         IncrementItem,
         DecreaseItem,
         clicks,
-        handleCartRelated
+        handleCartRelated,
+        loading
     }
 }
 

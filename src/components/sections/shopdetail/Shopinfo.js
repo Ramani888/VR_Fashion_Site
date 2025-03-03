@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import { Tab, Nav } from "react-bootstrap";
 import useShopDetail from "./useShopDetail";
+import Preloader from "../../layouts/Preloader";
 
 const Shopinfo = ({ product }) => {
     const {
@@ -13,6 +14,7 @@ const Shopinfo = ({ product }) => {
         IncrementItem,
         DecreaseItem,
         clicks,
+        loading
     } = useShopDetail(product);
 
     const settings = {
@@ -28,8 +30,13 @@ const Shopinfo = ({ product }) => {
         window.scrollTo(0, 0); // Scroll to the top when the component mounts
     }, []);
 
+    useEffect(() => {
+        localStorage.setItem('shopInfo', JSON.stringify(product));
+    }, [])
+
     return (
         <section className="Shop-section pt-120 pb-20">
+            {loading && <Preloader />}
             <div className="container">
                 <div className="row justify-content-center">
                     {/* Product Images */}

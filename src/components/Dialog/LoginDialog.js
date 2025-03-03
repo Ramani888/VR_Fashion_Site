@@ -20,7 +20,17 @@ const LoginDialog = ({ open, closeDialog, openDialog }) => {
       const res = await serverRegisterLogin({...formData, country: 'India'});
       if (res?.userDataAndToken) {
         localStorage.setItem('user', JSON.stringify(res?.userDataAndToken));
-        navigate(location?.pathname === '/login' ? '/' : location?.pathname)
+        if (location?.pathname === '/shop-detail') {
+          const savedProduct = localStorage.getItem("shopInfo");
+          const product = JSON.parse(savedProduct);
+          if (product) {
+            navigate("/shop-detail", { state: { product } });
+          } else {
+            navigate("/");
+          }
+        } else {
+          navigate(location?.pathname === '/login' ? '/' : location?.pathname)
+        }
       }
       closeDialog();
     } catch (err) {

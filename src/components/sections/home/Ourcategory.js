@@ -123,7 +123,7 @@ const Ourcategory = () => {
 
   return (
     <section
-      className="restaurant-tab-area mb-50"
+      className="restaurant-tab-area mb-30"
       style={{ backgroundColor: "white" }}
     >
       {loading && <Preloader />}
