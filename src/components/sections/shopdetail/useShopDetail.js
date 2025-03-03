@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { serverAddToCart, serverGetCategoryById, serverGetProductByCategoryId, serverGetProductById, serverRemoveToCart } from '../../../services/serverApi';
+import { serverAddToCart, serverAddWishlistProduct, serverGetCategoryById, serverGetProductByCategoryId, serverGetProductById, serverRemoveToCart, serverRemoveWishlistProduct } from '../../../services/serverApi';
 import { useNavigate } from 'react-router-dom';
 import { getUserData } from '../../../helper/UserHelper';
 import { useCartContext } from '../../../hooks/CartContext';
@@ -80,7 +80,6 @@ const useShopDetail = (product) => {
         try {
             setLoading(true);
             const userData = getUserData();
-            console.log('userData',userData)
             if (userData) {
                 const bodyData = {
                     userId: userData?._id,
@@ -165,9 +164,32 @@ const useShopDetail = (product) => {
             }
             updateCartCount();
         } else {
-            navigate('/login');
+            openDialog();
+            return;
         }
     }
+
+    const handleWishlist = async (item) => {
+        const userData = getUserData();
+        if (!userData) {
+            openDialog();
+            return;
+        }
+
+        try {
+            setLoading(true);
+            if (item?.isWishlist) {
+                await serverRemoveWishlistProduct(userData?._id, item?._id);
+            } else {
+                await serverAddWishlistProduct({ userId: userData?._id, productId: item?._id });
+            }
+            getCategoryProductData(); // Refresh product data
+        } catch (err) {
+            console.error('Error handling wishlist:', err);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     useEffect(() => {
         getProductData();
@@ -188,7 +210,8 @@ const useShopDetail = (product) => {
         DecreaseItem,
         clicks,
         handleCartRelated,
-        loading
+        loading,
+        handleWishlist
     }
 }
 
