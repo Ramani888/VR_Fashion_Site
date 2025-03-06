@@ -6,6 +6,7 @@
   "main": "lib/index",
   "types": "lib/index",
   "dependencies": {
+    "@mui/icons-material": "^6.4.7",
     "@splidejs/react-splide": "^0.7.12",
     "@splidejs/splide": "^4.1.4",
     "@testing-library/jest-dom": "^6.6.3",
@@ -21,6 +22,7 @@
     "keen-slider": "^6.8.6",
     "magnific-popup": "^1.2.0",
     "mapbox-gl": "^3.9.4",
+    "material-react-table": "^3.2.1",
     "moment": "^2.30.1",
     "moment-timezone": "^0.5.46",
     "razorpay": "^2.9.5",

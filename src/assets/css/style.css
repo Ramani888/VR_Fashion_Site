@@ -261,6 +261,33 @@ select {
   color: #a3a3a3;
 }
 
+.order-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: -40px;
+}
+
+@media (max-width: 1000px) {
+  .order-container {
+    gap: 0px;
+    margin-top: -50px;
+  }
+}
+
+.order-tab-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+@media (max-width: 1000px) {
+  .order-tab-container {
+    gap: 0px;
+    margin-top: -30px;
+  }
+}
+
 .nice-select .list li:hover,
 .nice-select .list li.option:hover {
   background-color: #fcd462;

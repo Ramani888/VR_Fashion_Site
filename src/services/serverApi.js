@@ -166,7 +166,7 @@ export const serverGetProductUnderTen = async (userId) => {
 export const serverGetOrder = async (userId) => {
   let url = `/user/order`;
   if (userId) {
-    url += `&userId=${userId}`;
+    url += `?userId=${userId}`;
   }
   const res = await serverRequest(url, "GET", null, true);
   return res;

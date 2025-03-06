@@ -23,32 +23,21 @@ const Content = () => {
     handleLogout
   } = useAccount();
 
-  console.log('userData', userData)
-  console.log('orderData', orderData)
   return (
     <section className="account-sec pt-120 pb-60">
       {loading && <Preloader />}
       <Tab.Container defaultActiveKey="dashboard">
         <div className="container">
-          <div className="row">
-            <div className="col-lg-4">
+          <div className="row order-container">
+            <div className="col-lg-12">
               <div className="account-tabs">
-                <Nav variant="tabs" className="flex-column border-0">
-                  <Nav.Item>
+                <Nav variant="tabs" style={{ display: 'flex', alignItems: 'center', gap: '20px'}} className="border-0">
+                  <Nav.Item style={{marginBottom: '-13px'}}>
                     <Nav.Link eventKey="dashboard">Dashboard</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
                     <Nav.Link eventKey="orders">Orders</Nav.Link>
                   </Nav.Item>
-                  {/* <Nav.Item>
-                    <Nav.Link eventKey="downloads">Downloads</Nav.Link>
-                  </Nav.Item> */}
-                  {/* <Nav.Item>
-                    <Nav.Link eventKey="addresses">Addresses</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link eventKey="acdetails">Account Details</Nav.Link>
-                  </Nav.Item> */}
                   <Nav.Item>
                     <Nav.Link className="logout" onClick={() => handleLogout()}>
                       <i className="fal fa-power-off" /> Logout
@@ -57,7 +46,7 @@ const Content = () => {
                 </Nav>
               </div>
             </div>
-            <div className="col-lg-8">
+            <div className="col-lg-12">
               <Tab.Content>
                 <Tab.Pane eventKey="dashboard">
                   <div className="dashboard-content">
@@ -77,69 +66,66 @@ const Content = () => {
                   <div>
                     <div className="content-heading mb-50">
                       <h3>My Orders</h3>
-                      {/* <p>
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since the 1500s
-                      </p> */}
                     </div>
-                    <div className="order-table">
-                      <table className="table cw-cart-table mb-0">
+                    <div className="order-table" style={{ overflowX: 'auto' }}>
+                      <table className="table mb-0" style={{ width: '100%', minWidth: '1000px' }}>
                         <thead>
                           <tr>
                             <th />
-                            <th scope="col" className="product-name">
-                              My Order
-                            </th>
-                            <th scope="col" className="product-qty">
-                              Order ID
-                            </th>
-                            <th scope="col" className="product-price">
-                              Order Date
-                            </th>
-                            <th scope="col" className="product-price">
-                              Actions
-                            </th>
+                            <th scope="col" className="product-name">Payment Id</th>
+                            <th scope="col" className="product-name">Date</th>
+                            <th scope="col" className="product-name">Product</th>
+                            <th scope="col" className="product-name">Qty</th>
+                            <th scope="col" className="product-name">Status</th>
+                            <th scope="col" className="product-price">Total Amount</th>
                           </tr>
                         </thead>
                         <tbody>
                           {orderData?.length < 1 && (
                             <tr>
-                              <td className="product-price text-white cw-align has-title text-center" colSpan={5}>No Data Found</td>
+                              <td className="product-price text-white cw-align has-title text-center" colSpan={7}>
+                                No Data Found
+                              </td>
                             </tr>
                           )}
-                          {orderData?.map((item, i) => (
-                            <tr key={i}>
-                              <td className="product-remove text-center cw-align">
-                                <Link to="#">
-                                  <i className="fas fa-times" />
-                                </Link>
-                              </td>
-                              <td data-title="Product" className="has-title">
-                                <div className="product-thumbnail">
-                                  <img src={item.img} alt="product_thumbnail" />
-                                </div>
-                                <Link to="/shop-detail">{item.title}</Link>
-                              </td>
-                              <td
-                                className="product-price text-white cw-align has-title"
-                                data-title="Order ID"
-                              >
-                                #{item.id}
-                              </td>
-                              <td
-                                className="product-price text-white cw-align has-title"
-                                data-title="Order Date"
-                              >
-                                {item.date}
-                              </td>
-                              <td data-title="Actions" className="has-title">
-                                <Link to="#" className="main-btn btn-filled">
-                                  Order Now
-                                </Link>
-                              </td>
-                            </tr>
-                          ))}
+                          {orderData?.map((order, orderIndex) => {
+                            return order.productDetails?.map((product, productIndex) => (
+                              <tr key={`${order.paymentId}-${productIndex}`}>
+                                {productIndex === 0 && (
+                                  <>
+                                    <td rowSpan={order.productDetails.length} className="product-remove text-center cw-align">
+                                      <Link to="#"><i className="fas fa-times" /></Link>
+                                    </td>
+                                    <td rowSpan={order.productDetails.length} className="product-price text-white cw-align has-title">
+                                      {order?.paymentId}
+                                    </td>
+                                    <td rowSpan={order.productDetails.length} className="product-price text-white cw-align has-title">
+                                      {order?.createdAt}
+                                    </td>
+                                  </>
+                                )}
+                                <td data-title="Product" className="has-title">
+                                  <div className="product-thumbnail">
+                                    <img src={product?.product?.image?.[0]?.path} alt="product_thumbnail" />
+                                  </div>
+                                  <Link to="/shop-detail">{product?.product?.name}</Link>
+                                </td>
+                                <td className="product-price text-white cw-align has-title">
+                                  {product?.qty}
+                                </td>
+                                {productIndex === 0 && (
+                                  <>
+                                    <td rowSpan={order.productDetails.length} className="product-price text-white cw-align has-title">
+                                      {order?.status}
+                                    </td>
+                                    <td rowSpan={order.productDetails.length} className="product-price text-white cw-align has-title">
+                                      ₹{order.totalAmount}
+                                    </td>
+                                  </>
+                                )}
+                              </tr>
+                            ));
+                          })}
                         </tbody>
                       </table>
                     </div>
