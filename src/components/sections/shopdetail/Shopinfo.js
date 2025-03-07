@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import { Tab, Nav } from "react-bootstrap";
 import useShopDetail from "./useShopDetail";
 import Preloader from "../../layouts/Preloader";
+import Alert from '@mui/material/Alert';
 
 const Shopinfo = ({ product }) => {
     const {
@@ -14,7 +15,11 @@ const Shopinfo = ({ product }) => {
         IncrementItem,
         DecreaseItem,
         clicks,
-        loading
+        loading,
+        alert,
+        setAlert,
+        setSelectedSize,
+        selectedZize
     } = useShopDetail(product);
 
     const settings = {
@@ -33,6 +38,13 @@ const Shopinfo = ({ product }) => {
     useEffect(() => {
         localStorage.setItem('shopInfo', JSON.stringify(product));
     }, [])
+
+    useEffect(() => {
+        if (productData && productData.size?.length === 1) {
+            setSelectedSize(productData?.size[0])
+            setAlert(false);
+        }
+    }, [productData])
 
     return (
         <section className="Shop-section pt-120 pb-20">
@@ -70,12 +82,12 @@ const Shopinfo = ({ product }) => {
                             </div>
                             <div className="mt-10 mb-20">
                                 <div className="d-inline-block other-info">
-                                    <h6 style={{color: 'black'}}>
+                                    <label className="text-black">
                                         Availability:
                                         <span className="text-success ml-5" style={{color: 'black'}}>
                                             {productData?.availability ? "In Stock" : "In Stock"}
                                         </span>
-                                    </h6>
+                                    </label>
                                 </div>
                             </div>
                             <div className="short-descr mb-10">
@@ -85,7 +97,7 @@ const Shopinfo = ({ product }) => {
                             {/* Product Colors */}
                             {productData?.productColorCode && (
                                 <div className="color-sec mb-10">
-                                    <label>Color</label>
+                                    <label className="text-black">Color</label>
                                     <div className="color-box">
                                         <label className="m-0">
                                             <input type="radio" name="color" value={productData.productColorCode} />
@@ -97,6 +109,24 @@ const Shopinfo = ({ product }) => {
                                     </div>
                                 </div>
                             )}
+
+                            <div className="color-sec mb-20">
+                                <label className="text-black">Size</label>
+                                <div className="color-box">
+                                    {productData?.size?.map((sizeItem) => {
+                                        return (
+                                            <label className="m-0" onClick={() => {
+                                                setSelectedSize(sizeItem);
+                                                setAlert(false);
+                                            }}
+                                            >
+                                                <input type="radio" name="material" style={{background: sizeItem === selectedZize ? '#fcd462' : '#262626'}} />
+                                                <span className="choose-material" style={{background: sizeItem === selectedZize ? '#fcd462' : '#262626'}}>{sizeItem}</span>
+                                            </label>
+                                        )
+                                    })}
+                                </div>
+                            </div>
 
                             {/* Quantity and Cart */}
                             <div className="quantity-cart d-block d-sm-flex">
@@ -118,7 +148,9 @@ const Shopinfo = ({ product }) => {
                                 </div>
                                 <div className="cart-btn pl-40">
                                     <div
-                                        onClick={() => handleCart(productData)}
+                                        onClick={() => {
+                                            handleCart(productData);
+                                        }}
                                         className="main-btn btn-border text-black"
                                     >
                                         {productData?.isCart ? "View in Cart" : "Add to Cart"}
@@ -128,7 +160,7 @@ const Shopinfo = ({ product }) => {
 
                             {/* Category and Code */}
                             <div className="other-info flex mt-20">
-                                <h6 style={{color: 'black'}}>Category:</h6>
+                                <label className="text-black">Category:</label>
                                 <ul>
                                     <li>
                                         <Link className="grey" style={{ textDecoration: 'none' }}>
@@ -138,7 +170,7 @@ const Shopinfo = ({ product }) => {
                                 </ul>
                             </div>
                             <div className="other-info flex mt-20">
-                                <h6 style={{color: 'black'}}>Code:</h6>
+                                <label className="text-black">Code:</label>
                                 <ul>
                                     <li>
                                         <Link className="grey" style={{ textDecoration: 'none' }}>
@@ -147,6 +179,11 @@ const Shopinfo = ({ product }) => {
                                     </li>
                                 </ul>
                             </div>
+                            {!selectedZize && productData?._id && alert && (
+                                <Alert variant="filled" severity="error" sx={{marginTop: '20px'}}>
+                                    Please select the size.
+                                </Alert>
+                            )}
                         </div>
                     </div>
 
@@ -176,7 +213,6 @@ const Shopinfo = ({ product }) => {
                                                 </tr>
                                                 <tr>
                                                     <th style={{color: 'black'}}>Availability</th>
-                                                    {console.log('productData?.availability',productData?.availability)}
                                                     <td className="value">
                                                         {productData?.availability ? (
                                                             <span className="text-success">In Stock</span>

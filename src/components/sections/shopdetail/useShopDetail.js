@@ -14,6 +14,8 @@ const useShopDetail = (product) => {
     const [categoryData, setCategoryData] = useState();
     const [categoryProductData, setCategoryProductData] = useState([]);
     const [clicks, setClicks] = useState(1);
+    const [alert, setAlert] = useState(false);
+    const [selectedZize, setSelectedSize] = useState();
 
     const IncrementItem = () => {
         setClicks((prevClicks) => prevClicks + 1);
@@ -105,7 +107,10 @@ const useShopDetail = (product) => {
             if (item?.isCart) {
                 navigate('/cart');
             } else {
-                handleAddToCart(item)
+                setAlert(true);
+                if(selectedZize) {
+                    handleAddToCart(item)
+                }
             }
             updateCartCount();
         } else {
@@ -211,7 +216,11 @@ const useShopDetail = (product) => {
         clicks,
         handleCartRelated,
         loading,
-        handleWishlist
+        handleWishlist,
+        alert,
+        setAlert,
+        selectedZize,
+        setSelectedSize
     }
 }
 
