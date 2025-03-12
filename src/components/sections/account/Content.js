@@ -2,25 +2,21 @@ import React from "react";
 import { Tab, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-import img1 from "../../../assets/img/shop/cart-1.png";
-import img2 from "../../../assets/img/shop/cart-2.png";
-import img3 from "../../../assets/img/shop/cart-3.png";
 import useAccount from "./useAccount";
 import Preloader from "../../layouts/Preloader";
-
-const orderlists = [
-  { img: img1, title: "Product1", id: "b123jhk4h", date: "12-Sep-2022" },
-  { img: img2, title: "Product2", id: "b673juyk4h", date: "14-Sep-2022" },
-  { img: img3, title: "Product3", id: "Q123jh4h", date: "12-Sep-2022" },
-  { img: img1, title: "Product4", id: "R444lo98", date: "20-Sep-2022" },
-];
+import UploadDialog from "../../Custome/UploadDialog/UploadDialog";
 
 const Content = () => {
   const {
     userData,
     loading,
     orderData,
-    handleLogout
+    handleLogout,
+    setOpen,
+    open,
+    showAlert,
+    setOrderId,
+    orderId
   } = useAccount();
 
   return (
@@ -78,12 +74,13 @@ const Content = () => {
                             <th scope="col" className="product-name">Qty</th>
                             <th scope="col" className="product-name">Status</th>
                             <th scope="col" className="product-price">Total Amount</th>
+                            <th scope="col" className="product-price">Action</th>
                           </tr>
                         </thead>
                         <tbody>
                           {orderData?.length < 1 && (
                             <tr>
-                              <td className="product-price text-white cw-align has-title text-center" colSpan={7}>
+                              <td className="product-price text-white cw-align has-title text-center" colSpan={8}>
                                 No Data Found
                               </td>
                             </tr>
@@ -120,6 +117,28 @@ const Content = () => {
                                     </td>
                                     <td rowSpan={order.productDetails.length} className="product-price text-white cw-align has-title">
                                       ₹{order.totalAmount}
+                                    </td>
+                                    <td rowSpan={order.productDetails.length} className="product-price text-white cw-align has-title">
+                                      {order?.status === 'Pending' && (
+                                        <button
+                                          className="btn btn-danger btn-sm"
+                                          onClick={() => showAlert(order?._id?.toString(), order?.paymentId, order?.totalAmount)}
+                                        >
+                                          Cancel Order
+                                        </button>
+                                      )}
+
+                                      {order?.status !== 'Delivered' && order?.trackingDetails && (
+                                        <button
+                                          className="btn btn-primary btn-sm"
+                                          onClick={() => {
+                                            setOrderId(order?._id);
+                                            setOpen(true);
+                                          }}
+                                        >
+                                          Upload Video/Image
+                                        </button>
+                                      )}
                                     </td>
                                   </>
                                 )}
@@ -268,6 +287,8 @@ const Content = () => {
           </div>
         </div>
       </Tab.Container>
+
+      <UploadDialog isOpen={open} onClose={() => setOpen(false)} orderId={orderId}/>
     </section>
   );
 };

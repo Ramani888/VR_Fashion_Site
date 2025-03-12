@@ -178,6 +178,36 @@ export const serverCreateOrder = async (data) => {
   return res;
 };
 
+export const serverUploadUnloadingImage = async (data) => {
+  let url = `/unloading/upload/image`;
+  const res = await serverRequest(url, "POST", data, true, true);
+  return res;
+}
+
+export const serverUploadUnloadingVideo = async (data) => {
+  let url = `/unloading/upload/video`;
+  const res = await serverRequest(url, "POST", data, true, true);
+  return res;
+}
+
+export const serverOrderUnloading = async (data) => {
+  let url = `/unloading`;
+  const res = await serverRequest(url, "POST", data, true);
+  return res;
+}
+
+export const serverRefundPayment = async (data) => {
+  let url = `/refund/payment`;
+  const res = await serverRequest(url, "POST", data, true);
+  return res;
+}
+
+export const serverOrderStatus = async (orderId, status) => {
+  let url = `/order/status?orderId=${orderId}&status=${status}`;
+  const res = await serverRequest(url, "PUT", null, true);
+  return res;
+}
+
 /********** Wishlist Api **********/
 export const serverGetWishlistProduct = async (userId) => {
   let url = `/wishlist`;
